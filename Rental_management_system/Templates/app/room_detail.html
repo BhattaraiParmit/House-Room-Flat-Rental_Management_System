@@ -1,0 +1,210 @@
+
+{% extends 'app/Main.html' %}
+
+{% block content %}
+{% include 'app/navbar.html' %}
+
+{% load static %}
+  <link rel="stylesheet" href="{% static 'CSS/app/room_detail.css' %}">
+
+    <!-- <header>
+      
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">Mero Ghar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <form action="{% url 'room' %}">
+                <input class="search-input" name="loc" type="text" placeholder="Enter Location">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </form>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto me-3 mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Post Property</a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="">
+                    <div class="profile-section">
+                      <div class="profile"><p>PB</p></div>
+                      <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                  </a>
+                </li>
+
+                <div class="nav-item">
+                  <a href="">
+                    <i class=" menu fa-solid fa-bars"></i>
+                  </a>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      
+    </header> -->
+
+
+    <section class="room-detail">
+        <div class="container me-5 mt-5">
+            <div class="row">
+                <div class="col-md-7 column1 p-0 m-0">
+                    <div class="row  bg-white">
+                        <div class="title">
+                            <p>Last Updated at: {{room.updated_date|timesince}}</p>
+                            <h3>{{room.description}}</h3>
+                            <div class="rented-out-to">
+                                <p>{{room.rent_out_to}}</p>
+                                <!-- <p>For women</p>
+                                <p>For family</p> -->
+                            </div>
+                        </div>
+                        <div class="image">
+                          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                            
+                              {% for i in room_images %}
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{forloop.counter0}}" class="{% if forloop.counter0 == 0%} active {% endif %}"></button>
+                              {% endfor %}
+                            </div>
+
+                            <div class="carousel-inner">
+                              {% for i in room_images %}
+                              <div class="carousel-item {% if forloop.counter0 == 0%} active {% endif %}">
+                                <!-- <img src="{{img.image.url}}" class="d-block w-100" alt="..."> -->
+                                <img src="{{i.image.url}}" class="d-block w-100" alt="...">
+
+                              </div>
+                              {% endfor %}
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+                            
+                              <a href="">
+                                <div class="view-gallary">
+                                    <i class="fa-solid fa-expand"></i>
+                                    <p>View Gallary</p>
+                                </div>
+                              </a>
+                        </div>
+                    </div>
+                    <div class="row mt-3 bg-white p-3">
+                        <div class="middle-title">
+                            <h1>Rent this house at</h1>
+
+                            <div class="room-price">
+                                <div class="price">
+                                    <p>Rent from</p>
+                                    <h1><i class="fa-solid fa-indian-rupee-sign"></i> <span>{{room.price}}</span></h1>
+                                </div>
+                                <div class="barrier"></div>
+
+                                <div class="security-deposite">
+                                    <small>Security deposite</small>
+                                    <h1>{{room.security_deposite}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr>
+
+                        <div class="middle-body">
+                            <p>House Feature</p>
+                            
+
+                            <div class="features">
+
+                                <div class="feature-1">
+                                    <div class="feature">
+                                        <i class="fa-solid fa-bed"></i>
+                                        <p>{{room.bedroom}} bedrooms</p>
+                                    </div>
+    
+                                    <div class="feature">
+                                        <i class="fa-solid fa-sink"></i>
+                                        <p>{{room.bathroom}} bathrooms</p>
+                                    </div>
+                                </div>
+
+                                <div class="feature_2">
+                                    <div class="feature">
+                                      <i class="fa-solid fa-chart-area"></i>
+                                        <p>597.9 sq</p>
+                                    </div>
+    
+                                    <div class="feature">
+                                      <i class="fa-solid fa-couch"></i>
+                                        <p>{{room.furnishing}}</p>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="room-description">
+                          <p>About House</p>
+                          <small>{{room.description}}</small>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 bg-white ms-4 column2">
+                    <div class="row">
+                      <div class="header">
+                        <div class="title">Description</div>
+                        <div class="title">Comments</div>
+                        <div class="title">Location</div>
+                      </div>
+                      <hr>
+
+                      <div class="desc">
+                        <p>{{room.description}}</p>
+                      </div>
+
+                      <div class="General">
+                        <p>General</p>
+
+                        <div class="general-body">
+                          <div class="address_id gen">
+                            <p>AD ID</p>
+                            <p>HB-b27939</p>
+                          </div>
+                          <hr>
+                          <div class="location gen">
+                            <p>Location</p>
+                            <p>{{room.address}}</p>
+                          </div>
+                          <hr>
+
+                          <div class="Negotiable gen">
+                            <p>Negotiable</p>
+                            <p>{{room.negotiable}}</p>
+                          </div>
+                          <hr>
+
+                          <div class="posted gen">
+                            <p>Posted</p>
+                            <p>{{room.updated_date|timesince}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    
+</body>
+{% endblock %}

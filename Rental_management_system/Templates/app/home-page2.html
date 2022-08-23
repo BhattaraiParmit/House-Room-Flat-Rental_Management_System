@@ -1,0 +1,459 @@
+
+{% extends 'app/Main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+{% load myFilter %}
+
+
+<link rel="stylesheet" href="{% static 'CSS/app/home-page2.css' %}">
+
+    <body>   
+
+            <section id="banner">
+                <div class="banner-container">
+                    <div class="layer"></div>
+                    <h2>Discover a place <br> you'll love to live</h2>
+
+                    <div class="search-box">
+                        <form action="{% url 'room'  %}"  method="GET">
+                            <input type="text" name="loc" placeholder="Enter your location">
+                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section id="homes">
+
+                <div class="homes-header">
+                    <h2>Explore homes on Shelter</h2>
+                    <p>Take a deep dive and browse homes for sale, original neighborhood photos, resident <br>
+                            reviews and local insights to find what is right for you.</p> 
+                        
+                </div>
+
+                <div class="homes-slider">
+                    <div class="main-carousel">
+                        <div class="large-container cell">
+                            <a href="{% url 'getHome' 'kathmandu' %}">
+                                <div class="large-image">
+                                    <img src="../../static/images/city_image/Kathmandu.jpg" alt="">
+
+
+                                    <h2>Kathmandu</h2>
+                                    <div class="overlay"></div>
+                                    <div class="view-home-buttons">
+                                        <p>View Homes</p>
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                        <div class="small-container">
+                            <a href="{% url 'getHome' 'hetauda' %}">
+                            <div class="image1">
+                                <img src="../../static/images/city_image/Hetauda.jpg" alt="">
+                                <h2>hetauda</h2>
+                                <div class="overlay"></div>
+                                <div class="view-home-buttons">
+                                    <p>View Homes</p>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+
+                            </div>
+                            </a>
+
+                            <a href="{% url 'getHome' 'chitwan' %}">
+                            <div class="image2">
+                                <img src="../../static/images/city_image/chitwan.jpg" alt="">
+                                <h2>Chitwan</h2>
+                                <div class="overlay"></div>
+                                <div class="view-home-buttons">
+                                    <p>View Homes</p>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+
+                        <div class="large-container cell">
+                            <a href="{% url 'getHome' 'pokhara' %}">
+                            <div class="large-image">
+                                <img src="../../static/images/city_image/pokhara.jpg" alt="">
+                                <h2>Pokhara</h2>
+                                <div class="overlay"></div>
+                                <div class="view-home-buttons">
+                                    <p>View Homes</p>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+
+                            </div>
+                            </a>
+                        </div>
+
+                        <div class="small-container">
+                            <a href="{% url 'getHome' 'Narayanghat' %}">
+                            <div class="image1">
+                                <img src="../../static/images/city_image/narayanghat.jpg" alt="">
+                                <h2>Narayanghat</h2>
+                                <div class="overlay"></div>
+                                <div class="view-home-buttons">
+                                    <p>View Homes</p>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="{% url 'getHome' 'Dharan' %}">
+                            <div class="image2">
+                                <img src="../../static/images/city_image/dharan.jpg" alt="">
+                                <h2>Dharan</h2>
+                                <div class="overlay"></div>
+                                <div class="view-home-buttons">
+                                    <p>View Homes</p>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="large-container cell">
+                            <a href="{% url 'getHome' 'Butwal' %}">
+                            <div class="large-image">
+                                <img src="../../static/images/city_image/Butwal.jpg" alt="">
+                                <h2>Butwal</h2>
+                                <div class="overlay"></div>
+                                <div class="view-home-buttons">
+                                    <p>View Homes</p>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </div>
+                            </a>
+
+                        </div>
+                        <div class="small-container">
+                            <a href="{% url 'getHome' 'Illam' %}">
+                            <div class="image1">
+                                <img src="../../static/images/city_image/Illam.jpg" alt="">
+                                <h2>Illam</h2>
+                                <div class="overlay"></div>
+                                <div class="view-home-buttons">
+                                    <p>View Homes</p>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </div>
+                            </a>
+
+                            <a href="{% url 'getHome' 'Jhapa' %}">
+                            <div class="image2">
+                                <img src="../../static/images/city_image/jhapa.jpg" alt="">
+                                <h2>Jhapa</h2>
+                                <div class="overlay"></div>
+                                <div class="view-home-buttons">
+                                    <p>View Homes</p>
+                                    <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section id="newly-listed-homes">
+                <div class="homes-header">
+                    <h2>Newly listed homes</h2>
+                </div>
+
+                <div class="homes-slider">
+                    <div class="main-carousel">
+                        {% for property in propertys %}
+
+                        <a href="{% url 'room_detail' property.id %}">
+                            <div class="cell">
+                                <div class="image">
+                                    <img src="{{property.cover_image.url}}" alt="">
+                                    <div class="date_price">
+                                        <h3>$ {{property.price|floatformat}}</h3>
+                                        <p>{{property.created_date|timesince}}</p>
+                                    </div>
+
+                                    <div class="staus-label">
+                                        <div class="active_sold_status">
+                                            <p id="{{property|rented_or_sale_get_className}}">{{property|rented_or_sale_get_tag}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="room-info">
+                                        <div class="bed ">
+                                            <i class="fa-solid fa-bed"></i>
+                                            <p>{{property.bedroom}}bd</p>
+                                        </div>
+                                        <div class="bat">
+                                            <i class="fa-solid fa-bath"></i>
+                                            <p>{{property.bathroom}}ba</p>
+                                        </div>
+                                        <div class="area ">
+                                            <i class="fa-solid fa-chart-area"></i>
+                                            <p>{{property.area}} sq.ft</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="room-title">
+                                        <p>{{property.bedroom}}BHK {{property.property_type}} {{property.category}}  on {{property.city}}</p>
+                                    </div>
+
+                                    <div class="address">
+                                        <p>{{property.city}}</p>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="buy_sale">
+                <div class="buy_sale_body">
+                    <div class="header">
+                        <h2>See how Shelter can help</h2>
+
+                    </div>
+
+                    <div class="filter-body">
+                        <div class="buy-home">
+                            <img src="../static/images/undraw_Coming_home_re_ausc.png" alt="">
+                            <h2>Buy a home</h2>
+
+                            <div class="desc">
+                                <p> With overthousands of homes for sale available on the website, Shelter can match you
+                                    with a house you will want to call home.</p>
+                            </div>
+
+                            <a href="{% url 'get_selected_homes' 'Sell' %}">Find a home</a>
+                        </div>
+
+                        <div class="Sale-home">
+                            <img src="../static/images/undraw_For_sale_re_egkk.png" alt="">
+                            <h2>Rent a home</h2>
+
+                            <div class="desc">
+                                <p>With over Thousands of  homes for Rent available on the website, Shelter can match you with a house you will want to call home.</p>
+                        
+                            </div>
+
+                            <a href="{% url 'get_selected_homes' 'Rent' %}">Find a home</a>
+                        </div>
+
+                        <div class="PG-home">
+                            <img src="../static/images/undraw_sweet_home_dkhr.png" alt="">
+                            <h2>Post your home</h2>
+
+                            <div class="desc">
+                                <p>With more neighborhood insights than any other real estate website, we've captured the color and diversity of communities</p>
+                            </div>
+
+                            <a href="{% url 'post_property' %}">Post a home</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+        
+
+            <!-- <div class="overlay-2"></div>
+
+            <div class="login_register_container">
+      
+              <div class="form-step form1 form-active ">
+                <div class="form1-header">
+                  <h4>Sign in</h4>
+                  <i class="fa-solid fa-xmark login-register-closeBtn"></i>
+                </div>
+      
+                <form action="{% url 'login' %}" method="POST" id="login-form">
+                  {% csrf_token %}
+                  <div class="form-input">
+                    <label for="">Enter your email address</label>
+                    <input type="text" name="email" placeholder="ENTER YOUR EMAIL ADDRESS..">
+                  </div>
+                 
+                  <div class="form-input">
+                    <label for="">Password</label>
+                    <input type="password" name="password" placeholder="PASSWORD">
+                  </div>
+                  
+                  <div class="forgot-password">
+                    <a href="">Forgot password?</a>
+                  </div>
+      
+                  <button type="submit">Login</button>
+      
+                  <div class="register_div">
+                    <span>Dont  have an account? <p id="signup-btn">Sign Up</p></span>
+                  </div>
+                </form>
+              </div>
+      
+              <div class="form-step form2 ">
+      
+                <div class="form2-header">
+                  <h4>Sign Up</h4>
+                  <i class="fa-solid fa-xmark login-register-closeBtn"></i>
+                </div>
+      
+                <form action="{% url 'register' %}" method="POST" id="register-form">
+                  {% csrf_token %}
+                 
+                  <div class="form-input-names">
+                    {{forms.first_name}}
+                    {{forms.last_name}}
+                  </div>
+      
+                  <div class="form-input">
+                    {{forms.email}}
+                  </div>
+                 
+                  <div class="form-input">
+                    {{forms.phone}}
+                  </div>
+      
+                  <div class="form-input">
+                    {{forms.password1}}
+      
+                  </div>
+      
+                  <div class="form-input">
+                    {{forms.password2}}
+      
+                  </div>
+                
+                  <button type="submit">Sign Up</button>
+      
+                  <div class="term_and_services_div">
+                    <span>By Signing up, I agree the Mero Ghar<a href="">Term of Use</a> and <a href="">Privacy Policy</a></span>
+                  </div>
+      
+                  <div class="barrier-line">
+                    <div></div>
+                    <p>OR</p>
+                    <div></div>
+                  </div>
+      
+                  <div class="signIn_div">
+                    <span>Have an account with us? <p id="signin-btn" >Login</p></span>
+                  </div>
+                </form>
+              </div>
+      
+      
+            </div>   -->
+
+            
+
+            <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+            <script>
+                // let login_register_container = document.querySelector('.login_register_container')
+                // let loginRegisterCloseBtn = document.querySelectorAll('.login-register-closeBtn')
+                // let signUpBtn = document.getElementById('signup-btn')
+                // let signInBtn = document.getElementById('signin-btn')
+                // let formStep = document.querySelectorAll('.form-step')
+                // let overlay2 =  document.querySelector('.overlay-2')
+                // let postProperty = document.querySelector('.post-property')
+                // let user = "{{user}}"
+
+                // console.log(postProperty)
+
+
+      
+                // console.log(login_register_container)
+
+                $('.main-carousel').flickity({
+                    cellAlign: 'left',
+                    wrapAround: true,
+                    freeScroll: true
+                    });
+                
+                // navbar.addEventListener('click', (e) =>{
+                //     const navBuy = e.target.closest('buy-link')
+                //     const navRent = e.target.closest('rent-link')
+                //     const login_register_section = e.target.closest('.login-register-section')
+
+
+                //     if(login_register_section){
+                //         console.log("hello")
+                //         overlay2.style.display = "block"
+                //         login_register_container.style.display = 'block'
+
+                    
+                //     }
+                // })
+
+
+                // signUpBtn.addEventListener('click', () =>{
+                //     updateForm(1)
+                // })
+
+                // signInBtn.addEventListener('click', () =>{
+                //     updateForm(0)
+                // })
+
+                // function updateForm(index){
+                //     formStep.forEach((Form) =>{
+                //     Form.classList.contains('form-active')
+                //     Form.classList.remove('form-active')
+
+                //     })
+
+                //     formStep[index].classList.add('form-active')
+                // }
+
+
+                // loginRegisterCloseBtn.forEach((btn) =>{
+                //     btn.addEventListener('click', () =>{
+                //     overlay2.style.display = "none"
+                //     login_register_container.style.display = 'none'
+                //     })
+                // })
+                
+
+                // postProperty.addEventListener('click', (e) =>{
+                //     console.log("hello")
+                //     if(user == 'authenticated'){
+                //     return
+                //     } else{
+                //     e.preventDefault()
+                //     overlay2.style.display = "block"
+                //     login_register_container.style.display = 'block'
+                //     console.log("hello")
+
+                // }
+
+                // })
+              
+            </script>
+
+
+            
+
+           
+        {% endblock %}
+
+
+    </body>
+
+    </body>
+
+</html>

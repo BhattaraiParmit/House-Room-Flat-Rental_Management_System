@@ -1,0 +1,363 @@
+
+{% extends 'app/Main.html' %}
+<title>{% block title%} room_page {% endblock %}</title>
+
+{% block content %}
+
+{% load static %}
+
+{% load myFilter %}
+
+
+
+<body>
+   
+        <link rel="stylesheet" href="{% static 'CSS/app/room2.css' %}">
+        
+        <div class="filter-box">
+            <form action="{% url 'room' %}">
+                <input type="text" name="loc" placeholder="Search by city name">
+            </form>
+
+            <div class="price-box ">
+                <div class="price-display">
+                    <p id="price-label">Any Price</p>
+                    <i class="fa-solid fa-angle-down down price-arrow"></i>  
+                </div>
+                <i class="fa-solid fa-x price-clear" id="price-clear"></i>
+
+
+                <div class="pric-dropbox">
+                    <p id="title">Price Range</p>
+
+                    <div class="price-dropbox-body">
+
+                        <div class="min-price-body">
+
+                            <div class="min-header">
+                                <p id="min-label" >Min Budget</p>
+                                 <i id="min_arrow" class="fa-solid fa-angle-down"></i>
+                            </div>
+                            
+                            <div class="min-price-dropdown">
+                                <div class="min-Price-dropdown-list" data-min-number >0</div>
+                                <div class="min-Price-dropdown-list" data-min-number >5000</div>
+                                <div class="min-Price-dropdown-list" data-min-number>10000</div>
+                                <div class="min-Price-dropdown-list" data-min-number>15000</div>
+                                <div class="min-Price-dropdown-list" data-min-number>20000</div>
+                                <div class="min-Price-dropdown-list" data-min-number>25000</div>
+                                <div class="min-Price-dropdown-list" data-min-number>30000</div>
+                                <div class="min-Price-dropdown-list" data-min-number>40000</div>
+                                <div class="min-Price-dropdown-list" data-min-number>50000</div>
+                            </div>
+                        </div>
+
+                        <div id="dash"></div>
+
+                        <div class="max-price-body">
+
+                            <div class="max-header">
+                                <p id="max-label" >Max Budget</p>
+                                <i id="max_arrow" class="fa-solid fa-angle-down"></i>
+                            </div>
+                                                        
+                            <div class="max-price-dropdown ">
+                                <div class="max-Price-dropdown-list" data-max-number>0</div>
+                                <div class="max-Price-dropdown-list" data-max-number>5000</div>
+                                <div class="max-Price-dropdown-list" data-max-number>10000</div>
+                                <div class="max-Price-dropdown-list" data-max-number>20000</div>
+                                <div class="max-Price-dropdown-list" data-max-number>25000</div>
+                                <div class="max-Price-dropdown-list" data-max-number>30000</div>
+                                <div class="max-Price-dropdown-list" data-max-number>40000</div>
+                                <div class="max-Price-dropdown-list" data-max-number>50000</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="bed-box">
+                <div class="bed-display">
+                    <p >Bed <span id="bed-value"></span></p>
+                    <i class="fa-solid fa-angle-down" id="bed-arrow"></i>
+               
+                </div>
+
+                <i class="fa-solid fa-x bed-clear" id="bed-clear"></i>
+
+
+                <div class="bed-dropbox">
+                    <p>Bedrooms</p>
+
+                    <div class="bed-radio-icons">
+                        {% for field in forms.bedroom %}
+                            <div class="bed bed-{{field.choice_label}}">
+                                <input type="radio" name="bed" value="{{field.choice_label}}" id="bed{{field.choice_label}}">
+                                <label for="bed{{field.choice_label}}">{{field.choice_label}}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="type-box">
+                <div class="type-display">
+                    <p id="type-value">Type </p>
+                    <i class="fa-solid fa-angle-down type-arrow"></i>
+                </div>
+                <i class="fa-solid fa-x type-clear" id="type-clear"></i>
+
+
+                <div class="type-dropbox">
+                    {% for field in forms.property_type %}
+                    <div class="type">
+                        <input type="radio" name="type" value="{{field.choice_label}}" id="{{field.choice_label}}">
+                        <label for="{{field.choice_label}}">{{field.choice_label}}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="furnishing-box">
+
+                <div class="furnishing-display">
+                    <p id="furnishing-value">Furnishing</p>
+                    <i class="fa-solid fa-angle-down furnishing-arrow"></i>
+                </div>
+                <i class="fa-solid fa-x furnishing-clear" id="furnishing-clear"></i>
+
+
+                <div class="furnishing-dropbox">
+                    {% for field in forms.furnishing %}
+                    <div class="furnishing">
+                        <input type="radio" name="furnishing" value="{{field.choice_label}}" id="{{field.choice_label}}" >
+                        <label for="{{field.choice_label}}">{{field.choice_label}}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            
+
+            </div>
+
+            <div class="category-box">
+                <div class="category-display">
+                    <p id="category-value">Category</p>
+                    <i class="fa-solid fa-angle-down category-arrow"></i>
+                </div>
+
+                <i class="fa-solid fa-x category-clear" id="category-clear"></i>
+
+                <div class="category-dropbox">
+                    {% for field in forms.category %}
+                    <div class="category">
+                        <input type="radio" name="category" value="{{field.choice_label}}" id="{{field.choice_label}}">
+                        <label for="{{field.choice_label}}">{{field.choice_label}}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+
+             
+
+            </div>
+
+
+            <div class="availability-box">
+                <div class="availability-display">
+                    <p id="availability-value">Available</p>
+                    <i class="fa-solid fa-angle-down availability-arrow"></i>
+                </div>
+                <i class="fa-solid fa-x availability-clear" id="availability-clear"></i>
+
+                <div class="availability-dropbox">
+                    {% for field in forms.rent_out_to %}
+                    <div class="availability">
+                        <input type="radio" name="availability" value="{{field.choice_label}}" id="{{field.choice_label}}" {% if field.choice_label == "Rent" %} checked {% endif %}>
+                        <label for="{{field.choice_label}}">{{field.choice_label}}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        
+        </div>
+
+        <div class="room-container">
+
+            <div class="room-header">
+                <div class="header-tag">
+                    {% if location == '' %}
+                    <h2>Result of all properties</h2>
+                    {% else %}
+                    <h2>Results of Properties in<span id="location"> {{location}}</span></h2>
+                    {% endif %}
+                    <p><span id="room-count">{{rooms.count}}</span> property available in Shelter</p>
+                </div>
+
+                <div class="sort">
+                    <div class="sort-header">
+                        <p id="sort_title">Sort By:</p>
+                    </div>
+                    <select id="sort-value" onchange="filterFunction()">
+                        <option  value="newest">Newest First</option>
+                        <option  value="low_to_high">Price low to high</option>
+                        <option  value="high_to_low" selected>price hight to low</option>
+                      </select>
+                </div>
+            </div>
+
+            <div class="room-body">
+
+                {% for room in rooms %}
+                        <div class="room">
+                                <div class="image">
+                                    <a href="{% url 'room_detail' room.id %}">
+                                        <img src="{{room.cover_image.url}}" alt="">
+                                        <div class="overlay"></div>
+                                    </a>
+                                    
+                                    <div class="image-top">
+
+                                        <p id="{{room|rented_or_sale_get_className}}">{{room|rented_or_sale_get_tag}}</p>
+
+                                        
+
+                                          
+                                        <div class="fav-box">
+                                            <i class="fa-solid fa-heart {{room|savedOrNot:request.user}}" onclick="savedHomesFunction('{{room.id}}', this)" ></i>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <a href="{% url 'room_detail' room.id %}">
+                                    <div class="price-date">
+                                        <h3><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                            <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"></path>
+                                          </svg> {{room.price}}</h3>
+                                        
+                                       
+                                        
+                                        <p>{{room.created_date|date:"M d, Y"}}</p>
+                                    </div>
+                                    <div class="room-info">
+                                        <div class="bed ">
+                                            <i class="fa-solid fa-bed"></i>
+                                            <p>{{room.bedroom}} Bd</p>
+                                        </div>
+                                        <div class="bat">
+                                            <i class="fa-solid fa-bath"></i>
+                                            <p>{{room.bathroom}} Ba</p>
+                                        </div>
+                                        <div class="area ">
+                                            <i class="fa-solid fa-chart-area"></i>
+                                            <p>{{room.area}} Sq.ft</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="room-title">
+                                        <p>{{room.bedroom}} BHK {{room.property_type}} on {{room.category}}</p>
+                                    </div>
+
+                                    <div class="address">
+                                        <p>{{room.city}}</p>
+                                    </div>
+                                </a>
+
+                                <div id="bottomline"></div>
+                        </div>
+                 {% endfor %}
+               
+            </div>
+
+            <div class="error-body">
+                <div class="error-message">
+                    <h1>We don't found your maches</h1>
+                    <p>Please make sure everything is spelled correctly and that you're searching by city</p>
+                </div>
+            </div>
+
+
+            {% if rooms %}
+
+            <nav aria-label="Page navigation example" class="Page">
+                <ul class="pagination">
+                    
+                    {% if rooms.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="{% url 'room' %}?loc={{query}}&page={{rooms.previous_page_number}}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    <!-- {{rooms.paginator.num_pages}} -->
+
+                    {% for i in rooms.paginator.page_range %}      
+                        <li class="page-item"><a class="page-link" href="{% url 'room' %}?loc={{query}}&page={{i}}">{{i}}</a></li>
+                    {% endfor %}
+
+
+                  {% if rooms.has_next %}
+                  <li class="page-item">
+                    <!-- <a class="page-link" href="/room/?page={{rooms.next_page_number}}" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a> -->
+                    <a class="page-link" href="{% url 'room' %}?loc={{query}}&page={{rooms.next_page_number}}" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                  {% endif %}
+
+                </ul>
+            </nav>
+
+            {% endif %}
+        </div>
+
+
+        <script>
+            let rooms =   '{{rooms|length}}'
+
+            let property_location = '{{location}}'
+
+            console.log(property_location)
+
+            // let address = ''
+            // let user  = '{{request.user}}'
+
+            let category_value = ''
+
+            // let location = '{{location}}'
+
+            console.log(location)
+
+            category_value =  '{{category}}'
+
+
+            console.log(category_value)
+            
+
+
+            if(rooms == 0){
+                document.querySelector('.room-header').style = "display: none"
+                document.querySelector('.room-body').style = "display: none"
+
+                document.querySelector('.error-body').style = "display: block"
+
+            }
+
+            
+        </script>
+
+
+        <script src="{% static 'JS/room2.js' %}"></script>
+
+
+</body>
+
+{% endblock %}

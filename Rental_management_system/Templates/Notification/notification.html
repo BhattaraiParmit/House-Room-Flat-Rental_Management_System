@@ -1,0 +1,263 @@
+{% extends 'app/Main.html' %}
+<title>{% block title%} Notification {% endblock %}</title>
+{% block content %}
+
+{% load static %}
+
+{% load myFilter %}
+
+<link rel="stylesheet" href="{% static 'CSS/notification/notification.css' %}">
+
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    
+
+                    <div class="Notification-section">
+                        <div class="header-top">
+                            <a href="{% url 'savedHomesSection' %}"><h2>Notification</h2></a>
+                        </div>
+
+                        <div class="notification-box">
+
+
+                            {% for notification in notifications %}
+                                {% if notification.category == 'Give Review' %}
+
+                                    {% if notification.property.user == request.user %}
+
+                                        <div class="wrapper-div">
+                                            <a href="{% url 'room_detail'  notification.property.id %}">
+                                                <div class="notification viewed">
+                                                    <div class="image">
+                                                        <img src="{{notification.user.profile.url}}" alt="">
+                                                    </div>
+                                                    
+                                                    <div class="content">
+                                                        <h1>{{notification.user.first_name}} {{notification.user.last_name}} {{notification.category}} on your property ({{notification.property.bedroom}} BHk {{notification.property.property_type}} {{notification.property.category}} on {{notification.property.city}} )</h1>
+                                                        <p>{{notification.created_date|date:"M d, Y"}}</p>
+                                                    </div>
+                    
+                                                </div>
+                                            </a> 
+
+                                            <div class="delete-icon" data-deleteId = "{{notification.id}}">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </div>
+                                        </div>
+
+                                        
+                                    {% endif %}
+                                {% else %}
+                                    {% if notification.review.user == request.user %}
+                                        
+
+                                        <a href="{% url 'room_detail'  notification.property.id %}">
+                                            <div class="notification viewed">
+                                                <div class="image">
+                                                    <img src="{{notification.user.profile.url}}" alt="">
+                                                </div>
+                                                
+                                                <div class="content">
+                                                    <h1>{{notification.user.first_name}} {{notification.user.last_name}} {{notification.category}}  on your review from property ({{notification.property.bedroom}} BHk {{notification.property.property_type}} {{notification.property.category}} on {{notification.property.city}} )</h1>
+                                                    <p>{{notification.created_date|date:"M d, Y"}}</p>
+                                                </div>
+                
+                                                <div class="delete-icon"  data-deleteId = "{{notification.id}}">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    {% endif %}
+
+                                {% endif %}
+                            {% empty %}
+                                <h1>you dont have anyy  notification</h1>
+                                
+
+                            {% endfor %}
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </body>
+
+
+    <script>
+
+        const pk = "{{pk}}"
+
+        const notificationBox = document.querySelector('.notification-box')
+
+        let requested_user = "{{request.user.email}}"
+
+        console.log(pk)
+
+        console.log(requested_user)
+
+
+
+        const  ws = new WebSocket(`ws://localhost:8000/ws/notification/${pk}/`)
+
+
+        function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+        const csrftoken = getCookie('csrftoken');
+
+
+        ws.onmessage = (e) => {
+
+            let data = JSON.parse(e.data)
+
+
+            console.log(data)
+
+           
+
+            if(data['command'] == 'notification'){
+                
+                notification_data = JSON.parse(data.notification)
+
+                console.log(notification_data)
+
+                console.log(notification_data.bedroom)
+                console.log(notification_data.city)
+                console.log(notification_data.property_id)
+                console.log(notification_data.property_type)
+                console.log(notification_data.user)
+                console.log(notification_data.user_image)
+
+                console.log(notification_data.response_user)
+
+                if(notification_data.category == 'Give Review'){
+
+                    if(notification_data.property_user == requested_user){
+
+
+                        notificationBox.innerHTML += ` 
+                                                <div class="wrapper-div">
+                                                    <a href="/room_detail/${notification_data.property_id}">
+                                                        <div class="notification viewed">
+                                                            <div class="image">
+                                                                <img src="${notification_data.user_image}" alt="">
+                                                            </div>
+
+                                                            <div class="content">
+                                                                <h1>${notification_data.user} give ${notification_data.category} on your Property (${notification_data.bedroom} BHK ${notification_data.property_type}  ${notification_data.property_category} on  ${notification_data.city})</h1>
+                                                                <p>${notification_data.created_date}</p>
+                                                            </div>
+
+                                                            <div class="delete-icon" data-deleteId = ${notification_data.id}>
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                        
+                                                    `
+                    }
+
+
+                    
+                }else if(notification_data.category == 'Responded'){
+
+                    if(notification_data.response_user == requested_user){
+
+                        notificationBox.innerHTML += `
+                                            <div class="wrapper-div">
+
+                                                <a href="/room_detail/${notification_data.property_id}">
+                                                    <div class="notification viewed">
+                                                        <div class="image">
+                                                            <img src="${notification_data.user_image}" alt="">
+                                                        </div>
+
+                                                        <div class="content">
+                                                            <h1>${notification_data.user} ${notification_data.category} on your review from property (${notification_data.bedroom} BHK ${notification_data.property_type}  ${notification_data.property_category} on  ${notification_data.city})</h1>
+                                                            <p>${notification_data.created_date}</p>
+                                                        </div>
+
+                                                        <div class="delete-icon" data-deleteId = ${notification_data.id}>
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                                    
+                                                    
+                                                `
+                    }
+                }
+
+
+
+
+
+            }
+
+
+
+            notificationBox.addEventListener('click', (e) =>{
+
+                const deletedIcon = e.target.closest('.delete-icon')
+                
+                
+                if(deletedIcon){
+                    console.log("helo")
+
+                    e.preventDefault()
+                    id = deletedIcon.dataset.deleteid
+
+
+                    var url = "/deleteNotification/"
+
+
+                    fetch(url, {
+                        method: 'POST',
+                        headers : {
+                            'Content-Type': 'application/json',  
+                            'X-CSRFToken': csrftoken
+                        },
+                        body: JSON.stringify({'id': id})
+                    })
+                    
+                    .then((response) =>{
+                        return response.json()
+                    })
+
+                    .then((data) =>{
+                        console.log(data)
+
+                        console.log(deletedIcon.parentNode)
+                        // console.log(deletedIcon.parentNode)
+                        deletedIcon.parentNode.remove()
+
+                    })
+
+                }
+            })
+
+
+        }
+
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,483 @@
+
+
+.section-container{
+    position: relative;
+}
+
+.overlay-2{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, .9);
+    overflow-y: hidden;
+    z-index: 2;
+    display: none;
+}
+
+.login_register_container{ 
+    position: fixed;
+    width: 395px;
+    height: 518px;
+    background-color: white;
+    top: 69px;
+    left: 36%;
+    z-index: 10;
+    display: none;
+}
+
+
+
+/* ----------Login--------------- */
+
+.login_register_container .form-step{
+    display: none;
+}
+
+.login_register_container .form-active{
+    display: block;
+}
+
+
+.login_register_container .form1 .form1-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ededed;
+    padding: 10px 10px 10px 17px;
+    align-items: center;
+}
+
+.login_register_container .form1 .form1-header h4{
+    font-size: 18px;
+} 
+
+.login_register_container .form1 .form1-header i{
+    font-size: 19px;
+    cursor: pointer;
+}  
+
+
+.login_register_container .form1 form{
+    padding: 10px 10px 10px 17px;
+    margin-top: 18px;
+}
+
+
+.login_register_container .form1 .form-input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+} 
+
+.login_register_container .form1 .form-input label{
+    font-weight: 500;
+    margin-bottom: 8px;
+} 
+
+.login_register_container .form1 .form-input input{
+
+    padding: 13px;
+    outline: none;
+} 
+
+.login_register_container .form1 .forgot-password{
+    display: flex;
+    text-align: right;
+    justify-content:flex-end;
+}
+
+.login_register_container .form1 .forgot-password a{
+    
+    color: rgb(7 149 129);
+    font-weight: 600;
+}
+
+.login_register_container .form1 button{
+    background-color: #268bff;
+    padding: 8px 10rem;
+    margin-top: 19px;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 21px;
+}
+
+.login_register_container .form1 button:hover{
+    background-color: #08a36e;
+}
+
+.login_register_container .form1 .register_div{
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.login_register_container .form1 .register_div span{
+    display: flex;    
+}
+
+.login_register_container .form1 .register_div p{
+    color: #08a36e;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* ----------Login End--------------- */
+
+/* ----------Register--------------- */
+
+
+.login_register_container .form2 .form2-header h4{
+    font-size: 18px;
+}  
+
+.login_register_container .form2 .form2-header i{
+    font-size: 19px;
+    cursor: pointer;
+}  
+
+.login_register_container .form2 .form2-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ededed;
+    padding: 10px 10px 10px 17px;
+    align-items: center;
+}
+
+.login_register_container .form2 form{
+    padding: 10px 10px 10px 17px;
+    margin-top: 18px;
+}
+
+.login_register_container .form2 .form-input-names{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.login_register_container .form2 .form-input-names input{
+    width: 179px;
+    margin-right: 11px;
+    padding: 7px;
+    outline: none;
+    border: 1px solid #c1c1c1;
+}
+
+
+.login_register_container .form2 .form-input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+} 
+
+.login_register_container .form2 .form-input label{
+    font-weight: 400;
+    margin-bottom: 5px;
+} 
+
+.login_register_container .form2 .form-input input{
+
+    padding: 7px;
+    outline: none;
+    border: 1px solid #c1c1c1;
+
+} 
+
+.login_register_container .form2 .forgot-password{
+    display: flex;
+    text-align: right;
+    justify-content:flex-end;
+}
+
+.login_register_container .form2 .forgot-password a{
+    
+    color: rgb(7 149 129);
+    font-weight: 600;
+}
+
+.login_register_container .form2 button{
+    background-color: #373838;
+    padding: 6px 7rem;
+    margin-top: 19px;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 21px;
+    width: 100%;
+}
+
+.login_register_container .form2 button:hover{
+    background-color: #08a36e;
+}
+
+.login_register_container .form2 .term_and_services_div{
+    margin-top: 18px;
+    font-weight: 400;
+    font-size: 14px
+}
+
+.login_register_container .form2 .term_and_services_div a{
+    color: #08a36e;
+    margin: 0 3px;
+}
+
+.login_register_container .form2 .barrier-line{
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+}
+
+.login_register_container .form2 .barrier-line div{
+    width: 165px;
+    height: 1px;
+    background-color: #373838;
+}
+
+.login_register_container .form2 .barrier-line p{
+    margin: 0 6px;
+    font-weight: 600;
+    color: rgb(148, 148, 147);
+}
+
+
+.login_register_container .form2 .signIn_div{
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.login_register_container .form2 .signIn_div span{
+    display: flex;
+}
+
+
+.login_register_container .form2 .signIn_div p{
+    color: #08a36e;
+    margin: 0 5px;
+    cursor: pointer;
+}
+   
+/* ========================================Logout Section========================================== */
+
+
+.password-change-container{
+    position: fixed;
+    width: 664px;
+    height: 518px;
+    background-color: white;
+    top: 69px;
+    left: 34%;
+    border: 1px solid black;
+    z-index: 10;
+    display: none;
+    /* background-color: red; */
+}
+
+
+
+.password-change-container .form-step{
+    display: none;
+}
+
+.password-change-container .form-active{
+    display: block;
+}
+
+.password-change-container .form1 .form1-header{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: #ededed; */
+    padding: 10px 10px 0px 17px;
+    align-items: center;
+}
+
+.password-change-container .form1 .form1-header h4{
+    font-size: 18px;
+} 
+
+.password-change-container .form1 .form1-header i{
+    font-size: 32px;
+    cursor: pointer;
+     margin-left: 38rem;
+}  
+
+.password-change-container .form1 form{
+    padding: 10px 10px 10px 17px;
+    margin-top: 18px;
+    /* background-color: red; */
+    margin-left: 6rem;
+    width: 71%;
+    /* width: 200px; */
+}
+
+.password-change-container .form1 form h1{
+    font-size: 24px;
+    margin-left: 6rem;
+    margin-bottom: 18px;
+    font-weight: 400;
+}
+
+
+
+
+.password-change-container .form1 .form-input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+} 
+
+.password-change-container .form1 .form-input label{
+    font-weight: 500;
+    margin-bottom: 8px;
+} 
+
+.password-change-container .form1 .form-input input{
+
+    padding: 9px;
+    outline: none;
+    border: 1px solid #cfcaca;
+    border-radius: 3px;
+} 
+
+.password-change-container .form1 .forgot-password{
+    display: flex;
+    text-align: right;
+    justify-content:flex-end;
+}
+
+.password-change-container .form1 .forgot-password a{
+    
+    color: rgb(7 149 129);
+    font-weight: 600;
+}
+
+.password-change-container .form1 button{
+    background-color: #268bff;
+    /* padding: 5px 11rem; */
+    margin-top: 19px;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 21px;
+    padding: 9px 139px;
+    border-radius: 3px;
+}
+
+.password-change-container .form1 button:hover{
+    background-color: #08a36e;
+}
+
+.password-change-container .form1 .register_div{
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.password-change-container .form1 .register_div span{
+    display: flex;    
+}
+
+.password-change-container .form1 .register_div p{
+    color: #08a36e;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+
+/* =====================Footer Section======================= */
+
+
+
+.sixth-section{
+    padding: 20px;
+    background-color: rgb(66, 66, 66);
+}
+
+
+
+.sixth-section .footer-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+}
+
+
+.footer-section a{
+    text-decoration: none;
+}
+
+.footer-section a:hover{
+    text-decoration: underline;
+}
+
+
+.sixth-section h2{
+    color: white;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.sixth-section .links{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    /* text-align: left; */
+    
+}
+
+.sixth-section .links a{
+    color: white;
+    margin-bottom: 10px;
+}
+
+.sixth-section .location{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sixth-section .contact{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+.sixth-section .email{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+
+
+.sixth-section .location i{
+    font-size: 24px;
+    margin-right: 10px;
+}
+.sixth-section .contact i{
+    font-size: 24px;
+    margin-right: 10px;
+}
+.sixth-section .email i{
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+
+.sixth-section .links h3{
+    font-size: 26px;
+
+}
+.sixth-section .links .social i{
+    font-size: 34px;
+    margin-right: 10px;
+    cursor: pointer;
+
+}

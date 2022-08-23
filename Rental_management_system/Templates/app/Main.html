@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Bree+Serif&family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}"/>
+
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+
+</head>
+    <body>
+        
+
+        {% include 'app/navbar.html' %}
+
+      
+
+
+    
+        <div class="overlay-2"></div>
+
+        <div class="login_register_container">
+    
+            <div class="form-step form1 form-active ">
+                <div class="form1-header">
+                    <h4>Sign in</h4>
+                    <i class="fa-solid fa-xmark login-register-closeBtn"></i>
+                </div>
+            
+                <form action="{% url 'login' %}" method="POST" id="login-form">
+                    {% csrf_token %}
+                    <div class="form-input">
+                    <label for="">Enter your email address</label>
+                    <input type="text" name="email" placeholder="ENTER YOUR EMAIL ADDRESS..">
+                    </div>
+                
+                    <div class="form-input">
+                    <label for="">Password</label>
+                    <input type="password" name="password" placeholder="PASSWORD">
+                    </div>
+                    
+                    <div class="forgot-password">
+                    <a href="">Forgot password?</a>
+                    </div>
+            
+                    <button type="submit">Login</button>
+            
+                    <div class="register_div">
+                    <span>Dont  have an account? <p id="signup-btn">Sign Up</p></span>
+                    </div>
+                </form>
+            </div>
+            <!-- --------register-------- -->
+        
+            <div class="form-step form2 ">
+            <div class="form2-header">
+                <h4>Sign Up</h4>
+                <i class="fa-solid fa-xmark login-register-closeBtn"></i>
+            </div>
+        
+            <form action="{% url 'register' %}" method="POST" id="register-form">
+                {% csrf_token %}
+               
+                <div class="form-input-names">
+                {{registrationForm.first_name}}
+                {{registrationForm.last_name}}
+                </div>
+        
+                <div class="form-input">
+                {{registrationForm.email}}
+                </div>
+            
+                <div class="form-input">
+                {{registrationForm.phone}}
+                </div>
+        
+                <div class="form-input">
+                {{registrationForm.password1}}
+        
+                </div>
+        
+                <div class="form-input">
+                {{registrationForm.password2}}
+        
+                </div>
+            
+                <button type="submit">Sign Up</button>
+        
+                <div class="term_and_services_div">
+                <span>By Signing up, I agree the Mero Ghar<a href="">Term of Use</a> and <a href="">Privacy Policy</a></span>
+                </div>
+        
+                <div class="barrier-line">
+                <div></div>
+                <p>OR</p>
+                <div></div>
+                </div>
+        
+                <div class="signIn_div">
+                <span>Have an account with us? <p id="signin-btn" >Login</p></span>
+                </div>
+            </form>
+            </div>
+        
+        
+        </div> 
+
+        <div class="password-change-container">
+            <div class="form-step form1 form-active ">
+                <div class="form1-header">
+                    <!-- <h4>Sign in</h4> -->
+                    <i class="fa-solid fa-xmark passwordChnage-closeBtn"></i>
+                </div>
+                <hr>
+                <form action="{% url 'passwordChnageSection' %}" method="POST" id="login-form">
+                    <h1>Change your password</h1>
+                    {% csrf_token %}
+                    {% for field in passwordChangeForm %}
+                        <div class="form-input">
+                            <label for="">{{field.label}}</label>
+                            {{field}}
+                            <!-- <input type="password" name="current_password"> -->
+                        </div>
+                    {% endfor %}
+
+                    <!-- <div class="form-input">
+                        <label for="">New Password</label>
+                        <input type="password" name="current_password">
+                    </div>
+                    <div class="form-input">
+                        <label for="">Confirm Password</label>
+                        <input type="password" name="current_password">
+                    </div> -->
+                    <button type="submit">Change Password</button>
+                </form>
+            </div>
+        </div>
+
+
+
+        <script>
+            let login_register_container = document.querySelector('.login_register_container')
+            let passwordChangeContainer = document.querySelector('.password-change-container')
+            let loginRegisterCloseBtn = document.querySelectorAll('.login-register-closeBtn')
+            let signUpBtn = document.getElementById('signup-btn')
+            let signInBtn = document.getElementById('signin-btn')
+            let formStep = document.querySelectorAll('.form-step')
+            let overlay2 =  document.querySelector('.overlay-2')
+            let postProperty = document.querySelectorAll('.post-property')
+            // let user = "{{user}}"
+            let user = "{{request.user}}"
+
+
+            console.log(postProperty)
+
+
+  
+            console.log(login_register_container)
+
+           
+            navbar.addEventListener('click', (e) =>{
+                const navBuy = e.target.closest('buy-link')
+                const navRent = e.target.closest('rent-link')
+                const login_register_section = e.target.closest('.login-register-section')
+
+
+                // if(login_register_section){
+                //     displayLoginContainer()
+                // }
+
+            })
+
+
+            signUpBtn.addEventListener('click', () =>{
+                updateForm(1)
+            })
+
+            signInBtn.addEventListener('click', () =>{
+                updateForm(0)
+            })
+
+
+
+            function updateForm(index){
+                formStep.forEach((Form) =>{
+                Form.classList.contains('form-active')
+                Form.classList.remove('form-active')
+
+                })
+
+                formStep[index].classList.add('form-active')
+            }
+
+
+            loginRegisterCloseBtn.forEach((btn) =>{
+                btn.addEventListener('click', () =>{
+                overlay2.style.display = "none"
+                login_register_container.style.display = 'none'
+                })
+            })
+            
+
+            // postProperty.forEach((btn) =>{
+            //     btn.addEventListener('click', (e)=>{
+
+            //         if(user != 'AnonymousUser'){
+            //             return
+            //         } else{
+            //             e.preventDefault()
+            //             displayLoginContainer()
+
+            //             overlay2.style.display = "block"
+            //             login_register_container.style.display = 'block'
+            //             console.log("hello")
+
+            //             }
+            //     })
+            // })
+            
+
+            // postProperty.addEventListener('click', (e) =>{
+
+
+            //     if(user != 'AnonymousUser'){
+            //         return
+            //     } else{
+            //         e.preventDefault()
+            //         displayLoginContainer()
+
+            //         // overlay2.style.display = "block"
+            //         // login_register_container.style.display = 'block'
+            //         // console.log("hello")
+
+            // }
+
+            // })
+
+
+            function displayLoginContainer(){
+                overlay2.style.display = "block"
+                login_register_container.style.display = 'block'
+                console.log("hello")
+            }
+
+
+          
+        </script>
+
+        {% block content %}
+
+        
+        {% endblock %}
+
+
+        {% include 'app/footer.html' %}
+
+
+      
+    </body>
+
+</html>

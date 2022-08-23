@@ -1,0 +1,818 @@
+{% extends 'app/Main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+{% load myFilter %}
+
+
+<link rel="stylesheet" href="{% static 'CSS/app/room-detail-2.css' %}">
+
+
+
+
+<section id="Main-section">
+
+
+    <section id="image-container">
+        <div class="image-slider">
+            <div class="main-carousel">
+                <div class="large-container cell">
+                    <div class="large-image">
+                        <img src="{{room.cover_image.url}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="photos_video_label">
+            <div class="labels">
+                <div class="photos-number">28 Photos</div>
+
+                {% if room.video %}
+
+                <div class="barrier"></div>
+                <div class="videos" id="play_video">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-camera-video" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z" />
+                    </svg>
+
+                    <p>Video</p>
+
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid mt-3">
+        <div class="columns">
+            <div class="first-column">
+                <div class="header-title">
+                    <h2>{{room.bedroom}} BHK {{room.property_type}} {{room.category}} in {{room.city}}</h2>
+                    <i class="fa-solid fa-heart {{room|savedOrNot:request.user}}"
+                        onclick="savedHomesFunction('{{room.id}}', this)"></i>
+                </div>
+
+                <p id="address">{{room.address}}</p>
+                <div class="rating-star">
+                    <div class="stars">
+
+                        <!-- <i class="fa-solid fa-star-half"></i> -->
+
+                        <!-- <i class="fa-solid  fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i> -->
+                    </div>
+                    <p>(<span id="average-review"></span> Rating)</p>
+                </div>
+
+                <div class="room-basic-detail">
+                    <div class="price">
+                        <p id="title">Monthly Rent</p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                            <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"></path>
+                          </svg> {{room.price|floatformat}}</p>
+                    </div>
+
+                    <div id="barrier"></div>
+
+                    <div class="bed">
+                        <p id="title">Bedrooms</p>
+                        <p>{{room.bedroom}} Bd</p>
+                    </div>
+
+                    <div id="barrier"></div>
+
+                    <div class="bath">
+                        <p id="title">Bathrooms</p>
+                        <p>{{room.bathroom}} Ba</p>
+                    </div>
+
+                    <div id="barrier"></div>
+
+                    <div class="area">
+                        <p id="title">square Feet</p>
+                        <p>{{room.area}} sq.f</p>
+                    </div>
+                </div>
+
+                <div class="descriptions">
+                    <h2>Descriptions</h2>
+                    <p>{{room.description}}</p>
+                </div>
+
+                <div class="home-highlight">
+                    <h2>Amenities</h2>
+                    <div class="amenities">
+
+                        <div class="parking">
+                            <div class="title">
+                                <i class="fa-solid fa-square-parking"></i>
+                                <p>parking</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.parking}}</p>
+                            </div>
+                        </div>
+
+                        <div class="electricity">
+                            <div class="title">
+                                <i class="fa-solid fa-bolt"></i>
+                                <p>electricity</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.electricity}}</p>
+                            </div>
+                        </div>
+
+                        <div class="water">
+                            <div class="title">
+                                <i class="fa-solid fa-water"></i>
+                                <p>Water</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.water}}</p>
+                            </div>
+                        </div>
+
+                        <div class="area d-flex">
+                            <div class="title">
+                                <i class="fa-solid fa-chart-area"></i>
+                                <p>area</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.area}} sq.f.</p>
+                            </div>
+                        </div>
+
+                        <div class="fans d-flex">
+                            <div class="title d-flex">
+                                <i class="fa-solid fa-fan"></i>
+                                <p>fans</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.fans}}</p>
+                            </div>
+                        </div>
+
+
+                        <div class="smoking d-flex">
+                            <div class="title d-flex">
+                                <i class="fa-solid fa-smoking"></i>
+                                <p>Smoking</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.no_smoking}}</p>
+                            </div>
+                        </div>
+
+                        <div class="Ac d-flex">
+                            <div class="title d-flex">
+                                <i class="fa-solid fa-fan"></i>
+                                <p>Air Condition</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.air_condition}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="home-highlight">
+                    <h2>Room Details</h2>
+                    <div class="amenities">
+
+                        <div class="parking">
+                            <div class="title">
+                                <i class="fa-solid fa-calendar"></i>
+                                <p>Year Built</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.age_of_property}} ago</p>
+                            </div>
+                        </div>
+
+                        <div class="electricity">
+                            <div class="title">
+                                <i class="fa-solid fa-bolt"></i>
+                                <p>Negotiable</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.negotiable}}</p>
+                            </div>
+                        </div>
+
+                        <div class="water">
+                            <div class="title">
+                                <i class="fa-solid fa-money-bill"></i>
+                                <p>Security Deposite</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.security_deposite|floatformat}}</p>
+                            </div>
+                        </div>
+
+                        <div class="area d-flex">
+                            <div class="title">
+                                <i class="fa-solid fa-user"></i>
+                                <p>Renting To</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.rent_out_to}}</p>
+                            </div>
+                        </div>
+
+                        <div class="fans d-flex">
+                            <div class="title d-flex">
+                                <i class="fa-solid fa-calendar"></i>
+                                <p>Lease Duration</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.lease_duration}}</p>
+                            </div>
+                        </div>
+
+                        <div class="fans d-flex">
+                            <div class="title d-flex">
+                                <i class="fa-solid fa-couch"></i>
+                                <p>Furnishing</p>
+                            </div>
+
+                            <div class="body">
+                                <p>{{room.furnishing}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="Review-container">
+                    <h1>Review Section</h1>
+
+                    <div class="review-detail">
+                        <!-- <div class="review-body">
+                            <div class="header-top">
+                                <p class="name">admin admin</p>
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+    
+                            
+                            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-star"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z">
+                                    </path>
+                                </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-star"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z">
+                                    </path>
+                                </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-star"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z">
+                                    </path>
+                                </svg></div>
+                            <div class="date">
+                                <p>2022/7/0/53</p>
+                            </div>
+                            <div class="headline">
+                                <h2>stay alert</h2>
+                            </div>
+                            <div class="review-mssg">
+                                <p>jojojt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout
+                                    jojojt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout
+                                    jojojt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout
+                                    jojojt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout
+
+                                </p>
+                            </div>
+
+                            <div class="owner-response-section">
+                                <p>Property Owner Respond</p>
+                                <small>If you have any concerns or questions please come to the office. We are open seven days a week and we are here to help!!!!!! ;) Thank you, Management</small>
+                            </div>
+
+                            <div class="owner-reply-section">
+
+                                <form action="" method="POST">
+                                    <textarea name="" placeholder="reply" id="" cols="30" rows="10"></textarea>
+
+                                    <button type="submit">Submit</button>
+                                </form>
+
+                            </div>
+
+                        </div> -->
+                    </div>
+
+
+                    <div class="review-section">
+                        <!-- <div class="review-body">
+                            <div class="header-top">
+                                <p class="name">admin admin</p><i class="fa-solid fa-trash" onclick="deleteReview(this)"
+                                    data-star="2" data-number="60"></i>
+                            </div>
+    
+                            
+                            <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-star"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z">
+                                    </path>
+                                </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-star"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z">
+                                    </path>
+                                </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-star"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z">
+                                    </path>
+                                </svg></div>
+                            <div class="date">
+                                <p>2022/7/0/53</p>
+                            </div>
+                            <div class="headline">
+                                <h2>stay alert</h2>
+                            </div>
+                            <div class="review-mssg">
+                                <p>jojojt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout</p>
+                            </div>
+
+                            <div class="user-reply-section">
+                                <p>Property Owner Respond</p>
+                                <small>Sept 11, 2017</small>
+                            </div>
+
+                            <div class="read-more">
+                                <p>Read More</p>
+                            </div>
+                        </div> -->
+
+                        <div class="empty-review-section">
+                            <h1>No review present at the moment</h1>
+                        </div>
+
+                    </div>
+                    {% if request.user != room.user %}
+
+                        <p id="write_review">Write your review</p>
+                    {% endif %}
+
+                   
+                </div>
+
+                <div class="similar-properties">
+                    <h1>Nearby Apartments</h1>
+                    <div class="similar-property-body">
+                        {% for property in similarProperty%}
+                        <!-- <a href="{% url 'room_detail' room.id %}">
+                                    <div class="room">
+                                            <div class="image">
+                                                <img src="{{property.cover_image.url}}" alt="">
+            
+                                                <div class="overlay"></div>
+            
+                                                <div class="image-top">
+                                                    {% if property.soldStatus == False %}
+                                                        <p id="rent" >For Rent</p>  
+                                                    {% else %}
+                                                        <p id="sold" >Sold</p>
+                                                    {% endif %}
+                                                    <div class="fav-box">
+                                                        <i class="fa-solid fa-heart {% if room.savedStatus == True %} saved-room-icon {% endif %}" onclick="savedHomesFunction('{{room.id}}')" ></i>
+                                                    </div>
+                                                </div>
+                                            </div> 
+            
+                                            <div class="price-date">
+                                                <h3>$ {{property.price}}</h3>
+                                                <p>{{property.created_date|timesince}}</p>
+                                            </div>
+                                            <div class="room-info">
+                                                <div class="bed ">
+                                                    <i class="fa-solid fa-bed"></i>
+                                                    <p>{{property.bedroom}} bd</p>
+                                                </div>
+                                                <div class="bat">
+                                                    <i class="fa-solid fa-bath"></i>
+                                                    <p>{{property.bathroom}} ba</p>
+                                                </div>
+                                                <div class="area ">
+                                                    <i class="fa-solid fa-chart-area"></i>
+                                                    <p>{{property.area}} sq.ft</p>
+                                                </div>
+                                            </div>
+            
+                                            <div class="room-title">
+                                                <p>{{property.bedroom}} BHK {{property.property_type}} on {{property.category}}</p>
+                                            </div>
+            
+                                            <div class="address">
+                                                <p>{{property.city}}</p>
+                                            </div>
+            
+                                            <div id="bottomline"></div>
+                                    </div>
+                                </a> -->
+                        <div class="room">
+                            <div class="image">
+                                <a href="{% url 'room_detail' room.id %}">
+                                    <img src="{{property.cover_image.url}}" alt="">
+                                    <div class="overlay"></div>
+                                </a>
+
+                                <div class="image-top">
+                                    {% if property.soldStatus == False %}
+                                    <p id="rent">For Rent</p>
+                                    {% else %}
+                                    <p id="sold">Sold</p>
+                                    {% endif %}
+                                    <div class="fav-box">
+                                        <i class="fa-solid fa-heart {{property|savedOrNot:request.user}}"
+                                            onclick="savedHomesFunction('{{property.id}}', this)"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="price-date">
+                                <h3> {{property.price}}</h3>
+                                <p>{{property.created_date|timesince}}</p>
+                            </div>
+                            <div class="room-info">
+                                <div class="bed ">
+                                    <i class="fa-solid fa-bed"></i>
+                                    <p>{{property.bedroom}} bd</p>
+                                </div>
+                                <div class="bat">
+                                    <i class="fa-solid fa-bath"></i>
+                                    <p>{{property.bathroom}} ba</p>
+                                </div>
+                                <div class="area ">
+                                    <i class="fa-solid fa-chart-area"></i>
+                                    <p>{{property.area}} sq.ft</p>
+                                </div>
+                            </div>
+
+                            <div class="room-title">
+                                <p>{{property.bedroom}} BHK {{property.property_type}} on {{property.category}}</p>
+                            </div>
+
+                            <div class="address">
+                                <p>{{property.city}}</p>
+                            </div>
+
+                            <div id="bottomline"></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="second-column">
+
+                {% if request.user != room.user %}
+
+                <div class="message-section">
+                    <h1>Contact This Property</h1>
+
+                    {% for message in messages %}
+                    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert"
+                        id="success-alert">
+
+                        {{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="first_name" id="first_name"
+                            value="{{user.first_name}} {{user.last_name}}" class="form-control" placeholder="Name" readonly >
+                        <!-- <input type="text" name="last_name" id="last_name" value="{{user.last_name}}" class="form-control" placeholder="Last Name"> -->
+                        <input type="email" name="email" id="email" value="{{user.email}}" class="form-control"
+                            placeholder="Email" readonly>
+
+                        {% if user.phone %}
+
+                        <input type="number" name="phone" id="phone" value="{{user.phone}}" class="form-control"
+                            placeholder="Phone No" readonly>
+                        {% else %}
+                        <input type="number" name="phone" id="phone" value="{{user.phone}}" class="form-control"
+                            placeholder="Phone No">
+
+                        {% endif %}
+                        <textarea id="mssg_body" placeholder="Description" name="mssg_body"></textarea>
+
+                        <button type="submit" id="mssg-submit-form">Send Message</button>
+
+                    </form>
+                    
+
+                    {% if room.user.phone %}
+                    <div class="number">
+                        <i class="fa-solid fa-mobile"></i>
+                        <p>{{room.user.phone}}</p>
+                    </div>
+                    {% endif %}
+                </div>
+
+                {% endif %}
+
+                <div class="owner-detail">
+
+                    {% if request.user == room.user %}
+                    <h1>Your Detail</h1>
+                    {% else %}
+                    <h1>Owner Detail</h1>
+
+                    {% endif %}
+                    <span>
+                        <p id="owner-detail-title">Listed by:</p>
+                        <p>{{room.user.first_name}} {{room_owner.last_name}}</p>
+                    </span>
+                    <span>
+                        <p id="owner-detail-title">Email:</p>
+                        <p>{{room.user.email}}</p>
+                    </span>
+                    {% if room.user.phone %}
+                    <span>
+                        <p id="owner-detail-title">Phone:</p>
+                        <p>{{room_owner.phone}}</p>
+                    </span>
+                    {% endif %}
+                </div>
+
+                {% if room.video %}
+                <div class="video-section">
+                    <h1>Property Tour</h1>
+
+                    <div class="video">
+                        <video class="video-player" id="video" controls>
+                            <source id="video-source" src="{{room.video.url}}" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                {% endif %}
+
+
+
+            </div>
+        </div>
+
+        <div class="review-overlay"></div>
+
+        <div class="review-post-container">
+            <div class="header">
+                <h1>rate and review the Property</h1>
+                <i class="fa-solid fa-xmark revie-section-close-btn"></i>
+
+            </div>
+            <hr>
+
+            <div class="rating-body">
+                <div class="stars-section">
+                    <div class="rating-star five-star selected" data-number="5">
+                        <div class="header-top">
+                            <h2>5 Stars</h2>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>This Property is excellent</p>
+                    </div>
+                    <div class="rating-star four-star" data-number="4">
+                        <div class="header-top">
+                            <h2>4 Stars</h2>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>This Property is great</p>
+                    </div>
+                    <div class="rating-star three-star" data-number="3">
+                        <div class="header-top">
+                            <h2>3 Stars</h2>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>This Property is good</p>
+                    </div>
+                    <div class="rating-star two-star" data-number="2">
+                        <div class="header-top">
+                            <h2>2 Stars</h2>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>This Property is ok</p>
+                    </div>
+                    <div class="rating-star one-star" data-number="1">
+                        <div class="header-top">
+                            <h2>1 Stars</h2>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>This Property is poor</p>
+                    </div>
+
+                </div>
+                <div class="form">
+
+                    <form id="review_form">
+                        <div class="mb-3">
+                            <label for="exampleInputHeader" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="exampleInputHeader"
+                                aria-describedby="emailHelp">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea" class="form-label">Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea" rows="3"></textarea>
+                        </div>
+
+
+                        <div class="btn-group">
+                            <button type="text" class="cancel-btn">Cancel</button>
+                            <button type="submit" class="submit-btn">Submit</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="slider-image">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+
+                    {% for i in images %}
+                    <button type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide-to="{{forloop.counter0}}"
+                        class="{% if forloop.counter0 == 0%} active {% endif %}"></button>
+                    {% endfor %}
+                </div>
+
+                <div class="carousel-inner">
+                    {% for i in images %}
+                    <div class="carousel-item {% if forloop.counter0 == 0%} active {% endif %}">
+                        <!-- <img src="{{img.image.url}}" class="d-block w-100" alt="..."> -->
+                        <img src="{{i.image.url}}" class="d-block" alt="...">
+
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+
+
+            </div>
+
+            <i class="fa-solid fa-xmark revie-section-close-btn"></i>
+
+        </div>
+    </div>
+
+</section>
+
+
+
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+
+<script>
+
+
+
+    var mainCrousel = document.querySelector('.main-carousel')
+
+    var Images = JSON.parse('{{room_images|safe}}')
+    var photosNumber = document.querySelector('.photos-number')
+
+    photosNumber.innerText = `${Images.length} Photos`
+
+
+    var reviews = '{{reviews.count}}'
+
+    var room_owner = '{{room_owner}}'
+
+    console.log("owenr", room_owner)
+    console.log("owenr", user)
+
+    var rating = JSON.parse('{{rating|safe}}')
+
+
+
+    let totalStar = '{{totalStar}}'
+
+    
+    var id = "{{pk}}"
+
+
+
+
+    for (var i = 0; i <= Images.length; i++) {
+
+        var smallContainer = document.createElement('div')
+        smallContainer.classList.add('small-container')
+
+
+        if (i < Images.length) {
+            var image_1 = document.createElement('div')
+            image_1.classList.add('image1')
+
+            var img = document.createElement('img')
+            img.src = Images[i].fields.dummyImage
+
+            image_1.appendChild(img)
+            smallContainer.appendChild(image_1)
+        }
+        i++
+
+        if (i < Images.length) {
+            var image_2 = document.createElement('div')
+            image_2.classList.add('image2')
+
+            var img = document.createElement('img')
+            img.src = Images[i].fields.dummyImage
+
+            image_2.appendChild(img)
+            smallContainer.appendChild(image_2)
+        }
+
+
+
+        mainCrousel.appendChild(smallContainer)
+
+
+    }
+
+
+
+    $('.main-carousel').flickity({
+        // options
+        cellAlign: 'left',
+        wrapAround: true,
+        freeScroll: true
+    });
+
+</script>
+
+
+
+<script src="{% static 'JS/room-detail.js' %}"></script>
+
+
+
+
+{% endblock %}

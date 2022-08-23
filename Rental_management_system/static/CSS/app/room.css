@@ -1,0 +1,985 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(241, 241, 241);
+    overflow: hidden;
+}
+
+nav{
+    background-color: #bfbf33e0;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+.nav-item{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.navbar{
+    padding: 10px;
+}
+
+.headphone{
+    background-color: rgb(192, 190, 190);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profile-section{
+    display: flex;
+    align-items: center;
+}
+
+.profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(119, 205, 255);
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    margin-right:5px;
+}
+
+.profile p{
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+
+.profile-section i{
+    font-size: 15px;
+}
+
+
+.menu{
+    color: black;
+    font-size: 21.5px;
+}
+
+nav form{
+    margin-left: 9rem;
+}
+
+.search-input{
+    height: 40px;
+    width: 40rem;
+    padding-left: 9px;
+    border-radius: 4px;
+    border: 1px solid rgb(95, 95, 95);
+
+}
+
+nav form i{
+    position: absolute;
+    top: 40%;
+    right: 34%;
+    font-weight: 400;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+
+
+/*------------------------------ Room Section */
+
+.room-section{
+    align-items: center;
+    padding: 30px;
+}
+
+
+.room-section .column1{
+    
+    border: 0.5px solid rgb(148, 148, 148);
+    border-radius: 5px;
+    padding: 20px;
+    background: white;
+    height: 558px;
+    overflow-y: scroll;
+    
+}
+
+.room-section .column1::-webkit-scrollbar{
+    display: none;
+}
+
+
+/* ---------------------Applied filter---------------------------------- */
+
+
+.room-section .column1 .applied-filters{
+    display: none;
+
+}
+.room-section .column1 .applied-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.room-section .column1 .applied-title h2{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.room-section .column1 .applied-title p{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(66, 135, 226);
+    cursor: pointer;
+}
+
+.room-section .column1 .applied-body{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    margin-top: 10px;
+} 
+
+.room-section .column1 .applied-body .filter-body{
+    background-color: rgb(242 252 255);
+    display: flex;
+    align-items: center;
+    /* width: 100%; */
+    border-radius: 20px;
+    padding: 3px 17px;
+    /* width: 100px; */
+    margin-right: 15px;
+    font-size: 15px;
+    border: 1px solid #96e9e5;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    
+}
+
+.room-section .column1 .applied-body .filter-body:hover{
+    background-color: rgb(208 241 251);
+
+}
+
+.room-section .column1 .applied-body .filter-body i{
+    margin-left: 10px;
+    color: blue;
+    cursor: pointer;
+}
+
+
+
+/* -------------------Budget----------------------------------------- */
+.room-section .column1 .budget .budget-title{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.room-section .budget .budget-title h2{
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+
+.room-section .budget .budget-title i{
+    font-size: 19px;
+    cursor: pointer;
+}
+
+
+
+.room-section .budget .budget-body{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.room-section .budget .hide_budget{
+    display: none;
+}
+
+.room-section .budget .budget-body #to{
+    font-size: 15px;
+    /* margin-top: 20px; */
+    margin: 0 10px;
+}
+
+.room-section .budget .budget-body .min-price-body{
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+    padding: 7px 8px;
+    cursor: pointer;
+    position: relative;
+}
+
+.room-section .budget .budget-body .min-price-body p{
+    margin-right: 14px;
+    font-size: 13px;   
+}
+
+.room-section .budget .budget-body .min-price-dropdown{
+    position: absolute;
+    background-color: white;
+    width: 110px;
+    height: 120px;
+    overflow-y: scroll;
+    top: 35px;
+    left: 0;
+    border: 1px solid black;
+    z-index: 100;
+}
+
+.room-section .budget .budget-body .max-price-dropdown{
+    position: absolute;
+    background-color: white;
+    width: 110px;
+    height: 120px;
+    overflow-y: scroll;
+    top: 35px;
+    left: 0;
+    border: 1px solid black;
+    z-index: 100;
+}
+
+.room-section .budget .budget-body .hide_min_price_dropdown{
+    display: none;
+}
+
+
+
+.room-section .budget .budget-body .min-price-dropdown .min-Price-dropdown-list{
+    display: flex;
+    width: 100%;
+    font-size: 13px;
+    padding: 6px 6px;
+    color: #666565;
+    font-weight: 500;
+}
+
+.room-section .budget .budget-body .max-price-dropdown .max-Price-dropdown-list{
+    display: flex;
+    width: 100%;
+    font-size: 13px;
+    padding: 6px 6px;
+    color: #666565;
+    font-weight: 500;
+}
+
+.room-section .budget .budget-body .min-price-dropdown .min-Price-dropdown-list:hover{
+    background: #dfdfdf;
+}
+
+.room-section .budget .budget-body .max-price-dropdown .max-Price-dropdown-list:hover{
+    background: #dfdfdf;
+}
+
+
+.room-section .budget .budget-body .hide_max_price_dropdown{
+    display: none;
+}
+
+
+
+.room-section .budget .budget-body .max-price-body{
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+    padding: 7px 8px;
+    cursor: pointer;
+    position: relative;
+
+}
+
+.room-section .budget .budget-body .max-price-body p{
+    margin-right: 14px;
+    font-size: 13px; 
+}
+
+
+/* ----------------------- Bedroom -------------------------------- */
+
+.room-section .column1 .bedroom{
+    margin-top: 20px;
+}
+
+.room-section .column1 .bedroom .bedroom-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.room-section .column1 .bedroom .bedroom-title h2{
+    font-size: 18px;
+    font-weight: bold;
+
+
+}
+
+.room-section .column1 .bedroom .bedroom-title i{
+    cursor: pointer;
+
+
+}
+
+.room-section .column1 .bedroom .bedroom-body{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.room-section .column1 .bedroom .bedroom_hide{
+    display: none;
+}
+
+
+ 
+
+.room-section .column1 .bedroom .bedroom-body input[type="radio"]{
+    display: none;
+}
+
+
+.room-section .column1 .bedroom .bedroom-body .bedroom_radio{
+    display: none;
+}
+
+
+.room-section .column1 .bedroom .bedroom-body label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 12px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    /* background-color: red; */
+
+}
+
+.room-section .column1 .bedroom .bedroom-body label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.room-section .column1 .bedroom .bedroom-body input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+
+
+/* --------------------------- Property type----------------------------------------- */
+
+
+.room-section .column1 .property-type {
+    margin-top: 20px;
+}
+.room-section .column1 .property-type .property-type-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.room-section .column1 .property-type .property-type-title h2{
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.room-section .column1 .property-type .property-type-title i{
+    
+    cursor: pointer;
+}
+
+
+.room-section .column1 .property-type .property-type-body{
+    margin-top: 10px;
+}
+
+
+.room-section .column1 .property-type .property_type_hide{
+    display: none;
+}
+
+.room-section .column1 .property-type .property-type-body .type{
+    /* background-color: red; */
+    
+    /* padding: 2px; */
+    border-radius: 10px;
+    padding: 2px 10px;
+    justify-content: center;
+    text-align: left;
+    margin-bottom: 10px;
+    border: 1px solid rgb(206, 206, 206);
+}
+
+.room-section .column1 .property-type .property-type-body .type:hover{
+    background-color: rgb(212, 232, 250);
+}
+
+
+
+
+.room-section .column1 .property-type .property-type-body .property_class{
+    display: none;
+}
+
+/* .room-section .column1 .property-type .property-type-body input[type="radio"]{
+    display: none;
+} */
+
+.room-section .column1 .property-type .property-type-body label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 12px;
+    margin-right: 10px;
+    width: 254px;
+    margin-bottom: 10px;
+    font-size: 15px;
+
+}
+
+
+.room-section .column1 .property-type .property-type-body label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.room-section .column1 .property-type .property-type-body input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+
+/* --------------------------Furnishing---------------------------------------------- */
+
+.room-section .column1 .furnishing-status{
+    margin-top: 20px;
+}
+
+.room-section .column1 .furnishing-status .furnishing-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.room-section .column1 .furnishing-status .furnishing-title h2{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.room-section .column1 .furnishing-status .furnishing-title i{
+    cursor: pointer;
+}
+
+.room-section .column1 .furnishing-status .furnishing-body{
+    margin-top: 20px;
+}
+
+.room-section .column1 .furnishing-status .furnishing_hide{
+    display: none;
+}
+
+/* .room-section .column1 .property-type .property-type-body .type:hover{
+    background-color: rgb(212, 232, 250);
+} */
+
+
+
+
+.room-section .column1 .furnishing-status .furnishing-body .furnishing_radio{
+    display: none;
+}
+
+/* .room-section .column1 .property-type .property-type-body input[type="radio"]{
+    display: none;
+} */
+
+.room-section .column1 .furnishing-status .furnishing-body label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 12px;
+    margin-right: 10px;
+    width: 254px;
+    margin-bottom: 10px;
+    font-size: 15px;
+
+}
+
+
+.room-section .column1 .furnishing-status .furnishing-body label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.room-section .column1 .furnishing-status .furnishing-body input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+
+/* 
+.room-section .column1 .furnishing-status .furnishing-body .furnishing{
+   border-radius: 40px;
+   border: 1px solid rgb(168, 168, 168);
+   margin-bottom: 10px;
+   display: flex;
+   align-items: center;
+   text-align: center;
+   padding: 2px ;
+
+}
+
+
+.room-section .column1 .furnishing-status .furnishing-body .furnishing p{
+    margin-left: 10px;
+}
+
+
+.room-section .column1 .furnishing-status .furnishing-body .furnishing:hover{
+    background-color: rgb(212, 232, 250);
+  
+} */
+
+
+
+/* ------------------------Available For--------------------------- */
+
+
+
+.room-section .column1 .rented_out_to_status{
+    margin-top: 20px;
+}
+
+.room-section .column1 .rented_out_to_status .rented_out_title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.room-section .column1 .rented_out_to_status .rented_out_title h2{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.room-section .column1 .rented_out_to_status .rented_out_title i{
+    cursor: pointer;
+}
+
+
+.room-section .column1 .rented_out_to_status .rented_out_to_body{
+    margin-top: 20px;
+}
+
+.room-section .column1 .rented_out_to_status .rented_out_to_hide{
+    display: none;
+}
+
+
+.room-section .column1 .rented_out_to_status .rented_out_to_body .rent_out_to_radio{
+    display: none;
+}
+
+
+.room-section .column1 .rented_out_to_status .rented_out_to_body label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 12px;
+    margin-right: 10px;
+    /* width: 254px; */
+    margin-bottom: 10px;
+    font-size: 15px;
+
+}
+
+
+.room-section .column1 .rented_out_to_status .rented_out_to_body label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.room-section .column1 .rented_out_to_status .rented_out_to_body input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+
+
+
+/* --------------------------- Age ---------------------------------------- */
+
+
+
+.room-section .column1 .age_status{
+    margin-top: 20px;
+}
+
+.room-section .column1 .age_status .age_title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.room-section .column1 .age_status .age_title h2{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.room-section .column1 .age_status .age_title i{
+    cursor: pointer;
+}
+
+
+.room-section .column1 .age_status .age_body{
+    margin-top: 20px;
+}
+
+.room-section .column1 .age_status .age_hide{
+    display: none;
+}
+
+
+.room-section .column1 .age_status .age_body .age_radio{
+    display: none;
+}
+
+
+.room-section .column1 .age_status .age_body label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 12px;
+    margin-right: 10px;
+    /* width: 254px; */
+    margin-bottom: 10px;
+    font-size: 15px;
+
+}
+
+
+.room-section .column1 .age_status .age_body label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.room-section .column1 .age_status .age_body input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+
+
+
+/* ====================================================================== */
+
+.column2{
+    /* background-color: red; */
+    margin-left: 20px;
+    /* overflow:scroll; */
+    height: 559px;
+    overflow-y: scroll;
+}
+
+.column2::-webkit-scrollbar{
+    display: none;
+}
+
+
+.column2 .title h1{
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.column2 .filter-option{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.column2 .filter-option .room-detail-info{
+    display: flex;
+}
+
+.column2 .filter-option .room-detail-info p{
+    background-color: white;
+    border: 0.5px solid rgb(180, 180, 180);
+    padding: 5px 10px;
+    margin-right: 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+
+}
+
+.column2 .filter-option .room-detail-info p:hover{
+    background-color: rgb(241, 241, 241);
+
+}
+
+
+.column2 .filter-option .sort{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    /* background-color: red; */
+    position: relative;
+}
+
+.column2 .filter-option .sort .sort-header{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.column2 .filter-option .sort .menu{
+    font-size: 21px;
+    margin-right: 10px;
+}
+
+.column2 .filter-option .sort p{
+    margin-right: 34px;
+    font-size: 17px;
+    /* margin-top: 13px; */
+}
+
+
+.column2 .filter-option .sort .down{
+    font-size: 17px;
+}
+
+.column2 .filter-option .sort .sort-dropdown{
+    position: absolute;
+    top: 37px;
+    right: 2px;
+    width: 135px;
+    background: red;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 0%), 0 0px 5px 0 rgb(0 0 0 / 17%);
+    z-index: 100;
+}
+
+.column2 .filter-option .sort .hide-dropdown{
+    display: none;
+}
+
+.column2 .filter-option .sort .sort-dropdown .dropdown-list{
+    display: flex;
+    width: 100%;
+    font-size: 15px;
+    padding: 6px 6px;
+    color: #666565;
+    font-weight: 500;
+}
+
+.column2 .filter-option .sort .sort-dropdown .dropdown-list:hover{
+    background-color: rgb(238, 238, 238);
+}
+
+
+.column2 .room-sec{
+    background-color: white;
+    border-radius: 7px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.column2 .room-sec .image{
+    width: 240px;
+    height: 194px;
+    background-color: green;
+}
+
+.column2 .room-sec .image img{
+    object-fit: fill;
+    object-position: center;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.room-detail{
+    margin-left: 60px;
+}
+
+.room-detail .header{
+    font-size: 15px;
+    /* background-color: red; */
+}
+
+.room-detail h2{
+    font-size: 17px;
+    /* background-color: red; */
+}
+
+.room-detail .price-area-room{
+    display: flex;
+    /* background-color: red; */
+}
+
+.room-detail .price-area-room .price{
+    margin-right: 35px;
+}
+.room-detail .price-area-room .area{
+    margin-right: 35px;
+}
+.room-detail .price-area-room .room{
+    margin-right: 35px;
+}
+
+
+/*-------------------- price */
+.room-detail .price-area-room .price span{
+    display: flex;
+    font-size: 15px;
+    color: #838383;
+}
+
+.room-detail .price-area-room .price span h2{
+    font-size: 20px;
+    margin-right: 10px;
+    color: black;
+}
+
+.room-detail .price-area-room .price p{
+    font-size: 11px;
+    color: #838383;
+}
+
+
+
+/*------------------- area */
+.room-detail .price-area-room .area h2{
+    font-size: 20px;
+    margin-right: 10px;
+    color: black;
+}
+
+.room-detail .price-area-room .area span{
+    font-size: 15px;
+    color: #838383;
+}
+
+
+.room-detail .price-area-room .area p{
+    font-size: 11px;
+    color: #838383;
+}
+
+
+/*------------------------ room */
+.room-detail .price-area-room .room h2{
+    font-size: 20px;
+    color: black;
+}
+
+
+
+.room-detail .price-area-room .room p{
+    font-size: 11px;
+    color: #838383;
+}
+
+
+.room-detail .description-section p{
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+/*--------------- rented-out-to */
+
+
+.rented-out-to{
+    display: flex;
+    margin-top: 10px;
+}
+
+
+.rented-out-to p{
+    font-size: 10px;
+    margin-right: 15px;
+    background-color: #deeced;
+    padding: 2px 6px;
+
+}
+
+
+.hr{
+    margin-top: 20px;
+}
+
+
+.room-sec .profile-contact{
+    display: flex;
+    /* background-color: red; */
+    justify-content: space-between;
+}
+
+.room-sec .profile-contact .date-profile p{
+    font-size: 12px;
+}
+
+.room-sec .profile-contact .date-profile h2{
+    font-size: 15px;
+}
+
+.room-sec .profile-contact .contact-number{
+    background-color: #6b7cb9;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 10px 10px;
+}
+
+.room-sec .profile-contact .contact-number p{
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+

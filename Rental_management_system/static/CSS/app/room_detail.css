@@ -1,0 +1,336 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(241, 241, 241);
+    overflow: hidden;
+}
+
+nav{
+    background-color: #bfbf33e0;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+p{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+.nav-item{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.navbar{
+    padding: 10px;
+}
+
+.headphone{
+    background-color: rgb(192, 190, 190);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profile-section{
+    display: flex;
+    align-items: center;
+}
+
+.profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(119, 205, 255);
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    margin-right:5px;
+}
+
+.profile p{
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+
+.profile-section i{
+    font-size: 15px;
+}
+
+
+.menu{
+    color: black;
+    font-size: 21.5px;
+}
+
+nav form{
+    margin-left: 9rem;
+}
+
+.search-input{
+    height: 40px;
+    width: 40rem;
+    padding-left: 9px;
+    border-radius: 4px;
+    border: 1px solid rgb(95, 95, 95);
+
+}
+
+nav form i{
+    position: absolute;
+    top: 40%;
+    right: 34%;
+    font-weight: 400;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+
+/*------------------ Section room-detail */
+
+
+.column1{
+    /* background-color: rgb(255, 255, 255); */
+    overflow:scroll;
+    height: 538px;
+    overflow-x: hidden;
+}
+
+.column1::-webkit-scrollbar{
+    display: none;
+}
+
+.column1 .title{
+    /* background-color: red; */
+    padding: 20px;
+}
+
+
+.column1 p{
+    font-size: 15px;
+    color: rgb(167, 162, 162);
+
+}
+
+
+.column1 h3{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
+.column1 .rented-out-to{
+    display: flex;
+}
+
+.column1 .rented-out-to p{
+    display: flex;
+    margin-right: 10px;
+}
+
+
+.column1 .carousel-control-prev-icon{
+    color: red;
+    /* background-color: red; */
+}
+
+.column1 .image{
+    position: relative;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+.column1 .image .view-gallary{
+    display: flex;
+    background-color: white;
+    /* width: 200px; */
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    text-align: center;
+    align-items: center;
+    color: black;
+
+}
+
+.column1 .image .view-gallary i{
+    margin-right: 10px;
+    /* color: white; */
+}
+
+.column1 .image .view-gallary p{
+    margin-right: 10px;
+    color: black;
+}
+
+
+.column1 .middle-title {
+    margin-bottom: 15px;
+}
+.column1 .middle-title h1{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+.column1 .middle-title .room-price{
+    display: flex;
+    align-items: center;
+} 
+
+.column1 .middle-title .room-price .price{
+    margin-right: 20px;
+} 
+.column1 .middle-title .room-price .price p{
+    font-size: 13px;
+} 
+
+.column1 .middle-title .room-price .barrier{
+    width: 1px;
+    height: 52px;
+    background-color: black;
+    margin-right: 20px;
+} 
+
+.column1 .middle-title .room-price .security-deposite small{
+    font-size: 13px;
+    color: rgb(167, 162, 162);
+} 
+
+.middle-body{
+    margin-bottom: 30px;
+}
+
+
+.middle-body p{
+    color: black;
+    font-size: 25px;
+}
+.middle-body .features .feature-1{
+   margin-top: 20px;
+   display: flex;
+   justify-content: space-between;
+   width: 400px;
+   margin-left: 8rem;
+   /* background-color: red; */
+   text-align: center;
+   flex-wrap: wrap;
+}
+
+.middle-body .features .feature_2{
+   margin-top: 20px;
+   display: flex;
+   justify-content: space-between;
+   width: 400px;
+   margin-left: 8rem;
+   /* background-color: red; */
+   text-align: center;
+   flex-wrap: wrap;
+   margin-top: 20px;
+}
+
+.middle-body .features {
+    /* background-color: aqua; */
+}
+
+
+.middle-body .feature i{
+    /* background-color: red; */
+    
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.middle-body .feature p{
+    /* background-color: red; */
+    
+    font-size: 15px;
+    color: #706969;
+}
+
+
+.column1 .room-description p{
+    /* background-color: red; */
+    color: black;
+    font-size: 25px;
+}
+
+
+.column1 .room-description small{
+    /* background-color: red; */
+    color: black;
+    font-size: 13px;
+}
+
+
+
+/* =============================================== */
+
+.column2{
+    padding: 20px;
+    height: 29rem;
+}
+
+
+.column2 .header{
+    display: flex;
+    
+}
+
+.column2 .header .title{
+    margin-right: 20px;
+    /* background-color: red; */
+    padding: 10px 15px;
+}
+
+
+.column2 .desc p{
+    font-size: 13px;
+}
+
+.column2 .General{
+    margin-top: 20px;
+}
+
+.column2 .General p{
+    font-size: 18px;
+}
+
+.column2 .General .general-body{
+    background-color: #d7d7d7;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    
+}
+.column2 .General .general-body p{
+   font-size: 15px;
+    
+}
+
+.column2 .General .general-body .gen{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+

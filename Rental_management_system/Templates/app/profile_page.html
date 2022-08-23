@@ -1,0 +1,196 @@
+{% extends 'app/Main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+{% load socialaccount %}
+
+
+{% get_social_accounts user as accounts %}
+
+
+<link rel="stylesheet" href="../../static/CSS/app/profile_page.css">
+
+
+    <body>  
+
+      
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card-box">
+                        <div class="profile-section">
+                            <div class="image">
+                                <img src="{{user.imageURL}}" alt="">
+                            </div>
+                            <h5>{{user.username}}</h5>
+                            <small>House Owner</small>
+                        </div>
+                        <div class="profile-options">
+                            <a href="{% url 'profilePage' user.id %}">
+                                <div class="edit-div">
+                                    <i class="fa-solid fa-user"></i>
+                                    <p>Edit profile</p>
+                                </div>
+                            </a>
+
+                            <a href="{% url 'savedHomesSection' %}">
+                                <div class="edit-div">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <p>Saved Homes</p>
+                                </div>
+                            </a>
+
+                            {% if accounts %}
+                           
+
+                            {% else %}
+                                <a href="{% url 'changePassword' %}" id="change_password">
+                                    <div class="edit-div">
+                                        <i class="fa-solid fa-lock"></i>
+                                        <p>Change Password</p>
+                                    </div>
+                                </a>
+
+                            {% endif %}
+
+                        
+                            
+                            <a href="{% url 'property-list' %}">
+                                <div class="edit-div">
+                                    <i class="fa-solid fa-house-user"></i>
+                                    <p>Your Properties</p>
+                                </div>
+                            </a>
+                            <a href="{% url 'notification:notification' request.user.id %}">
+                                <div class="edit-div notification_div">
+                                    <i class="fa-solid fa-house-user"></i>
+                                    <p>Notification</p>
+
+                                    <i class="fa-solid fa-bell notification-icon" ></i>
+                                </div>
+                            </a>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <div class="card-container">
+                        <h1>Edit Profile</h1>
+
+                        <form method="POST"  enctype="multipart/form-data">
+
+                            {% csrf_token %}
+                            
+                            
+                            {% for field in forms %}
+                            
+                            <div class="mb-3">
+                              <label class="form-label">{{field.label}}</label>
+                              {{field}}
+                            </div>
+                            {% endfor %}
+
+                            <button type="text" class="btn btn-danger">Cancel</button>
+                            <button type="submit" id="profile_detail_submit" class="btn btn-primary">Submit</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      
+          <script>
+
+
+
+            let changePasswordBtn = document.getElementById('change_password')
+            let passwordChnageCloseBtn = document.querySelector('.passwordChnage-closeBtn')
+
+            let profile_detail_submit = document.getElementById('profile_detail_submit')
+
+            const notificationIcon = document.querySelector('.notification-icon')
+            const notification_div = document.querySelector('.notification_div')
+
+
+
+            profile_detail_submit.addEventListener('click', (e)=>{
+
+                console.log("hello")
+                phone = document.getElementById('id_phone')
+
+                if(phone.value == ''){
+                    e.preventDefault()
+                    document.getElementById('id_phone').style.border = "1px solid red"
+
+                }else{
+
+                    return
+                }
+            })
+
+
+
+            notification_div.addEventListener('click', ()=>{
+                if(notificationIcon.classList.contains('glow-notification')){
+                    notificationIcon.classList.remove('glow-notification')
+                }
+            })
+
+          
+
+
+            // changePasswordBtn.addEventListener('click', (e)=>{
+            //   e.preventDefault()
+            //   overlay2.style.display = "block"
+            //   passwordChangeContainer.style = "display: block"
+            // })
+
+
+            // passwordChnageCloseBtn.addEventListener('click', ()=>{
+            //   overlay2.style.display = "none"
+            //   passwordChangeContainer.style = "display: none"
+            // })
+
+
+
+
+            // console.log(passwordChangeContainer)
+            // console.log(login_register_container)
+          </script>
+        
+    </body>
+
+    <script>
+
+        let pk = "{{request.user.id}}"
+
+        console.log(pk)
+        console.log("----------------------")
+
+        // const ws = new WebSocket(`ws://127.0.0.1:8000/ws/profilePage/${pk}/`)
+
+        const  ws = new WebSocket(`ws://localhost:8000/ws/${pk}/`)
+
+        console.log(ws)
+        console.log("hello")
+
+        ws.onmessage = (e) => {
+
+            let data = JSON.parse(e.data)
+
+            if(data['command'] == 'message'){
+                
+                notificationIcon.classList.add('glow-notification')
+
+            }
+
+
+        }
+
+
+      
+    </script>
+{% endblock %}

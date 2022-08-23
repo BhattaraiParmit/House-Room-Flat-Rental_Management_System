@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <footer>
+        <section class="sixth-section">
+            <div class="footer-section">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <h2>Mero Ghar</h2>
+                        <div class="links">
+                        <a href="">About us</a>
+                        <a href="">send us a message</a>
+                        <a href="">Privacy Policy</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h2>Quick links</h2>
+                        <div class="links">
+                        <a href="{% url 'get_selected_homes' 'Rent' %}">Popular properties for rent</a>
+                        <a href="{% url 'get_selected_homes' 'Sell' %}">Popular properties for sale</a>
+                        <a href="{% url 'get_selected_homes' 'Rent' %}">Newly added property</a>
+                        <a href="{% url 'get_selected_homes' 'Rent' %}">property for rent</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h2>Related Links</h2>
+                        <div class="links">
+                        <!-- <a href="">Premium Property</a> -->
+                        <a href="{% url 'getGeneralProperty' %}">General Property</a>
+                        <a href="{% url 'getHome' 'kathmandu' %}">Properties in Kathmandu</a>
+                        <a href="{% url 'getHome' 'Bhaktapur' %}">Properties in Bhaktapur</a>
+                        <a href="{% url 'getHome' 'Lalitpur' %}">Properties in Lalitpur</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h2>Contact US</h2>
+                        <div class="links">
+                            <div class="location">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <p>Virinchi College, Kumaripati, lalitpur</p>
+                            </div>
+                            <div class="contact">
+                                <i class="fa-solid fa-phone"></i>
+                                <p>(+977) 9848906314</p>
+                            </div>
+                            <div class="email">
+                                <i class="fa-solid fa-envelope"></i>
+                                <p>parmitbhattarai@gmail.com</p>
+                            </div>
+                            <h3>Find us on:</h3>
+                            <div class="social">
+                                <a href="https://www.linkedin.com/in/parmit-bhattarai-958004233/"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="https://www.instagram.com/bhattaraiparmit/"><i class="fa-brands fa-instagram-square"></i></a>
+                                <a href="https://github.com/BhattaraiParmit"><i class="fa-brands fa-git"></i></a>
+                                <a href="https://www.facebook.com/pramit.bhattarai.771/"><i class="fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+    </footer>
+    
+</body>
+</html>
+

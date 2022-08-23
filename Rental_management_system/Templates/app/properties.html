@@ -1,0 +1,609 @@
+{% extends 'app/Main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+{% load myFilter %}
+
+<link rel="stylesheet" href="{% static 'CSS/app/properties.css' %}">
+
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    
+
+                    <div class="property-section">
+                        <div class="header-top">
+                           
+                            <a href="{% url 'property-list'  %}"><h2>Properties</h2></a>
+
+                            <a href="{% url 'post_property' %}" id="add-property-btn">
+                                <div class="add-property-btn">
+                                    <div><i class="fa-solid fa-plus"></i></div>
+                                    <p >Add a property</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="filterng-nav">
+                            <div class="right-bar">
+                              <div class="item item-1" onclick="getPropertyList('all')">
+                                <span><p>All</p id=""></span>
+                              </div>
+                              <div class="item" onclick="getPropertyList('Active')">
+                                <p>Active</p>
+                              </div>
+                              <div class="item" onclick="getPropertyList('Sold')">
+                                <p>Sold</p>
+                              </div>
+                              <div class="item" onclick="getPropertyList('Rented')">
+                                <p>Rented</p>
+                              </div>
+                              <div class="item" onclick="getPropertyList('Booked')">
+                                <p>Booked</p>
+                              </div>
+                              <div id="marker"></div>
+                            </div>
+                            <div class="left-bar">
+                              <form action="{% url 'property-list' %}">
+                                <div class="search-input">
+                                    <input type="text" name="label" placeholder="search by city, address and zip code">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </div>
+                              </form>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="properties-box">
+
+                          <div class="properties">
+                            {% for p in property %}
+                            <div class="room">
+                              <div class="image">
+                                  <a href="{% url 'room_detail' p.id %}">
+                                      <img src="{{p.cover_image.url}}" alt="">
+                                      <div class="overlay"></div>
+                                  </a>
+                                  
+                                  <div class="image-top">
+                                    <div class="active_sold_status">
+                                    
+                                      <p id="{{p|getActivatedStatusClassName}}">{{p|getActivatedStatus}}</p>
+
+                                    </div>
+                                      
+                                      <div class="menu-btn">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                    </div>
+
+                                    <div class="menu-dropdown">
+                                        <a href="{% url 'editProperty' p.id %}"><p id="edit-btn">Edit Property</p></a>
+                                        <hr>
+                                        <a href="{% url 'deleteProperty' p.id %}"><p id="delete-btn">Delete Property</p></a>
+                                        <hr>
+
+                                        <div class="sold-section">
+                                          <p id="status">{% if p.soldStatus == True%} Sold: {% else %} Active: {% endif %}</p>
+
+                                          <div class="toggle {{p|getToggleStatus}}" data-number = "{{p.id}}">
+                                            <i class="indicator"></i>
+                                          </div>
+                                        </div>
+                                      
+                                    </div>
+                                  </div>
+                              </div> 
+
+                              <a href="{% url 'room_detail' p.id %}">
+                                  <div class="price-date">
+                                      <h3><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                        <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"></path>
+                                      </svg> {{p.price|floatformat}}</h3>
+                                    
+                                      <p>{{p.created_date|date:"M d, Y"}}</p>
+                                  </div>
+                                  <div class="room-info">
+                                      <div class="bed ">
+                                          <i class="fa-solid fa-bed"></i>
+                                          <p>{{p.bedroom}} bd</p>
+                                      </div>
+                                      <div class="bat">
+                                          <i class="fa-solid fa-bath"></i>
+                                          <p>{{p.bathroom}} ba</p>
+                                      </div>
+                                      <div class="area ">
+                                          <i class="fa-solid fa-chart-area"></i>
+                                          <p>{{p.area}} sq.ft</p>
+                                      </div>
+                                  </div>
+
+                                  <div class="room-title">
+                                      <p>{{p.bedroom}} BHK {{p.property_type}} on {{p.category}}</p>
+                                  </div>
+
+                                  <div class="address">
+                                      <p>{{p.city}}</p>
+                                  </div>
+                              </a>
+
+                              <div id="bottomline"></div>
+                            </div>
+
+                        {% empty %}
+                          <div class="empty-mssg">
+                            <div class="mssg-body">
+                              <p>You haven't added any property yet.</p>
+                              <p>Start adding your properties</p>
+
+                              <a href="{% url 'post_property' %}" id="add-property-btn">Add Properties</a>
+                            </div>
+                          </div>
+
+                        {% endfor %}
+                          </div>
+
+                        </div>
+
+                        <hr>
+
+
+                        
+                    </div>
+  
+                </div>
+            </div>
+        </div>
+
+
+
+        <script>
+
+            let menuBtn = document.querySelector('.menu-btn')
+
+            let image_Top = document.querySelectorAll('.image-top')
+            let faSolid = document.querySelector('.fa-solid')
+            let marker  = document.getElementById('marker')
+            let items = document.querySelectorAll('.item')
+            var properties = document.querySelector('.properties')
+            var addPropertyBtn = document.querySelectorAll('#add-property-btn')
+
+            console.log("btns",  addPropertyBtn)
+
+            let id = '{{id}}'
+
+
+            let toggle = document.querySelectorAll('.toggle')
+            let status = document.getElementById('status')
+          
+         
+            function getToken(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            const csrftoken = getToken('csrftoken');
+
+
+
+            
+
+            function updateStatusValue(image_Top, status){
+
+                  console.log(image_Top.parentNode.parentNode.parentNode.childNodes)
+                  console.log(image_Top.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].id)
+              
+                  // console.log(image_Top.childNodes[1].childNodes[1].id)
+                 
+                  
+                  // if(image_Top.childNodes[1].childNodes[1].id == 'sold'){
+                  //     image_Top.childNodes[1].childNodes[1].id  = status[0]
+                  //     image_Top.childNodes[1].childNodes[1].innerText = status[1]
+
+
+                  // }else{
+                  //   image_Top.childNodes[1].childNodes[1].id = status[0]
+                  //   image_Top.childNodes[1].childNodes[1].innerText = status[1]
+                  // }
+
+                  if(image_Top.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].id == 'sold'){
+                      console.log("yes sold")
+                      image_Top.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].id  = status[0]
+                      image_Top.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].innerText = status[1]
+
+
+                  }
+                  else if(image_Top.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].id == 'rent'){
+                    console.log("yes rent")
+                    image_Top.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].id = status[0]
+                    image_Top.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].innerText = status[1]
+                  }
+
+
+
+                  console.log("hahah")
+            }
+
+
+
+
+            function SoldProperty(id, image_Top){
+
+                var url = '/soldProperty/'
+
+                fetch(url, {
+                  method: "POST",
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                  },
+                  body: JSON.stringify({"id":id})
+                })
+                .then((response) =>{
+                  return response.json()
+                })
+                .then((data) =>{
+                  console.log(data)
+                  console.log(data.status)
+
+                  updateStatusValue(image_Top, data.status)
+
+                
+                })
+              }
+
+
+
+              document.querySelector('.properties').addEventListener('click', (e)=>{
+                const toggleBtn = e.target.closest('.toggle')
+
+                if(toggleBtn){
+
+                    console.log("hello")
+
+                    toggleBtn.classList.toggle('active')
+                    // updateStatusValue(toggleBtn)
+
+                    console.log(toggleBtn)
+                    SoldProperty(toggleBtn.dataset.number, toggleBtn)
+                  } 
+
+              })
+
+              // image_Top.forEach((btn) =>{
+
+
+              //     btn.addEventListener('click', (e)=>{
+
+              //       console.log(e)
+
+              //       const toggleBtn = e.target.closest('.toggle')
+
+
+              //       if(toggleBtn){
+
+              //         console.log("hello")
+              //         toggleBtn.classList.toggle('active')
+              //         // updateStatusValue(toggleBtn)
+              //         SoldProperty(toggleBtn.dataset.number, btn)
+              //       } 
+
+
+              //     })
+              // })
+            
+             
+            
+            function indicator(e){
+              marker.style.left = e.offsetLeft+"px";
+              marker.style.width =  e.offsetWidth+"px";
+            }
+
+
+            items.forEach(link =>{
+              link.addEventListener('click', (e)=>{
+                indicator(e.target)
+              })
+            })
+
+
+
+            window.addEventListener('DOMContentLoaded', () =>{
+              let item1 = document.querySelector('.item-1')
+              marker.style.left = item1.offsetLeft+"px";
+              marker.style.width =  item1.offsetWidth+"px";
+
+            })
+
+
+
+
+            let savedHomes = '{{property}}'
+
+            console.log(savedHomes)
+
+            if(savedHomes == 0){
+              document.querySelector('.empty-mssg').style = "display: block"
+            }else{
+              console.log('not empty')
+            }
+
+            
+
+            document.addEventListener('click', (e) =>{
+
+                let menuBtn = e.target.closest('.menu-btn')
+
+
+
+                if(menuBtn){
+
+
+                  console.log(menuBtn)
+                  console.log("hello")
+                  console.log( menuBtn.parentNode.childNodes)
+                    menuBtn.parentNode.childNodes[5].classList.toggle('show-dropdown')
+
+                }
+
+            })
+
+
+
+
+            function getPropertyList(label){
+
+              
+
+
+              var url = '/getPrpertyByCategory/'
+
+              if(id == ''){
+                return
+              }
+              else{
+
+                fetch(url, {
+                method: "POST",
+                 headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({"id":id, "type": label })
+
+              }) 
+              .then((response) =>{
+                  return response.json()
+              })
+              .then((data) =>{
+
+                data = JSON.parse(data['property'])
+
+                if(data.length == 0){
+                    // properties.innerHTML = ''
+                    // document.querySelector('.empty-mssg').style = "display: block"
+                    properties.innerHTML = ''
+
+                            properties.innerHTML = `<div class="empty-mssg">
+                                                        <div class="mssg-body">
+                                                        <p>You haven't saved any property yet.</p>
+                                                        <p>Start searching for properties to add now.</p>
+                            
+                                                        <a href="/searchomes">Search Homes</a>
+                                                        </div>
+                                                    </div>`
+                }else{
+                  displayProperty(data)
+                }                
+              })
+
+            }
+             
+            }
+
+
+
+
+            function displayProperty(data){
+
+              properties.innerHTML = ''
+
+              for(var i=0; i<data.length; i++){
+
+                console.log(data[i].fields.property_status)
+                console.log(data[i].fields.class_Name)
+
+                properties.innerHTML += `
+                                      <div class="room">
+                                        <div class="image">
+                                            <a href="/room_detail/${data[i].pk}">
+                                                <img src="${data[i].fields.Image}" alt="">
+                                                <div class="overlay"></div>
+                                            </a>
+                                            
+                                            <div class="image-top">
+                                                <div class="active_sold_status">
+
+                                                  <p id="${data[i].fields.class_Name}" >${data[i].fields.property_status}</p>  
+
+                                                </div>
+
+                                                <div class="menu-btn">
+                                                  <i class="fa-solid fa-ellipsis"></i>
+                                              </div>
+
+                                              <div class="menu-dropdown">
+                                                  <a href="/editProperty/${data[i].pk}"><p id="edit-btn">Edit Property</p></a>
+                                                  <hr>
+                                                  <a href="/deleteProperty/${data[i].pk}"><p id="delete-btn">Delete Property</p></a>
+                                                  <hr>
+
+                                                  <div class="sold-section">
+                                                    <p id="status"></p>
+
+                                                    <div class="toggle {% if p.soldStatus == True%} active {% endif %}" data-number = "${data[i].pk}">
+                                                      <i class="indicator"></i>
+                                                    </div>
+                                                  </div>
+                                                
+                                              </div>
+                                            </div>
+                                        </div> 
+
+                                        <a href="/room_detail/${data[i].pk}">
+                                            <div class="price-date">
+                                                <h3><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                                                      <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"></path>
+                                                    </svg>   ${data[i].fields.price}</h3>
+                                              
+                                                <p>${data[i].fields.date}</p>
+                                            </div>
+                                            <div class="room-info">
+                                                <div class="bed ">
+                                                    <i class="fa-solid fa-bed"></i>
+                                                    <p>${data[i].fields.bedroom} bd</p>
+                                                </div>
+                                                <div class="bat">
+                                                    <i class="fa-solid fa-bath"></i>
+                                                    <p>${data[i].fields.bathroom} ba</p>
+                                                </div>
+                                                <div class="area ">
+                                                    <i class="fa-solid fa-chart-area"></i>
+                                                    <p>${data[i].fields.area} sq.ft</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="room-title">
+                                                <p>${data[i].fields.bedroom} BHK ${data[i].fields.property_type} on ${data[i].fields.category}</p>
+                                            </div>
+
+                                            <div class="address">
+                                                <p>${data[i].fields.city}</p>
+                                            </div>
+                                        </a>
+
+                                        <div id="bottomline"></div>
+                                      </div>`
+                
+                // properties.innerHTML += 
+                
+                // `<div class="card-box">
+                //                             <div class="image">
+                //                                 <img src="${data[i].fields.Image}" alt="">
+
+                //                                 <div class="menu-btn">
+                //                                     <i class="fa-solid fa-ellipsis"></i>
+                //                                 </div>
+
+                //                                 <div class="menu-dropdown">
+                //                                     <a href="/editProperty/${data[i].pk}"><p id="edit-btn">Edit Property</p></a>
+                //                                     <hr>
+                //                                     <a href="/deleteProperty/${data[i].pk}"><p id="delete-btn">Delete Property</p></a>
+                //                                     <hr>
+
+                //                                     <div class="sold-section">
+                //                                       <p id="status">${(data[i].fields.soldStatus == true)?`Sold:`: `Active` }</p>
+
+                //                                       <div class="toggle ${(data[i].fields.soldStatus == true)?`active`: `` }" data-number = "${data[i].pk}">
+                //                                         <i class="indicator"></i>
+                //                                       </div>
+                //                                     </div>
+
+                //                                 </div>
+
+                //                                 <a href="/room_detail/${data[i].pk}">
+                //                                   <div class="overlay"></div>
+                //                                 </a>
+                //                             </div>
+
+                //                             <a href="/room_detail/${data[i].pk}">
+                //                               <div class="info">
+                //                                   <h2>${data[i].fields.bedroom} BHK ${data[i].fields.property_type} in ${data[i].fields.category} </h2>
+                //                                   <div class="date-address">
+                //                                       <h4>${data[i].fields.city}</h1>
+                //                                       <p>${data[i].fields.created_date}</p>
+                //                                   </div>
+                //                                   <hr>
+                //                                   <span>Status: ${ (data[i].fields.soldStatus == false) ? `<p id="active">Active</p>`:` <p id="sold">Sold</p>` } </span>
+
+                //                                   <div class="bed-ba-area">
+                //                                       <div class="bedroom">
+                //                                           <h2>${data[i].fields.bedroom}</h2>
+                //                                           <p>bed</p>
+                //                                       </div>
+
+                //                                       <div id="barrier"></div>
+
+                //                                       <div class="bathroom">
+                //                                           <h2>${data[i].fields.bathroom}</h2>
+                //                                           <p>bed</p>
+                //                                       </div>
+
+                //                                       <div id="barrier"></div>
+
+                //                                       <div class="area">
+                //                                           <h2>${data[i].fields.area}</h2>
+                //                                           <p>sq.ft</p>
+                //                                       </div>
+                //                                   </div>
+
+                //                                   <p>${data[i].fields.city}</p>
+                                                  
+                //                               </div>
+                //                           </a>
+                //                         </div>
+                //                         `
+              }
+            }
+            
+
+            console.log(user)
+
+
+            // addPropertyBtn.forEach((btn) =>{
+            //   btn.addEventListener('click', (e)=>{
+            //     if(user == 'AnonymousUser'){
+            //       e.preventDefault()
+            //       displayLoginContainer()
+            //     }else{
+            //       return
+            //     }
+            //   })
+            // })
+
+            // addPropertyBtn.addEventListener('click', (e)=>{
+
+            //   if(user == 'AnonymousUser'){
+            //     e.preventDefault()
+            //     displayLoginContainer()
+            //   }else{
+            //     return
+            //   }
+            
+            // })
+
+
+        </script>
+
+
+
+
+
+    </body>
+
+
+{% endblock %}

@@ -1,0 +1,1609 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* background-color: red;   */
+    /* outline: 2px solid red; */
+}
+
+
+body{
+    /* background-color: rgb(241, 241, 241); */
+    /* background-color: red; */
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-header{
+    position: relative;
+    margin: 0;
+    padding: 0px;
+    background-color: #2f737080;
+    /* display: none; */
+}
+
+.navbar{
+    /* margin: 10px; */
+    padding: 0;
+    height: 75px;
+    /* position: relative; */
+}
+
+
+.nav-rent{
+    /* background-color: red; */
+    height: 78px;
+    /* color: red; */
+    font-weight: 600;
+    /* width: 100px; */
+}
+
+.nav-sale{
+    height: 78px;
+    font-weight: 600;
+
+
+}
+
+.nav-item{
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    color: white;
+    font-weight: 400;
+    font-size: 17px;
+    /* background-color: #6c6b6b; */
+}
+
+.navbar .post-property{
+    font-weight: 600;
+    color: white;
+}
+
+
+.navbar .headphone-link{
+    position: relative;
+    cursor: pointer;
+}
+
+
+.navbar .profile-link{
+    position: relative;
+    cursor: pointer;
+}
+
+.navbar-light .navbar-brand {
+    /* color: rgba(0,0,0,.9); */
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.navbar-light .navbar-brand:hover{
+    color: white;
+}
+
+
+.navbar .nav-link{
+    color: white !important;
+}
+
+/* .overlay */
+
+
+/* -----------NAVRent---- navbarDropBox Start------------------- */
+
+.nav-rent .navBar-rent-dropBox{
+    width: 54rem;
+    height: 299px;
+    position: absolute;
+    top: 75px;
+    left: 17%;
+    display: none;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%), 0 0px 0px 0 rgb(0 0 0 / 7%);
+
+    z-index: 100;
+}
+/* .navbar .hide-navbar-dropBox{
+    display: none;
+} */
+
+.nav-rent .navBar-rent-dropBox .dropBox{
+    display: flex;
+    border-radius: 15px;
+    /* background-color: yellow; */
+}
+
+
+.nav-rent .navBar-rent-dropBox .dropBox-first{
+    padding: 20px;
+    /* height: 100%; */
+    background-color: #f3f9f9;
+    width: 30%;
+    height: 299px;
+    border-radius: 15px 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+}
+
+
+.nav-rent .navBar-rent-dropBox .dropBox-first .options{
+    padding: 23px;
+}
+
+.nav-rent .navBar-rent-dropBox .dropBox-first .options h4{
+    font-size: 15px;
+    margin-bottom: 16px;
+    font-weight: 600;
+
+}
+
+
+.nav-rent .navBar-rent-dropBox .dropBox-contact{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    margin-left: 24px;
+
+}
+
+.nav-rent .navBar-rent-dropBox .dropBox-contact #contact-us{
+    color: #919191;
+    font-weight: 500;
+}
+.nav-rent .navBar-rent-dropBox .dropBox-contact #number{
+  
+    font-weight: 500;
+}
+
+.nav-rent .navBar-rent-dropBox .contact p{
+    /* background-color: red; */
+    font-size: 12px;
+}
+
+
+/* --------Second Dropbox------------ */
+
+
+.nav-rent .navBar-rent-dropBox .dropBox-second{
+   
+    background-color: rgb(255, 255, 255);
+    width: 70%;
+    height: 299px;
+    border-radius: 0px 15px 15px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 41px 15px 9px 36px;
+
+}
+
+.nav-rent .navBar-rent-dropBox .dropBox-second .cities-options{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.nav-rent .navBar-rent-dropBox .dropBox-second .cities #cities-header{
+    font-size: 15px;
+    color: #6c6b6b;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.profile
+
+.nav-rent .navBar-rent-dropBox .dropBox-second .cities .properties{
+    font-size: 15px;
+    color: #000000;
+    font-weight: 500;
+    padding: 5px;
+    color: black;
+}
+
+.nav-rent .navBar-rent-dropBox .dropBox-second .cities .properties a{
+    color: black;
+}
+
+
+.nav-rent .navBar-rent-dropBox .dropBox-second .cities .properties:hover{
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.nav-rent .navBar-rent-dropBox .dropBox-second .cities-options .city-image{
+    width: 215px;
+    height: auto;
+    background-color: red;
+    margin-right: 26px;
+    border-radius: 3px;
+}
+
+.nav-rent .navBar-rent-dropBox .dropBox-second .cities-options .city-image img{
+    width: 215px;
+    height: 168px;
+    border-radius: 3px;
+
+}
+
+
+/* -----------NAVSale---- navbarDropBox Start------------------- */
+
+
+
+.nav-sale .navBar-sale-dropBox{
+    width: 54rem;
+    height: 299px;
+    position: absolute;
+    top: 75px;
+    left: 17%;
+    display: none;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%), 0 0px 0px 0 rgb(0 0 0 / 7%);
+    z-index: 100;
+}
+/* .navbar .hide-navbar-dropBox{
+    display: none;
+} */
+
+.nav-sale .navBar-sale-dropBox .dropBox{
+    display: flex;
+    border-radius: 15px;
+    /* background-color: yellow; */
+}
+
+
+.nav-sale .navBar-sale-dropBox .dropBox-first{
+    padding: 20px;
+    /* height: 100%; */
+    background-color: #f3f9f9;
+    width: 30%;
+    height: 299px;
+    border-radius: 15px 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+}
+
+
+.nav-sale .navBar-sale-dropBox .dropBox-first .options{
+    padding: 23px;
+}
+
+.nav-sale .navBar-sale-dropBox .dropBox-first .options h4{
+    font-size: 15px;
+    margin-bottom: 16px;
+    font-weight: 600;
+
+}
+
+
+.nav-sale .navBar-sale-dropBox .dropBox-contact{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    margin-left: 24px;
+
+}
+
+.nav-sale .navBar-sale-dropBox .dropBox-contact #contact-us{
+    color: #919191;
+    font-weight: 500;
+}
+.nav-sale .navBar-sale-dropBox .dropBox-contact #number{
+  
+    font-weight: 500;
+}
+
+.nav-sale .navBar-sale-dropBox .contact p{
+    /* background-color: red; */
+    font-size: 12px;
+}
+
+
+/* --------Second Dropbox------------ */
+
+
+.nav-sale .navBar-sale-dropBox .dropBox-second{
+   
+    background-color: rgb(255, 255, 255);
+    width: 70%;
+    height: 299px;
+    border-radius: 0px 15px 15px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 41px 15px 9px 36px;
+
+}
+
+.nav-sale .navBar-sale-dropBox .dropBox-second .cities-options{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.nav-sale .navBar-sale-dropBox .dropBox-second .cities #cities-header{
+    font-size: 15px;
+    color: #6c6b6b;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+
+
+.nav-sale .navBar-sale-dropBox .dropBox-second .cities .properties{
+    font-size: 15px;
+    color: #000000;
+    font-weight: 500;
+    padding: 5px;
+    color: black;
+}
+
+.nav-sale .navBar-sale-dropBox .dropBox-second .cities .properties a{
+    color: black;
+}
+
+
+.nav-sale .navBar-sale-dropBox .dropBox-second .cities .properties:hover{
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.nav-sale .navBar-sale-dropBox .dropBox-second .cities-options .city-image{
+    width: 215px;
+    height: auto;
+    background-color: red;
+    margin-right: 26px;
+    border-radius: 3px;
+}
+
+.nav-sale .navBar-sale-dropBox .dropBox-second .cities-options .city-image img{
+    width: 215px;
+    height: 168px;
+    border-radius: 3px;
+
+}
+
+
+
+/* ---------------- HeadPhone DropBox------------------------------------ */
+
+.navbar-headphone-dropbox{
+    width: 290px;
+    height: 253px;
+    /* background-color: rgb(227 230 233); */
+    background-color: rgb(237 238 239);
+    position: absolute;
+    top: 75px;
+    left: -11rem;
+    border-radius: 14px;
+    padding: 29px;
+    display: none;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%), 0 0px 0px 0 rgb(0 0 0 / 7%);
+    z-index: 100;
+    color: black;
+}
+
+.navbar-headphone-dropbox h5{
+    font-size: 17px;
+    margin-bottom: 19px;
+}
+
+
+
+
+.navbar-headphone-dropbox .contact-1{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.navbar-headphone-dropbox .contact-1 i{
+    margin-right: 20px;
+}
+.navbar-headphone-dropbox .contact-1 #call-title{
+    font-size: 15px;
+}
+.navbar-headphone-dropbox .contact-1 #call-number{
+    font-weight: 600;
+}
+
+.navbar-headphone-dropbox .contact-2{
+    display: flex;
+    align-items: center;
+    margin-bottom: 13px;
+}
+
+.navbar-headphone-dropbox .contact-2 i{
+    margin-right: 20px;
+}
+
+.navbar-headphone-dropbox .contact-2 #call-title{
+    font-size: 15px;
+}
+.navbar-headphone-dropbox .contact-2 #call-number{
+    font-weight: 600;
+}
+
+.navbar-headphone-dropbox .call-btn{
+    border: 2px solid rgb(88, 240, 194);
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-headphone-dropbox .call-btn i{
+    margin-right: 10px;
+}
+
+
+.navbar-headphone-dropbox .call-btn:hover{
+    background-color: rgb(244, 255, 254);
+}
+
+
+
+/* ---------------Profile-Section-DropBox--------------------------------- */
+
+.navbar-profile-section-dropbox{
+    position: absolute;
+    width: 183px;
+    /* height: 400px; */
+    background-color: rgb(239 243 247);
+    top: 75px;
+    left: -56px;
+    border-radius: 5px;
+    padding: 17px;
+    box-shadow: 0 1px 5px 0 rgb(0 0 0 / 15%), 0 0px 0px 0 rgb(0 0 0 / 7%);
+    z-index: 100;
+    display: none;
+
+}
+
+
+.navbar-profile-section-dropbox h5{
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(80, 79, 79);
+}
+
+.navbar-profile-section-dropbox .login_register{
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(111, 111, 243);
+    margin-bottom: 4rem;
+}
+
+.navbar-profile-section-dropbox .login_register h5:hover{
+    color: rgb(64, 64, 240);
+}
+
+
+.navbar-profile-section-dropbox .profile-section-list{
+    margin-top: 20px;
+}
+
+.navbar-profile-section-dropbox .profile-section-list .options-list{
+    padding: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #424242;
+    margin-bottom: 10px;
+}
+
+
+.navbar-profile-section-dropbox .profile-section-list .options-list:hover{
+    background-color: #e8e8ef;
+    border-radius: 5px;
+
+}
+
+
+
+
+
+
+
+/* ---------------NavbarDropBox End---------------------- */
+
+
+
+.navbar .nav-rent{
+    /* background-color: red; */
+    cursor: pointer;
+}
+
+.navbar .nav-sale{
+    /* background-color: red; */
+    cursor: pointer;
+}
+
+.headphone{
+    background-color: rgb(255, 255, 255);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.headphone i{
+    color: black;
+}
+
+.profile-section{
+    display: flex;
+    align-items: center;
+}
+
+
+
+.authenticated-profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    margin-right:5px;
+    position: relative;
+
+}
+
+.authenticated-profile::before{
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: rgb(33, 230, 33);
+    border: 2px solid white;
+    right: 0;
+}
+
+
+
+.authenticated-profile p{
+    font-size: 15px;
+    margin-top: 3px;
+    color: rgb(42, 43, 42);
+    font-weight: 500;
+}
+
+.anonymous-profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    margin-right:5px;
+    position: relative;
+}
+
+.anonymous-profile::before{
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: red;
+    border: 2px solid white;
+    right: 0;
+}
+
+
+.anonymous-profile i{
+    color: black;
+}
+
+
+.profile-section i{
+    font-size: 13px;
+}
+
+
+.menu{
+    color: white;
+    font-size: 21.5px;
+    cursor: pointer;
+}
+
+.menu:hover{
+    color: #ebebeb;
+}
+
+
+/* --------------------------------------------------------------- */
+
+
+
+.overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, .5);
+    display: none;
+    /* z-index: 1; */
+}
+
+
+.side-bar-nav{
+    background-color: rgb(209, 207, 207);
+    width: 342px;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    z-index: 100;
+    top: 0;
+    transform-origin: left;
+    animation: animate 0.5s;
+}
+
+
+@keyframes animate {
+    from {
+      transform: scale(1, 0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1, 1);
+      opacity: 1;
+    }
+  }
+
+
+
+.hide_side_nav_bar{
+    display: none;
+}
+
+.side-bar-nav .top-header{
+    background-color: #efefef;
+    padding: 21px;
+    /* margin-bottom: 10px; */
+    
+}
+
+.side-bar-nav .top-header .top-header-body{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+    
+
+.side-bar-nav .top-header .profile-section{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* background-color: green; */
+}
+
+.side-bar-nav .top-header .profile-section .image{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: green;
+    margin-right: 10px;
+}
+
+.side-bar-nav .top-header .profile-section p{
+    margin-right: 10px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.side-bar-nav .top-header .close{
+    font-family: 20px !important;
+    cursor: pointer;
+}
+
+
+.side-bar-nav .top-header-drop{
+    display: none;
+}
+
+
+.side-bar-nav .top-header-drop .drop-section{
+    margin-left: 53px;
+    margin-top: 13px;
+}
+
+
+.side-bar-nav .top-header-drop .drop-section a p{
+    font-size: 15px;
+    margin-bottom: 9px;
+    text-decoration: none;
+    color: black;
+}
+
+
+.side-bar-nav .top-body{
+    /* background-color: red; */
+    padding: 0 0 0 20px;
+}
+
+.side-bar-nav .top-body .post-property{
+    /* background-color: green; */
+    /* padding: 20px; */
+    position: relative;
+    color: black;
+}
+
+.side-bar-nav .top-body .post-property #hr{
+
+    width: 90%;
+    height: 1px;
+    background-color: rgb(184, 182, 182);
+    margin-left: 20px;
+}
+
+
+.side-bar-nav .top-body .post-property .post-property-body{
+    /* background-color: red; */
+    /* height: 100px; */
+    padding: 20px;
+}
+
+
+.side-bar-nav .top-body .post-property .post-property-body:hover{
+    background-color: rgb(211, 68, 68);
+    padding: 20px; 
+    border-radius: 5px;
+}
+
+.side-bar-nav .top-body .post-property a{
+    text-decoration: none;
+    color: black;
+}
+
+/* ------renters-------- */
+
+.side-bar-nav .top-body .for-renters{
+    /* background-color: green; */
+    margin-top: 10px;
+}
+
+.side-bar-nav .top-body .renter-body{
+    /* background-color: green; */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+.side-bar-nav .top-body .renter-body i{
+    padding: 10px;
+    margin-right: 1px;
+}
+
+.side-bar-nav .top-body .renter-body:hover{
+    background-color: rgb(211, 68, 68);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* -------Salers------ */
+
+.side-bar-nav .top-body #hr{
+    width: 90%;
+    height: 1px;
+    background-color: rgb(184, 182, 182);
+    margin-left: 20px;
+}
+
+
+.side-bar-nav .top-body .sale-body{
+    /* background-color: green; */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+.side-bar-nav .top-body .sale-body i{
+    padding: 10px;
+    margin-right: 1px;
+}
+
+.side-bar-nav .top-body .sale-body:hover{
+    background-color: rgb(211, 68, 68);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+/* ------About us------- */
+.side-bar-nav .top-body .aboutus{
+    margin-top: 10px;
+}
+
+
+
+.side-bar-nav .top-body .aboutus-body{
+    /* background-color: green; */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.side-bar-nav .top-body .aboutus-body p{
+    /* background-color: green; */
+    margin-left: 25px;
+}
+
+
+.side-bar-nav .top-body .aboutus-body:hover{
+    background-color: rgb(211, 68, 68);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* ---------Login----------- */
+
+
+
+.side-bar-nav .top-body .login-body{
+    /* background-color: green; */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.side-bar-nav .top-body .login-body p{
+    /* background-color: green; */
+    margin-left: 25px;
+}
+
+
+.side-bar-nav .top-body .login-body:hover{
+    background-color: rgb(211, 68, 68);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* -------Register--------- */
+
+.side-bar-nav .top-body .register-body{
+    /* background-color: green; */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.side-bar-nav .top-body .register-body p{
+    /* background-color: green; */
+    margin-left: 25px;
+}
+
+
+.side-bar-nav .top-body .register-body:hover{
+    background-color: rgb(211, 68, 68);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* -------Change-Pass--------- */
+
+
+.side-bar-nav .top-body .changepass-body{
+    /* background-color: green; */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.side-bar-nav .top-body .changepass-body p{
+    /* background-color: green; */
+    margin-left: 25px;
+}
+
+
+.side-bar-nav .top-body .changepass-body:hover{
+    background-color: rgb(211, 68, 68);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* ---------Contact info---------- */
+
+.side-bar-nav .top-body .contact-info{
+    margin-top: 63px;
+}
+
+.side-bar-nav .top-body .contact-info .detail-body{
+    color: rgb(149 148 148);
+    font-size: 13px;
+    margin-left: 47px;
+    margin-bottom: 31px;
+}
+.side-bar-nav .top-body .contact-info .detail-body span{
+    color: rgb(63, 51, 235);
+}
+
+.side-bar-nav .top-body .contact-info .detail-body .help{
+    display: flex;
+    align-items: center;
+
+}
+
+.side-bar-nav .top-body .contact-info .detail-body .contact-email{
+    font-size: 12px;
+}
+
+.side-bar-nav .top-body .contact-info .detail-body .number{
+    font-size: 12px;
+}
+
+
+.side-bar-nav .top-body .contact-info .detail-body .help i{
+    margin-right: 10px;
+}
+
+
+
+/* --------------- */
+
+
+/*------------------ First Section */
+
+
+.First-section{
+    /* background-color: red; */
+    margin-top: 6rem;
+}
+
+
+
+
+.top-title{
+    font-size: 55px;
+    font-weight: bold;
+    margin-left: 19px;
+}
+
+
+
+.first-logo img{
+    /* background-color: red; */
+    /* display: flex; */
+    /* width: 20px; */
+    float: right;
+    /* margin-left: 2rem; */
+    margin-right: 5rem;
+}
+
+.First-section .home-feature{
+    display: flex;
+    margin-left: 20px;
+}
+
+.First-section .home-feature .features{
+    display: flex;
+    margin-right: 30px;
+    /* align-items: center; */
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.First-section .home-feature .features i{
+    color: aqua;
+    margin-right: 10px;
+
+}
+
+.form-box{
+    /* background-color: red; */
+    height: 75px;
+    width: 56rem;
+    border: 2px solid black;
+    margin-left: 25px;
+}
+
+.form-box form{
+    display: flex;
+    
+} 
+
+.form-box form input{
+    height: 71px;
+    width: 54rem;
+    border: none;
+    outline: none;
+    font-size: 21px;
+    
+}
+
+.form-box form button{
+    height: 76px;
+    width: 150px;
+    color: white;
+    background: black;
+    border: none;
+    display: flex;
+    position: absolute;
+    right: 182px;
+    justify-content: center;
+    align-items: center;
+    bottom: 184px
+}
+
+
+
+/*----------- second-section */
+
+.second-section{
+    margin-top: 5rem;
+    /* background-color: yellow; */
+    background-color: #3f0fe0a8;
+    padding: 50px;
+}
+
+
+.second-section h2{
+    font-size: 40px;
+    color: white;
+}
+
+
+.second-section .image1{
+    width: 150px;
+    height: auto;
+}
+
+.second-section .image2{
+    width: 150px;
+    height: auto;
+}
+.second-section .image3{
+    width: 150px;
+    height: auto;
+}
+
+
+h3{
+    font-size: 20px;
+    margin-top: 20px;
+    color: white;
+}
+
+.second-section .designbox1 p{
+    margin-top: 20px;
+    font-size: 15px;
+    color: white;
+
+
+}
+.second-section .designbox2 p{
+    margin-top: 20px;
+    font-size: 15px;
+    color: white;
+
+
+
+}
+.second-section .designbox3 p{
+    margin-top: 20px;
+    font-size: 15px;
+    color: white;
+
+}
+
+
+.second-section button{
+    padding: 10px;
+    background: transparent;
+    outline: none;
+    /* border: 1px solid black; */
+    border: 1px solid white;
+    margin-top: 20px;
+    color: white;
+
+
+
+}
+
+
+.second-section button:hover{
+    background: white;
+
+}
+
+.First-section
+
+
+/*----------------------- third-section */
+
+.third-section{
+    margin-top: 5rem;
+}
+
+
+.third-section h2{
+    font-size: 39px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.third-section .locality1{
+    border-radius: 10px;
+    /* background-color: yellow; */
+    width: 243px;
+    border: 1px solid rgb(170, 170, 170);
+}
+
+.third-section .locality1 .image{
+    width: 100%;
+    height: 150px;
+    background-color: red;
+    border-radius: 10px 10px 0 0;
+}
+
+.third-section .locality1 .image img{
+    width: 100%;
+    object-fit: fill;
+    border-radius: 10px 10px 0 0;
+}
+
+
+.third-section .locality1 .locality-info{
+    margin-top: 36px;
+    margin-left: 25px;
+}
+
+
+.third-section .locality1 .locality-info h2{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.third-section .locality1 .locality-info span{
+    display: flex;
+    color: rgb(117, 117, 117);
+}
+
+.third-section .locality1 .locality-info span p{
+    margin-left: 10px;
+    color: black;
+}
+
+.third-section .locality1 .locality-info .semi-furnished{
+    color: rgb(117, 117, 117);
+    
+}
+
+.third-section .locality1 .locality-info .explore{
+    color: rgb(10, 195, 228);
+    
+}
+
+
+/*------------------------- fourth section */
+
+
+.fourth-section{
+    margin-top: 79px;
+    background-color: #3f0fe0a8;
+    /* background-color: yellow; */
+}
+
+.fourth-section h2 span{
+    color: white;
+}
+
+
+
+.counter-section{
+    text-align: center;
+    justify-content: center;
+    padding: 2.5rem 0;
+}
+
+.counter-section p{
+    /* color: rgb(99, 99, 99); */
+    color: white;
+
+}
+
+
+
+/*-------------- fifth section */
+
+
+.fifth-section{
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+}
+
+.fifth-section h2{
+    font-size: 37px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+
+.fifth-section button{
+    padding: 0.5rem 2rem;
+    font-size: 14px;
+    border: 1px solid rgb(102, 102, 102);
+}
+
+.fifth-section #title{
+    font-size: 22px;
+}
+
+
+.fifth-section p{
+    font-size: 15px;
+}
+
+
+
+
+/*------------------------ footer */
+.sixth-section{
+    padding: 20px;
+    background-color: rgb(66, 66, 66);
+}
+
+.sixth-section .footer-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+}
+
+.sixth-section h2{
+    color: white;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.sixth-section .links{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    /* text-align: left; */
+    
+}
+
+.sixth-section .links a{
+    color: white;
+    margin-bottom: 10px;
+}
+
+.sixth-section .location, .contact, .email{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.sixth-section .location i, .contact i, .email i{
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+
+.sixth-section .links h3{
+    font-size: 26px;
+
+}
+.sixth-section .links .social i{
+    font-size: 34px;
+    margin-right: 10px;
+
+}
+
+
+
+
+
+/* ========================Login_Register======================================= */
+.section-container{
+    position: relative;
+}
+
+/* .overlay-2{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, .9);
+    overflow-y: hidden;
+    display: none;
+}
+
+.login_register_container{
+    position: fixed;
+    width: 395px;
+    height: 518px;
+    background-color: white;
+    top: 69px;
+    left: 36%;
+    display: none;
+} */
+
+
+/* ----------Login--------------- */
+/* 
+.login_register_container .form-step{
+    display: none;
+}
+
+.login_register_container .form-active{
+    display: block;
+}
+
+
+.login_register_container .form1 .form1-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ededed;
+    padding: 10px 10px 10px 17px;
+    align-items: center;
+}
+
+.login_register_container .form1 .form1-header h4{
+    font-size: 18px;
+} 
+
+.login_register_container .form1 .form1-header i{
+    font-size: 19px;
+    cursor: pointer;
+}  
+
+
+.login_register_container .form1 form{
+    padding: 10px 10px 10px 17px;
+    margin-top: 18px;
+}
+
+
+.login_register_container .form1 .form-input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+} 
+
+.login_register_container .form1 .form-input label{
+    font-weight: 500;
+    margin-bottom: 8px;
+} 
+
+.login_register_container .form1 .form-input input{
+
+    padding: 13px;
+    outline: none;
+} 
+
+.login_register_container .form1 .forgot-password{
+    display: flex;
+    text-align: right;
+    justify-content:flex-end;
+}
+
+.login_register_container .form1 .forgot-password a{
+    
+    color: rgb(7 149 129);
+    font-weight: 600;
+}
+
+.login_register_container .form1 button{
+    background-color: #268bff;
+    padding: 8px 10rem;
+    margin-top: 19px;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 21px;
+}
+
+.login_register_container .form1 button:hover{
+    background-color: #08a36e;
+}
+
+.login_register_container .form1 .register_div{
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.login_register_container .form1 .register_div span{
+    display: flex;    
+}
+
+.login_register_container .form1 .register_div p{
+    color: #08a36e;
+    margin-left: 5px;
+    cursor: pointer;
+} */
+
+/* ----------Login End--------------- */
+
+/* ----------Register--------------- */
+
+/* 
+.login_register_container .form2 .form2-header h4{
+    font-size: 18px;
+}  
+
+.login_register_container .form2 .form2-header i{
+    font-size: 19px;
+    cursor: pointer;
+}  
+
+.login_register_container .form2 .form2-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ededed;
+    padding: 10px 10px 10px 17px;
+    align-items: center;
+}
+
+.login_register_container .form2 form{
+    padding: 10px 10px 10px 17px;
+    margin-top: 18px;
+}
+
+.login_register_container .form2 .form-input-names{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.login_register_container .form2 .form-input-names input{
+    width: 179px;
+    margin-right: 11px;
+    padding: 7px;
+    outline: none;
+    border: 1px solid #c1c1c1;
+}
+
+
+.login_register_container .form2 .form-input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+} 
+
+.login_register_container .form2 .form-input label{
+    font-weight: 400;
+    margin-bottom: 5px;
+} 
+
+.login_register_container .form2 .form-input input{
+
+    padding: 7px;
+    outline: none;
+    border: 1px solid #c1c1c1;
+
+} 
+
+.login_register_container .form2 .forgot-password{
+    display: flex;
+    text-align: right;
+    justify-content:flex-end;
+}
+
+.login_register_container .form2 .forgot-password a{
+    
+    color: rgb(7 149 129);
+    font-weight: 600;
+}
+
+.login_register_container .form2 button{
+    background-color: #373838;
+    padding: 6px 7rem;
+    margin-top: 19px;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 21px;
+    width: 100%;
+}
+
+.login_register_container .form2 button:hover{
+    background-color: #08a36e;
+}
+
+.login_register_container .form2 .term_and_services_div{
+    margin-top: 18px;
+    font-weight: 400;
+    font-size: 14px
+}
+
+.login_register_container .form2 .term_and_services_div a{
+    color: #08a36e;
+    margin: 0 3px;
+}
+
+.login_register_container .form2 .barrier-line{
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+}
+
+.login_register_container .form2 .barrier-line div{
+    width: 165px;
+    height: 1px;
+    background-color: #373838;
+}
+
+.login_register_container .form2 .barrier-line p{
+    margin: 0 6px;
+    font-weight: 600;
+    color: rgb(148, 148, 147);
+}
+
+
+.login_register_container .form2 .signIn_div{
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.login_register_container .form2 .signIn_div span{
+    display: flex;
+}
+
+
+.login_register_container .form2 .signIn_div p{
+    color: #08a36e;
+    margin: 0 5px;
+    cursor: pointer;
+} */
+
+
+
+
+/* ----------Register End--------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

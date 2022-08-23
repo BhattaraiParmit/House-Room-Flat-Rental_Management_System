@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'CSS/app/post_property.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+</head>
+</style>
+    <body>
+        
+        <header>
+      
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="/">Mero Ghar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ms-auto me-3 mb-2 mb-lg-0">
+              
+                    <li class="nav-item">
+                      <a href="">
+                        <div class="profile-section">
+                          <div class="profile"><p>PB</p></div>
+                          <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                      </a>
+                    </li>
+    
+                    <div class="nav-item">
+                      <a href="">
+                        <i class=" menu fa-solid fa-bars"></i>
+                      </a>
+                    </div>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+        </header>
+
+        <section id="post_property_section">
+            <div class="container-fluid">
+                <div class="row primary-columns">
+                    <div class="first-column">
+                            <div class="progress-section">
+                                <div class="progress-container">
+                                    <div class="progressbar">
+                                        <div class="progress-line" id="progress"></div>
+                                        
+                                        <div class="progress-box">
+                                            <div class="progress-step progress-step-active" data-title="Contact"></div>
+                                            <div class="progress-text">
+                                                <p>Basic Detail</p>
+                                                <small>step 1</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box">
+                                            <div class="progress-step" data-title="Contact"></div>
+                                            <div class="progress-text">
+                                                <p>location Detail</p>
+                                                <small>step 2</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box">
+                                            <div class="progress-step" data-title="Contact"></div>
+                                            <div class="progress-text">
+                                                <p>Property Profile</p>
+                                                <small>step 3</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box">
+                                            <div class="progress-step" data-title="Contact"></div>
+                                            <div class="progress-text">
+                                                <p>Photos</p>
+                                                <small>step 4</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box">
+                                            <div class="progress-step" data-title="Contact"></div>
+                                            <div class="progress-text">
+                                                <p>Pricing & Others</p>
+                                                <small>step 5</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <form action="" id="form">
+                                    <div class="form-step form-step-active form1">
+                                        <h1>Welcome back Pramit Bhattarai <br> Fill out basic details</h1>
+                                        
+
+                                        <div class="form-category">
+                                            <h4>I'm looking to</h4>
+                                            <p></p>
+                                           
+                                            <div class="form-body">
+                                                {% for field in forms.category %}
+                                                <input type="radio" name="category" value="{{field.choice_label}}" id="{{field.choice_label}}" {% if field.choice_label == "Rent" %} checked {% endif %}>
+                                                <label for="{{field.choice_label}}">{{field.choice_label}}</label>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-type">
+                                            <h4>What kind of Property do you have?</h4>
+                                            <div class="form-body">
+                                                {% for field in forms.property_type %}
+                                                <input type="radio" name="type" value="{{field.choice_label}}" id="{{field.choice_label}}" {% if field.choice_label == "Independent House" %} checked {% endif %} >
+                                                <label for="{{field.choice_label}}">{{field.choice_label}}</label>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <button type="button" class="btn-next width-50 ml-auto">Continue</button>
+                                    </div>
+
+                                    <div class="form-step form2">
+                                        <div class="form2-body">
+                                            <div class="back-options">
+                                                <i class="fa-solid prev-btn fa-arrow-left-long"></i>
+                                                <p>Back</p>
+                                            </div>
+
+                                            <h1>Where is your property located?</h1>
+                                            <p>An accurate location helps you connect with right buyers</p>
+
+                                            <input type="text" name="location" id="location" placeholder="city">
+
+                                            <button type="button" class="btn-next location">Continue</button>
+                                            <!-- <p class="btn-next location">continue</p> -->
+                                        </div>
+                                       
+                                    </div>
+
+                                    <div class="form-step form3">
+                                        <div class="back-options">
+                                            <i class="fa-solid prev-btn fa-arrow-left-long"></i>
+                                            <p>Back</p>
+                                        </div>
+                                        <h1>Tell us about your property</h1>
+
+                                        <div class="room-details">
+                                            <div class="room_detail_body">
+                                                <div class="header_icons">
+                                                    <h4>Add Room Details</h4>
+                                                    <i class="fa-solid room-detail-explainations fa-circle-exclamation"></i>
+                                                </div>
+                                                <p class="error-message room-detail-error-message">All fields are required</p>
+                                            </div>
+
+                                            <div class="bedrooms">
+                                                <p>No of bedrooms</p>
+
+                                                {% for field in forms.bedroom %}
+                                                <input type="radio" name="bedrooms" value="{{field.choice_label}}" id="bed_{{field.choice_label}}">
+                                                <label for="bed_{{field.choice_label}}">{{field.choice_label}}</label>
+                                                {% endfor %}
+
+                                                
+                                            </div>
+                                            <div class="bathrooms">
+                                                <p>No of bathrooms</p>
+
+                                                {% for field in forms.bathroom %}
+                                                <input type="radio" name="bathrooms" value="{{field.choice_label}}" id="bath_{{field.choice_label}}">
+                                                <label for="bath_{{field.choice_label}}">{{field.choice_label}}</label>
+                                                {% endfor %}
+                                            </div>
+
+                                            <div class="balconies">
+                                                <p>Balconies</p>
+
+                                                {% for field in forms.balconies %}
+                                                <input type="radio" name="balconies" value="{{field.choice_label}}" id="bal_{{field.choice_label}}">
+                                                <label for="bal_{{field.choice_label}}">{{field.choice_label}}</label>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <div class="furshing">
+                                            <div class="furnishing_detail_body">
+                                                <div class="header_icons">
+                                                    <h4>Furnishing</h4>
+                                                    <i class="fa-solid furnishing-error-explainations fa-circle-exclamation"></i>
+                                                </div>
+                                                <p class="error-message furnishing-error-message">Please select alleast one furnishing</p>
+                                            </div>
+
+                                            <div class="furnishing-btns">
+                                                {% for field in forms.furnishing %}
+                                                <input type="radio" name="furnishing" value="{{field.choice_label}}" id="{{field.choice_label}}">
+                                                <label for="{{field.choice_label}}">{{field.choice_label}}</label>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="property_age">
+                                            <div class="property_age_detail_body">
+                                                <div class="header_icons">
+                                                    <h4>Age of property</h4>
+                                                    <i class="fa-solid age-error-explainations fa-circle-exclamation"></i>
+                                                </div>
+                                                <p class="error-message age-error-message">Please select alleast one furnishing</p>
+                                            </div>
+
+                                            <div class="property_age-btns">
+                                                {% for field in forms.age_of_property %}
+                                                <input type="radio" name="age" value="{{field.choice_label}}" id="{{field.choice_label}}">
+                                                <label for="{{field.choice_label}}">{{field.choice_label}}</label>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <div class="rent_out_to">
+                                            <div class="rent_out_to_detail_body">
+                                                <div class="header_icons">
+                                                    <h4>Willing to rent out to</h4>
+                                                    <i class="fa-solid rent_out_to_explainations fa-circle-exclamation"></i>
+                                                </div>
+                                                <p class="error-message rent_out_to_error-message">Please select alleast one furnishing</p>
+                                            </div>
+
+                                            <div class="rent_out_to-btns">
+                                                {% for field in forms.rent_out_to  %}
+                                                <input type="radio" name="rent_out_to" value="{{field.choice_label}}" id="{{field.choice_label}}">
+                                                <label for="{{field.choice_label}}">{{field.choice_label}}</label>
+                                                {% endfor %}
+                                            </div>
+
+                                            <button class="btn-next room-detail" type="button">Continue</button>
+
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-step  form4">
+                                        <div class="back-options">
+                                            <i class="fa-solid prev-btn fa-arrow-left-long"></i>
+                                            <p>Back</p>
+                                        </div>
+                                        <h1>Add photos of your property</h1>
+
+                                        <div class="photos-section">
+                                            <h4>Upload from desktop</h4>
+
+                                            <div class="picture-section">
+                                                <div class="image-container">
+                                                    <!-- <div class="image">
+                                                        <img src="/images/images6.jpg" alt="">
+                                                        <i class="fa-solid fa-trash"></i>
+    
+                                                        <div class="cover-zoom">
+                                                            <p >Cover photo</p>
+                                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+    
+                                                <div class="card">
+                                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                                   <p>Drag and drop your photos here</p>
+                                                   <small>upload photos of max size 10 mb in format png,jpg, jpeg</small>
+                                                   <p id="or">OR</p>
+                                                   <p id="card-upload-btn">Upload Photos Now</p>
+                                                   <input type="file" name="file" class="card-file" multiple>
+                                                </div>
+
+                                                <div class="small-card-container">
+                                                    <div class="small-card" >
+                                                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                                                        <p>Add more photos</p>
+                                                        <small>upload photos of max size 10mb in format <br>png,jpg, jpeg </small>
+                                                        <p id="or">OR</p>
+                                                        <p id="small-upload-btn">Upload Photos</p>
+                                                        <input type="file" name="file" class="small-file" multiple>
+                                                    </div>
+                                                </div>
+                                               
+                                                      <!-- <div class="image-container">
+                                                    <img src="/images/images6.jpg" alt="">
+                                                    <i class="fa-solid fa-trash"></i>
+
+                                                    <div class="cover-zoom">
+                                                        <p>Cover photo</p>
+                                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                                    </div> -->
+                                                <!-- </div> -->
+
+                                            </div>          
+                                            <button class="btn-next photos" type="button">Continue</button>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="form-step form5">
+                                        <div class="back-options">
+                                            <i class="fa-solid prev-btn fa-arrow-left-long"></i>
+                                            <p>Back</p>
+                                        </div>
+                                        <h1>Add pricing and details</h1>
+
+                                        <div class="rent-details">
+                                            <h4>Rent Details</h4>
+
+                                            <div class="price-inbox">
+                                                <p id="price-error-mssg">Please specify the price</p>
+                                                <input type="number" id="price" name="price" placeholder="Expected Rent">
+                                                <i class="fa-solid price-error-explainations fa-circle-exclamation"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="security-deposite">
+                                            <div class="security_detail_body">
+                                                <div class="header_icons">
+                                                    <h4>Security deposite</h4>
+                                                    <i class="fa-solid security-error-explainations fa-circle-exclamation"></i>
+                                                </div>
+                                                <p class="error-message security-error-message">Please select alleast one furnishing</p>
+                                            </div>
+
+                                            <div class="security-btns">
+                                                {% for field in forms.security_deposite  %}
+                                                <input type="radio" name="security" value="{{field.choice_label}}" id="{{field.choice_label}}">
+                                                <label for="{{field.choice_label}}">{{field.choice_label}}</label>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <div class="negotiable">
+                                            <div class="negotiable_detail_body">
+                                                <div class="header_icons">
+                                                    <h4>Negotiable</h4>
+                                                    <i class="fa-solid negotiable-error-explainations fa-circle-exclamation"></i>
+                                                </div>
+                                                <p class="error-message negotiable-error-message">Please select alleast one furnishing</p>
+                                            </div>
+
+                                            <div class="negotiable-btns">
+                                                {% for field in forms.negotiable  %}
+                                                    <input type="radio" name="negotiable" value="{{field.choice_label}}" id="{{field.choice_label}}">
+                                                    <label for="{{field.choice_label}}">{{field.choice_label}}</label>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                    
+                                        <div class="descriptions">
+
+                                            <div class="descriptions_body">
+                                                <div class="header_icons">
+                                                    <h4>What make your property unique</h4>
+                                                    <i class="fa-solid description-error-explaination fa-circle-exclamation"></i>
+                                                </div>
+                                                <p class="description-error-message">Adding description will increase your listing visibility</p>
+                                            </div>
+
+
+                                            <textarea name="description" id="description" placeholder="Share some detail about your property like spacious, rooms, well maintaned facilities"></textarea>
+                                        </div>
+
+                                        <button class="submit-btn"  type="submit">Submit</button>
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        
+                    </div>
+                    <div class="second-column ">
+                        <div class="row detail-section">
+                            <div class="detail-body">
+                                <div class="help">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <p>Need Help ?</p>
+                                </div>
+                                <p class="email">you can email us at <span> parmitbhatttarai@gmail.com</span></p>
+                                <p class="number">or call us at <span>97666666666</span> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+        
+        <script src="{% static 'JS/post_property.js' %}"></script>
+    </body>
+</html>

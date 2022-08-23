@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'CSS/app/post_property2.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'CSS/app/edit_property.css' %}">
+
+</head>
+<body>
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col">
+                <form action="" id="post-property-form">
+                    <div class="header-section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="header">
+                                    <div class="info-header">
+                                        <h3>Property Info</h3>
+                                        <span>Step <p id="first-step-number">0</p>of <p id="last-step-number">10</p></span>
+                                    </div>
+                                    <div class="exit-btn">
+                                        <a href="{% url 'property-list' %}">Exit</a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="middle-section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="progress-container">
+                                        <!-- <h1>bbbb</h1> -->
+
+                                        <div class="progress-index" id="progress"></div>
+                                        
+                                        <div class="progress-middleLine" id="middle-line"></div>
+
+                                        <div class="progress-steps">
+                                            <div class="progress-step">
+                                                <div class="progress-box"></div>
+                                                <p>Property info</p>
+                                            </div>
+                                            <div class="progress-step">
+                                                <div class="progress-box"></div>
+                                                <p>Listing details</p>
+                                            </div>
+                                            <div class="progress-step">
+                                                <div class="progress-box"></div>
+                                                <p>Pricing</p>
+                                            </div>
+                                            <div class="progress-step">
+                                                <div class="progress-box"></div>
+                                                <p>Amenities</p>
+                                            </div>
+                                            <div class="progress-step">
+                                                <div class="progress-box"></div>
+                                                <p>Media</p>
+                                            </div>
+                                            <div class="progress-step">
+                                                <div class="progress-box"></div>
+                                                <p>Personal Info</p>
+                                            </div>
+                                            <div class="progress-step">
+                                                <div class="progress-box"></div>
+                                                <p>Review</p>
+                                            </div>
+                                        </div>
+                                    
+                                    
+                                    </div>
+
+                                    <div class="form-step form1 form-step-active">
+                                        <img src="../../static/images/undraw_For_sale_re_egkk.png" alt="">
+
+                                        <div class="form1_title">
+                                            <h1>Get started Listing your rental</h1>
+                                            <p>It is free to post on our network with over thousands of daily visitors 
+                                                accross the world</p>
+                                        </div>
+                                    
+                                    </div>
+
+                                    <div class="form-step form2">
+                                        <h2>Fill some detail about your rental property</h2>
+                                         <div class="form2_body">
+                                            <div class="category">
+                                                <span><p>Properrty Category</p>*</span>
+                                                {{forms.category}}
+                                            </div>
+
+                                            <div class="Type">
+                                                <span><p>Property Type</p>*</span>
+                                                {{forms.property_type}}
+                                            </div>
+
+                                            <div class="address">
+                                                <div class="address-select-box">
+                                                    <div class="province">
+                                                        <p>Province</p>
+                                                        {{forms.province}}
+                                                    </div>
+                                                    <div class="city">
+                                                        <p>City</p>
+                                                        {{forms.city}}
+                                                    </div>
+                                                   
+                                                </div>
+                                    
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-step form3">
+                                        <h2>Confirm some facts about your rental property</h2>
+                                        <div class="form3_body">
+
+                                            <div class="square_area">
+                                                <p>Square footage</p>
+                                                <div class="square-input">
+                                                    {{forms.area}}
+                                                    <p>sq.ft.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="negotiable">
+                                                <span><p>Negotiable</p>*</span>
+                                                {{forms.negotiable}}
+                                            </div>
+
+                                            <div class="rent_out_to">
+                                                <span><p>Rent Out To</p>*</span>
+                                                {{forms.rent_out_to}}
+                                            </div>
+
+                                            <div class="bed_bath_bal">
+                                                <div class="bedroom">
+                                                    <span><p>Bedroom</p>*</span>
+                                                    {{forms.bedroom}}
+                                                </div>
+                                                <div class="bathrom">
+                                                    <span><p>Bathroom</p>*</span>
+                                                    {{forms.bathroom}}
+                                                </div>
+                                                <div class="balconies">
+                                                    <span><p>Balconies</p>*</span>
+                                                    {{forms.balconies}}
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-step form4">
+                                        <h2>Describe the property</h2>
+                                        <div class="form3_p_tag">
+                                            <p>Write several sentences describing the upgrades and desirable features that will attract renters to your property.</p>
+
+                                        </div>
+                                        <div class="description-box">
+                                            <p>Property description</p>
+                                            {{forms.description}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-step form5 ">
+                                        <h2>How much is the montly rent?</h2>
+                                        <p>Enter the valid rent amount </p>
+
+                                        <div class="rent_price">
+                                            <span><p>Monthly Rent</p>*</span>
+                                            <div class="price-input">
+                                                <div>
+                                                    <p>Rs</p>
+                                                    <input type="number" name="price" id="id_price" value="{{forms.price.value|floatformat}}">
+                                                 </div>
+                                            
+                                                <p>/month</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-step form6 ">
+                                        <h2>How much is the security deposite?</h2>
+                                        <p>Amount should not exceed the price of rent</p>
+
+                                        <div class="rent_price">
+                                            <span><p>Security deposite</p>*</span>
+                                            <div class="price-input">
+                                                <div>
+                                                    <p>Rs</p>
+                                                    <input type="number" name="security_deposite" value="{{forms.security_deposite.value|floatformat}}"  id="id_security_deposite">
+                                                 </div>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-step form7 ">
+                                        <h2>What is the duration of lease?</h2>
+
+                                        <div class="lease_body">
+                                            <span><p>Lease duration</p>*</span>
+                                            
+
+                                            {{forms.lease_duration}}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-step form8">
+                                        <h2>Fill the amenities of the property</h2>
+                                        <p>Let renter know all the available rental.</p>
+
+                                        <div class="amenities_body">
+
+                                            <div class="amenities-top">
+                                                <div>
+                                                    <p>Pet Allowed</p>
+                                                    {{forms.pets}}
+                                                </div>
+
+                                                <div>
+                                                    <p>Parking</p>
+                                                    {{forms.parking}}
+                                                </div>
+
+                                                <div>
+                                                    <p>Furnishing</p>
+                                                    {{forms.furnishing}}
+                                                </div>
+                                            </div>
+
+                                            <div class="amenities-lower">
+                                                <div>
+                                                    <input type="checkbox" id="air-conditioner" name="air-conditioner" value="Available" for="air_condition">
+                                                    <label for="air_condition">Air Conditioner</label>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox"  value="Available" id="electricity-checkbox" for="air_condition">
+                                                    <label for="air_condition">electricity</label>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" name="" value="Available" for="Water" id="water-checkbox">
+                                                    <label for="Water">Water</label>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" name="" value="Available" for="Fans" id="fans">
+                                                    <label for="Fans">Ceiling Fans</label>
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" name="" for="No Smoking" value="Available" id="no-smoking">
+                                                    <label for="No Smoking">No Smoking</label>
+                                                </div>
+
+                                                <div>
+                                                    <input type="checkbox" name="" value="Available"  for="Internet" id="internet">
+                                                    <label for="Internet">Internet</label>
+                                                </div>
+                                              
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-step form9 ">
+                                        <h2>Add photos</h2>
+                                        <p>Photos help renters imagine living in your place</p>
+
+                                        <div class="error-mssg-box">
+                                            <i class="fa-solid fa-circle-exclamation"></i>
+                                            <p id="photo-error-mmsg">At least one photo is required</p>
+                                        </div>
+                                        <div class="picture-section">
+                                            <div class="image-container">
+                                                <!-- <div class="image">
+                                                    <img src="/images/images6.jpg" alt="">
+                                                    <i class="fa-solid fa-trash"></i>
+
+                                                    <div class="cover-zoom">
+                                                        <p >Cover photo</p>
+                                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                            <div class="image-card">
+                                                <div class="card-top">
+                                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                                    <p>Drop files here or </p>
+                                                    <p id="card-upload-btn">Upload</p>
+                                                </div>
+                                
+                                                <small>Photos must be in jpg, gif, or png format, and no larger than 75MB in size</small>
+                                                <input type="file" name="file" class="card-file" multiple>
+                                            </div>
+
+                                            <div class="small-card-container">
+                                                <div class="small-card" >
+                                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                                    <p>Add more photos</p>
+                                                    <small>upload photos of max size 10mb in format <br>png,jpg, jpeg </small>
+                                                    <p id="or">OR</p>
+                                                    <p id="small-upload-btn">Upload Photos</p>
+                                                    <input type="file" name="file" class="small-file" multiple>
+                                                </div>
+                                            </div>
+
+                                            
+                                        </div>   
+
+                                        <div class="videos-container">
+                                            <h2>Add Videos</h2>
+                                            <p>Videos helps renter to know more about your place</p>
+
+
+                                            <div class="video-box">
+                                                
+                                            </div> 
+                                            
+                                            <div class="video-card">
+                                                <div class="card-top">
+                                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                                    <p>Drop files here or </p>
+                                                    <p id="video-upload-btn">Upload</p>
+                                                </div>
+                                
+                                                <small></small>
+                                                <input type="file" name="file" class="video-file">
+                                            </div>
+                                        </div>
+                                                                            
+                                    </div>
+
+                                    <div class="form-step form10">
+
+                                        <h2>Who's listing this property ?</h2>
+                                        <p>Please verify your information</p>
+
+                                        <div class="name_detail">
+                                            <span><p>Name</p>*</span>
+                                            <div class="name-input">
+                                                <div>
+                                                    <input type="text" id="id_name" value="{{request.user.first_name}} {{request.user.last_name}}" readonly>
+                                                 </div>                                                
+                                            </div>
+                                        </div>
+
+                                        <div class="email_detail">
+                                            <span><p>Email</p>*</span>
+                                            <div class="email-input">
+                                                <div>
+                                                    <input type="text" id="id_email" value="{{request.user.email}}" readonly>
+                                                 </div>                                                
+                                            </div>
+                                        </div>
+
+
+                                        <div class="phone_detail">
+                                            <span><p>Phone</p>*</span>
+                                            <div class="phone-input">
+
+                                                {% if request.user.phone %}
+                                                <div>
+                                                    <input type="text"  id="id_phone" value="{{request.user.phone}}" id="id_phone" readonly>
+                                                </div>   
+                                                {% else %}
+                                                <div>
+                                                    <input type="text"  id="id_phone" value="{{request.user.phone}}" id="id_phone">
+                                                </div>
+                                                {% endif %}                                             
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-step form11">
+                                        <div class="header-top">
+
+                                            <div class="image">
+                                                <img id="form11-image" src="../../static/images/home-backgroundImage.png" alt="">
+                                            </div>
+
+                                            <div class="romm-detail">
+                                                <h1 id="roomDetail-title" >3 BHK Flat in Kathmandu</h1>
+                                                <p id="roomDetail-address" >Kathmandu</p>
+
+                                                <div class="room-basic-info">
+                                                    <div class="price">
+                                                        <i class="fa-solid fa-rupee-sign"></i>
+                                                        <P id="roomDetail-price" >30000</P>
+                                                    </div>
+                                                    <div class="barrier"></div>
+
+                                                    <div class="bedroom">
+                                                        <p id="main-label" class="roomDetail-bed">6</p>
+                                                        <P>bd</P>
+                                                    </div>
+
+                                                    <div class="barrier"></div>
+
+                                                    <div class="bathroom">
+                                                        <p id="main-label" class="roomDetail-bath">2</p>
+                                                        <P>ba</P>
+    
+                                                    </div>
+                                                    <div class="barrier"></div>
+
+                                                    <div class="area">
+                                                        <p id="main-label" class="roomDetail-area">1404</p>
+                                                        <P>sqft</P>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="main-body">
+                                            <div class="property-detail">
+
+                                                <div class="property-detail-header">
+                                                    <i class="fa-solid fa-angle-up"></i>
+                                                    <h4 id="header_title">Property Detail</h4>
+                                                </div>
+
+                                                <div class="property-detail-body">
+
+
+                                                    <!-- ----------------------Property Price--------------------------------- -->
+
+                                                    <div class="Property-price">
+                                                        <div class="head">
+                                                            <p id="title">Property Price</p>
+                                                            <p id="property_edit">Edit</p>
+                                                        </div>
+                                                        <div class="price">
+                                                            <i class="fa-solid fa-rupee-sign"></i>
+                                                            <P id="properttyDetail-price">30000</P>
+                                                        </div>
+
+                                                        <div class="property_price_overlay">
+                                                            <div class="header-top">
+                                                                <div class="header-body">
+                                                                    <h2>Property Price</h2>
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </div>                                                
+                                                            </div>
+
+                                                            <hr>
+
+                                                            <div class="rent_price">
+                                                                <span><p>Monthly Rent</p>*</span>
+                                                                <div class="price-input">
+                                                                    <div>
+                                                                        <p>Rs</p>
+                                                                        <input type="number"  id="id_overlay_price_value" >
+                                                                        <!-- {{forms.price}} -->
+                                                                     </div>
+                                                                
+                                                                </div>
+                                                            </div>
+
+                                                            <hr>
+
+                                                            <div class="buttons">
+                                                                <button type="text" class="btn btn-danger" id="cancel">Cancel</button>
+
+                                                                <button type="text" id="propertyPriceSaveBtn"  class="btn btn-primary">
+                                                               
+                                                                Save 
+                                                                </button>
+                                                            </div>
+                                                           
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- _------------------Security-------- -->
+
+                                                    <div class="security-deposite">
+                                                        <div class="head">
+                                                            <p id="title">Security Deposite</p>
+                                                            <p id="security_edit">Edit</p>
+                                                        </div>
+                                                        <div class="security">
+                                                            <i class="fa-solid fa-rupee-sign"></i>
+                                                            <P id="securityDepositeDetail-price">30000</P>
+                                                        </div>
+
+                                                        <div class="security_deposite_overlay">
+                                                            <div class="header-top">
+                                                                <div class="header-body">
+                                                                    <h2>Property Price</h2>
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </div>                                                
+                                                            </div>
+
+                                                            <hr>
+
+                                                            <div class="security_price">
+                                                                <span><p>Security Deposite</p></span>
+                                                                <div class="price-input">
+                                                                    <div>
+                                                                        <p>Rs</p>
+                                                                        <input type="number"  id="id_overlay_security_value" >
+
+                                                                     </div>
+                                                                
+                                                                </div>
+                                                            </div>
+
+                                                            <hr>
+
+                                                            <div class="buttons">
+                                                                <button type="text" class="btn btn-danger" id="cancel" >Cancel</button>
+                                                                <button type="text" id="propertySecurityDepositeSaveBtn" class="btn btn-primary">
+                                                                    
+                                            
+                                                                    Save</button>
+                                                            </div>
+                                                           
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <!-- _------------------description-------- -->
+
+                                                    <div class="property-description">
+                                                        <div class="head">
+                                                            <p id="title">Property description</p>
+                                                            <p id="description_edit">Edit</p>
+                                                        </div>
+
+                                                        <div class="description">
+                                                            <P id="description-detail">anananananaan</P>
+                                                        </div>
+
+                                                        <div class="description_overlay">
+                                                            <div class="header-top">
+                                                                <div class="header-body">
+                                                                    <h2>Property Price</h2>
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </div>                                                
+                                                            </div>
+
+                                                            <hr>
+
+                                                            <div class="description-box">
+                                                                <p>Property description</p>
+                                                                <textarea  id="description_overlay_value" cols="30" rows="10"></textarea>
+                                                    
+                                                            </div>
+                                                           
+                                                            <hr>
+
+                                                            <div class="buttons">
+                                                                <button type="text" class="btn btn-danger" id="cancel" >Cancel</button>
+                                                                <button type="text"  id="propertyDescriptionSaveBtn" class="btn btn-primary">Save</button>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!-- -------------------Property lease-------------- -->
+                                                    <div class="property-lease">
+                                                        <div class="head">
+                                                            <p id="title">Lease Duration</p>
+                                                            <p id="lease_edit">Edit</p>
+                                                        </div>
+                                                        <div class="lease-duration">
+                                                            <P id="leaseDuration-detail">1 Year</P>
+                                                        </div>
+
+                                                        <div class="Lease_overlay">
+                                                            <div class="header-top">
+                                                                <div class="header-body">
+                                                                    <h2>Property Price</h2>
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </div>                                                
+                                                            </div>
+
+                                                            <hr>
+
+                                                            <div class="lease_body">
+                                                                <span><p>Lease duration</p>*</span>
+
+                                                                <div>
+                                                                    <label for="id_lease_overlay_duration_0"><input type="radio" name="lease_overlay_duration" value="1 month" required id="id_lease_overlay_duration_0">
+                                                                 1 month</label>
+                                                                
+                                                                </div>
+
+                                                                <div>
+                                                                    <label for="id_lease_overlay_duration_1"><input type="radio" name="lease_overlay_duration" value="6 month" required id="id_lease_overlay_duration_1">
+                                                                 6 month</label>
+                                                                
+                                                                </div><div>
+                                                                    <label for="id_lease_overlay_duration_2"><input type="radio" name="lease_overlay_duration" value="1 year" required id="id_lease_overlay_duration_2">
+                                                                 1 year</label>
+                                                                
+                                                                </div><div>
+                                                                    <label for="id_lease_overlay_duration_3"><input type="radio" name="lease_overlay_duration" value="2 year" required id="id_lease_overlay_duration_3">
+                                                                 2 year</label>
+                                                                
+                                                                </div><div>
+                                                                    <label for="id_lease_overlay_duration_4"><input type="radio" name="lease_overlay_duration" value="3 year" required id="id_lease_overlay_duration_4">
+                                                                 3 year</label>
+                                                                
+                                                                </div>
+
+                                                            </div>
+                                                          
+                                                           
+                                                            <hr>
+
+                                                            <div class="buttons">
+                                                                <button type="text" class="btn btn-danger" id="cancel" >Cancel</button>
+                                                                <button type="text"  id="propertyLeaseSaveBtn" class="btn btn-primary">Save</button>
+                                                            </div>
+                                                           
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <!-- ----------------------------Media Detail---------------------------------- -->
+                                            <div class="media-detail">
+                                                <div class="media-detail-header">
+                                                    <i class="fa-solid fa-angle-up"></i>
+                                                    <h4 id="header_title">Media Detail</h4>
+                                                </div>
+                                                <div class="media-detail-body">
+
+                                                    <div class="picture-section">
+                                                        <h3>Photo</h3>
+                                                        <div class="image-container">
+                                                           
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="video-section">
+                                                        <h3>Video</h3>
+                                                        <div class="video-container">
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <!-- -----------------------------Amenities Detail--------------------------------------------------- -->
+
+                                            <div class="amenities-detail">
+                                                <div class="amenities-detail-header">
+                                                    <i class="fa-solid fa-angle-up"></i>
+                                                    <h4 id="header_title">Amenities Detail</h4>
+                                                </div>
+                                                <div class="amenities-detail-body">
+                                                    <div class="amenities_detail">
+                                                        <div class="head">
+                                                            <p id="title">Amenities</p>
+                                                            <p id="amenities_edit">Edit</p>
+                                                        </div>
+
+                                                        <div class="amenities">
+                                                            <!-- <P>Air Condition</P>
+                                                            <p>Heater</p>
+                                                            <p></p> -->
+                                                        </div>
+
+                                                        <div class="amenities_overlay">
+                                                            <div class="header-top">
+                                                                <div class="header-body">
+                                                                    <h2>Property Price</h2>
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </div>                                                
+                                                            </div>
+
+                                                            <hr>
+
+                                                            <div class="amenities_body">
+                                                                <span><p>Amenities</p></span>
+                                                                
+                                                                <div>
+                                                                    <input type="checkbox" id="id_air_conditioner" name="air-conditioner" value="Available" for="air_overlay_condition">
+                                                                    <label for="air_overlay_condition">Air Conditioner</label>
+                                                                </div>
+            
+                                                                <div>
+                                                                    <input type="checkbox"  value="Available" id="id_electricity_checkbox" for="air_overlay_condition">
+                                                                    <label for="air_overlay_condition">electricity</label>
+                                                                </div>
+                                                                <div>
+                                                                    <input type="checkbox" name="" value="Available" for="Water_overlay" id="id_water_checkbox">
+                                                                    <label for="Water_overlay">Water</label>
+                                                                </div>
+                                                                <div>
+                                                                    <input type="checkbox" name="" value="Available" for="Fans_overlay" id="id_fans">
+                                                                    <label for="Fans_overlay">Ceiling Fans</label>
+                                                                </div>
+                                                                <div>
+                                                                    <input type="checkbox" name="" for="No Smoking_overlay" value="Available" id="id_no_smoking">
+                                                                    <label for="No Smoking_overlay">No Smoking</label>
+                                                                </div>
+            
+                                                                <div>
+                                                                    <input type="checkbox" name="" value="Available"  for="Internet_overlay" id="id_internet">
+                                                                    <label for="Internet_overlay">Internet</label>
+                                                                </div>
+            
+                                                               
+                                                            </div>
+                                                        
+                                                            <hr>
+
+                                                            <div class="buttons">
+                                                                <button type="text" class="btn btn-danger" id="cancel" >Cancel</button>
+                                                                <button type="text" class="btn btn-primary" id="amenitiesSaveBtn" >Save</button>
+                                                            </div>
+                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- -------------------------------------Final Detail------------------------------------------------------- -->
+
+                                            <div class="final-detail">
+                                                <div class="final-detail-header">
+                                                    <i class="fa-solid fa-angle-up"></i>
+                                                    <h4 id="header_title">Final Detail</h4>
+                                                </div>
+                                                <div class="final-detail-body">
+
+                                                    <div class="name_detail">
+                                                        <div class="head">
+                                                            <p id="title">Name</p>
+                                                        </div>
+
+                                                        <div class="name">
+                                                            <P id="final_detail_name">Pramit Bhattarai</P>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="email_detail">
+                                                        <div class="head">
+                                                            <p id="title">Email</p>
+
+                                                        </div>
+
+                                                        <div class="email">
+                                                            <P id="final_detail_email">parmitbhattarai@gmail.com</P>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="phone_detail">
+                                                        <div class="head">
+                                                            <p id="title">Phone</p>
+                                                        </div>
+
+                                                        <div class="phone">
+                                                            <P id="final_detail_phone">9811558760</P>
+                                                        </div>
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                            
+                                        </div>
+                                        
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div> 
+
+
+                        <div class="form-submit-confirm">
+                            <div class="submit-div">
+                                <p>Are you sure you want to submit your property ?</p>
+                                <button type="text" class="btn btn-danger" id="cancel-form-submit" >Cancel</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="footer-section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="footer">
+                                    <button class="back-btn">Back</button>
+                                    <button type="text" class="next-btn form1-btn">Get Started</button>
+                                    <!-- <p class="next-btn get-started-btn" >get started</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </form>
+            </div>
+           
+        </div>  
+    </div>
+
+    <div id="background-overlay"></div>
+
+
+
+    <script src="{% static 'JS/edit_property.js' %}"></script>
+
+
+    <script>
+
+        var id = "{{id}}"
+        var Ac = "{{forms.air_condition.value}}"
+        var electricity = "{{forms.electricity.value}}"
+        var water = "{{forms.water.value}}"
+        var fans = "{{forms.fans.value}}"
+        var no_smoking = "{{forms.no_smoking.value}}"
+        var internet = "{{forms.internet.value}}"
+
+        var Images =  JSON.parse('{{propertyImage|safe}}')
+
+        var cover_image = "{{cover_image}}"
+        var video = "{{video}}"
+        var video_url = '{{video_url}}'
+
+
+        // videos.push(video)
+
+        // console.log("video", video)
+
+      
+        displayCheckbox()
+        displayImages()
+        displayVideo()
+
+
+        console.log( "length", video.length)
+
+        function displayVideo(){
+
+            if(video.length == 0){
+                return
+            }else{
+
+                videos.push(video)
+
+                videoCard.style.display= "none"
+
+                videoBox.innerHTML +=   `<div class="video">
+                                            <video class="video-player" data-id = "${'{{id}}'}" controls>
+                                                <source id="video-source" src="${video_url}" type="video/mp4">
+                                            </video>
+                                            <i class="fa-solid fa-trash" id="delete-image"></i>
+
+                                        </div>`
+            }
+        }
+
+
+
+        function displayImages(){
+
+
+            if(Images.length == 0){
+                return
+            }else{
+                                
+                card.style = "display: none;"
+                small_card.style = "display: block;"
+
+                for(var i = 0; i < Images.length; i++){
+                    console.log(Images[i].pk)
+
+                    files.push(Images[i].fields.image)
+                    duplicate_Imageurl_files.push(Images[i].fields.dummyImage)
+
+                    picture_section.innerHTML +=  `<div class="image">
+                                                        <img src="${Images[i].fields.dummyImage}" data-id = "${Images[i].pk}" alt="">
+                                                            <i class="fa-solid fa-trash" data-imageNumber = "${filesIndex++}"></i> 
+                                                            <div class="image-overlay"></div>
+                                                            <div class="cover-zoom">
+                                                                <p class = "make-cover-photo" >Make Cover photo</p>
+                                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                                            </div>
+                                                    </div>`
+                                            
+                }
+            }
+        }
+
+
+        console.log(duplicate_Imageurl_files)
+
+
+        function displayCheckbox(){
+            if(Ac != "None"){
+                air_conditioner.checked = true
+
+            }
+            if(water != 'None'){
+                waterCheckbox.checked = true
+            }
+
+            if(electricity != 'None'){
+                electricityCheckbox.checked = true   
+            }
+
+            if(fans != 'None'){
+                fansCheckbox.checked = true
+            }
+
+            if(no_smoking != 'None'){
+                smokingCheckbox.checked = true
+            }
+
+            if(internet != 'None'){
+                internetCheckbox.checked = true
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

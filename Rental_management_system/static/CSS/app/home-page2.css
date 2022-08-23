@@ -1,0 +1,821 @@
+body{
+
+}
+
+
+/* ===================================================================== */
+#banner{
+    padding: 0px 13px;
+}
+
+.flickity-page-dots{
+    display: none;
+}
+
+
+.banner-container{
+    background: linear-gradient(rgb(0 0 0 / 18%), rgba(0,0,0,.5)), url(../../images/solar-panels-roof-modern-house-harvesting-renewable-energy-with-solar-cell-panels-exterior-design-3d-rendering.jpg);
+    /* background-image: url(../images/solar-panels-roof-modern-house-harvesting-renewable-energy-with-solar-cell-panels-exterior-design-3d-rendering.jpg); */
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 72vh;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: relative; */
+}
+
+
+/* .banner-container .layer{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.1;
+} */
+
+.banner-container h2{
+    color: white;
+    font-weight: bold;
+    z-index: 1;
+    font-size: 49px;
+    top: 154px;
+    position: absolute;
+    letter-spacing: 3px;
+}
+
+
+.banner-container .search-box{
+    position: absolute;
+    top: 301px;
+    right: 32rem;
+}
+
+.banner-container .search-box input{
+    border: none;
+    outline: none;
+    background: white;
+    padding: 12px;
+    width: 28rem;
+    border-radius: 10px 0 0 10px;
+    font-size: 23px;
+}
+
+.banner-container .search-box button{
+    border: antiquewhite;
+    outline: none;
+    padding: 9px 23px;
+    border-radius: 0 11px 11px 0;
+    font-size: 27px;
+    position: absolute;
+    right: -73px;
+    background: #d33737;
+    color: white;
+}
+
+
+
+
+
+/* =============================HOMES================================= */
+
+#homes{
+    margin-top: 6rem;
+    margin-bottom: 5rem;
+}
+
+#homes .homes-header{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+
+#homes .homes-header h2{
+    font-size: 39px;
+    color: #4e4d4d;
+}
+
+#homes .homes-header P{
+    font-size: 15px;
+} 
+
+
+
+
+.home-slider .large-container{
+    width: 200px;
+    height: 300px;
+
+}
+    
+
+.large-image{
+    width: 17rem;
+    height: 23rem;
+    margin-left: 5px;
+    position: relative;
+}
+
+
+
+
+.large-image img{
+    width: 17rem;
+    height: 23rem;
+    margin-left: 5px;
+    border-radius: 10px;
+    object-fit: fill;
+}
+
+.large-image .overlay{
+    position: absolute;
+    top: 0;
+    left: 6px;
+    width: 100%;
+    height: 100%;
+    background: #00000080;
+    z-index: 1;
+    border-radius: 7px;
+    opacity: .1;
+}
+
+.large-container .large-image h2{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    color: white !important;
+    font-size: 25px;
+    left: 33px;
+    top: 14px;
+}
+
+.large-container .large-image .view-home-buttons{
+    position: absolute;
+    z-index: 2;
+    bottom: 10px;
+    color: black !important;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 7px 18px;
+    opacity: .9;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+
+.large-container .large-image .view-home-buttons p{
+    margin-right: 10px;
+}
+
+
+
+
+
+
+.small-container{
+    margin-left: 1rem;
+}
+
+
+.small-container .image1{
+    border-radius: 10px;
+    width: 17rem;
+    height: 11rem;
+    position: relative;
+}
+
+.small-container .image1 img{
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 17rem;
+    height: 11rem;
+}
+
+
+
+.small-container .overlay{
+    position: absolute;
+    top: 0;
+    left: 6px;
+    width: 100%;
+    height: 100%;
+    background: #00000080;
+    z-index: 1;
+    border-radius: 7px;
+    opacity: .1;
+}
+
+
+.small-container .image1 h2{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    color: white !important;
+    font-size: 25px;
+    left: 18px;
+    top: 14px;
+}
+
+.small-container .image1 .view-home-buttons{
+    position: absolute;
+    z-index: 2;
+    bottom: 10px;
+    color: black !important;
+    left: 22px;
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 7px 18px;
+    opacity: .9;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.small-container.image1 .view-home-buttons p{
+    margin-right: 10px;
+}
+
+
+
+.small-container .image2{
+    border-radius: 10px;
+    width: 17rem;
+    height: 11rem;
+    position: relative;
+    margin-top: 6px;
+}
+
+.small-container .image2 img{
+    border-radius: 10px;
+    width: 17rem;
+    height: 184px;
+}
+
+
+
+.small-container .image2 h2{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    color: white !important;
+    font-size: 25px;
+    left: 18px;
+    top: 14px;
+}
+
+.small-container .image2 .view-home-buttons{
+    position: absolute;
+    z-index: 2;
+    bottom: 2px;
+    color: black !important;
+    left: 22px;
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 3px 15px;
+    opacity: .9;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.small-container.image2 .view-home-buttons p{
+    margin-right: 10px;
+}
+
+
+
+/* =======================Newly Listed Homes================================================= */
+
+#newly-listed-homes{
+    margin-top: 7rem;
+}
+
+#newly-listed-homes a{
+    /* margin-top: 7rem; */
+    text-decoration: none;
+}
+
+
+#newly-listed-homes .homes-header{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+
+#newly-listed-homes h2{
+    font-size: 39px;
+    color: #4e4d4d;
+}
+
+
+#newly-listed-homes .image{
+    width: 230px;
+    border-radius: 8px;
+    margin-right: 10px;
+    margin-left: 10px;
+    position: relative;
+    /* border: 1px solid black; */
+}
+
+
+#newly-listed-homes .staus-label{
+    position: absolute;
+    top: 9px;
+    right: 160px;
+}
+
+
+#newly-listed-homes .staus-label #rent{
+    background: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #28d328;
+}
+
+#newly-listed-homes .staus-label #sold{
+    background: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;
+    color: red;
+}
+#newly-listed-homes .staus-label #sell{
+    background: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #28d328;
+}
+
+#newly-listed-homes .staus-label #rented{
+    background: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;
+    color: red;
+}
+
+#newly-listed-homes .staus-label #Booked{
+    background: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;
+    color: red;
+}
+
+
+
+#newly-listed-homes .image img{
+    width: 230px;
+    border-radius: 8px;
+    height: 200px;
+}
+
+#newly-listed-homes .image .date_price{ 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+}
+
+#newly-listed-homes .image h3{ 
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #484242
+}
+
+
+
+
+
+
+
+
+#newly-listed-homes .room-info{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    padding: 5px;
+    font-size: 15px;
+    color: #646161
+}
+
+.bed{
+    display: flex;
+    text-align: center;
+}
+
+#newly-listed-homes .room-info .bed, .bat, .area{
+    display: flex;
+    align-items: center;
+}
+
+
+#newly-listed-homes .room-info p{
+   padding-left: 5px;
+}
+
+
+#newly-listed-homes .room-title{
+    font-weight: 500;
+    font-size: 15px;
+    color: #383838;
+ }
+
+#newly-listed-homes .address{
+font-size: 16px;
+ font-weight: 500;
+ color:#5137df;
+ }
+
+
+/* ========================================================================== */
+
+
+
+#buy_sale{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+ 
+
+
+#buy_sale .buy_sale_body{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+
+
+}
+
+#buy_sale .buy_sale_body .header h2{
+    font-size: 39px;
+    color: #4e4d4d;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+
+
+}
+
+
+#buy_sale .buy_sale_body .filter-body{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+ 
+ 
+ }
+
+
+ #buy_sale .buy_sale_body .filter-body img{ 
+    width: 100px;
+    height: 100px;
+ }
+
+ #buy_sale .buy_sale_body .buy-home, .Sale-home, .PG-home{
+    width: 19rem;
+    margin-right: 10px;
+ }
+
+
+ #buy_sale .buy_sale_body .filter-body h2{ 
+    font-size: 25px;
+    color: #3e3a3a;
+    margin-top: 10px;
+    margin-bottom: 15px;
+ }
+
+ #buy_sale .buy_sale_body .filter-body p{ 
+    font-size: 16px;
+    color: #645f5f;
+    margin-bottom: 23px;
+ }
+
+
+ #buy_sale .buy_sale_body .filter-body a{ 
+    text-decoration: none;
+    background: blue;
+    padding: 9px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    margin-top: 1rem;
+ }
+
+
+
+ #buy_sale .buy_sale_body .filter-body a:hover{
+    background: white;
+    color: black;
+    border: 1px solid black;  
+ }
+
+
+ /* ======================================================================= */
+
+/*------------------------ footer */
+
+
+
+
+
+/* ========================Login_Register======================================= */
+.section-container{
+    position: relative;
+}
+
+.overlay-2{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, .9);
+    overflow-y: hidden;
+    z-index: 2;
+    display: none;
+}
+
+.login_register_container{
+    position: fixed;
+    width: 395px;
+    height: 518px;
+    background-color: white;
+    /* z-index: 100; */
+    top: 69px;
+    left: 36%;
+    z-index: 10;
+    /* padding: 16px; */
+    display: none;
+}
+
+
+/* ----------Login--------------- */
+
+.login_register_container .form-step{
+    display: none;
+    /* display: block; */
+}
+
+.login_register_container .form-active{
+    /* display: none; */
+    display: block;
+}
+
+
+.login_register_container .form1 .form1-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ededed;
+    padding: 10px 10px 10px 17px;
+    align-items: center;
+}
+
+.login_register_container .form1 .form1-header h4{
+    font-size: 18px;
+} 
+
+.login_register_container .form1 .form1-header i{
+    font-size: 19px;
+    cursor: pointer;
+}  
+
+
+.login_register_container .form1 form{
+    padding: 10px 10px 10px 17px;
+    margin-top: 18px;
+}
+
+
+.login_register_container .form1 .form-input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+} 
+
+.login_register_container .form1 .form-input label{
+    font-weight: 500;
+    margin-bottom: 8px;
+} 
+
+.login_register_container .form1 .form-input input{
+
+    padding: 13px;
+    outline: none;
+} 
+
+.login_register_container .form1 .forgot-password{
+    display: flex;
+    text-align: right;
+    justify-content:flex-end;
+}
+
+.login_register_container .form1 .forgot-password a{
+    
+    color: rgb(7 149 129);
+    font-weight: 600;
+}
+
+.login_register_container .form1 button{
+    background-color: #268bff;
+    padding: 8px 10rem;
+    margin-top: 19px;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 21px;
+}
+
+.login_register_container .form1 button:hover{
+    background-color: #08a36e;
+}
+
+.login_register_container .form1 .register_div{
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.login_register_container .form1 .register_div span{
+    display: flex;    
+}
+
+.login_register_container .form1 .register_div p{
+    color: #08a36e;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* ----------Login End--------------- */
+
+/* ----------Register--------------- */
+
+
+.login_register_container .form2 .form2-header h4{
+    font-size: 18px;
+}  
+
+.login_register_container .form2 .form2-header i{
+    font-size: 19px;
+    cursor: pointer;
+}  
+
+.login_register_container .form2 .form2-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ededed;
+    padding: 10px 10px 10px 17px;
+    align-items: center;
+}
+
+.login_register_container .form2 form{
+    padding: 10px 10px 10px 17px;
+    margin-top: 18px;
+}
+
+.login_register_container .form2 .form-input-names{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.login_register_container .form2 .form-input-names input{
+    width: 179px;
+    margin-right: 11px;
+    padding: 7px;
+    outline: none;
+    border: 1px solid #c1c1c1;
+}
+
+
+.login_register_container .form2 .form-input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+} 
+
+.login_register_container .form2 .form-input label{
+    font-weight: 400;
+    margin-bottom: 5px;
+} 
+
+.login_register_container .form2 .form-input input{
+
+    padding: 7px;
+    outline: none;
+    border: 1px solid #c1c1c1;
+
+} 
+
+.login_register_container .form2 .forgot-password{
+    display: flex;
+    text-align: right;
+    justify-content:flex-end;
+}
+
+.login_register_container .form2 .forgot-password a{
+    
+    color: rgb(7 149 129);
+    font-weight: 600;
+}
+
+.login_register_container .form2 button{
+    background-color: #373838;
+    padding: 6px 7rem;
+    margin-top: 19px;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 21px;
+    width: 100%;
+}
+
+.login_register_container .form2 button:hover{
+    background-color: #08a36e;
+}
+
+.login_register_container .form2 .term_and_services_div{
+    margin-top: 18px;
+    font-weight: 400;
+    font-size: 14px
+}
+
+.login_register_container .form2 .term_and_services_div a{
+    color: #08a36e;
+    margin: 0 3px;
+}
+
+.login_register_container .form2 .barrier-line{
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+}
+
+.login_register_container .form2 .barrier-line div{
+    width: 165px;
+    height: 1px;
+    background-color: #373838;
+}
+
+.login_register_container .form2 .barrier-line p{
+    margin: 0 6px;
+    font-weight: 600;
+    color: rgb(148, 148, 147);
+}
+
+
+.login_register_container .form2 .signIn_div{
+    margin-top: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.login_register_container .form2 .signIn_div span{
+    display: flex;
+}
+
+
+.login_register_container .form2 .signIn_div p{
+    color: #08a36e;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+
+
+
+/* ----------Register End--------------- */
+
+
+
+
+
+

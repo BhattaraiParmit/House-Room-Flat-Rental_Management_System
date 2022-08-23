@@ -1,0 +1,511 @@
+<!-- <!DOCTYPE html> -->
+{% load static %}
+
+{% load socialaccount %}
+
+{% if request.user.is_authenticated %}
+
+
+  {% get_social_accounts user as accounts %}
+
+{% endif %}
+
+
+
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Bree+Serif&family=Ubuntu&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<link rel="stylesheet" href="{% static 'CSS/app/navbar.css' %}">
+
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    
+    <a class="navbar-brand" href="/">Shelter</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item buy-link">
+          <a class="nav-link">Buy</a>
+
+          <div class="buy-link-dropbox">
+            <div class="buy-link-body">
+              <div class="buy-home-list">
+                <a href="{% url 'get_selected_homes' 'Sell' %}">
+                  <div class="logo options-list">
+                    <p>Home for sale</p>
+                  </div>
+                </a>
+
+                <a href="{% url 'getNewHomes' %}">
+                  <div class="logo options-list">
+                    <p>New Homes</p>
+                  </div>
+                </a>
+
+                <a href="{% url 'getSoldHomes' %}">
+                  <div class="logo options-list">
+                    <p>Recently Sold</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item rent-link">
+          <a class="nav-link" href="#">Rent</a>
+
+          <div class="rent-link-dropbox">
+            <div class="rent-link-body">
+              <div class="rent-home-list">
+
+                <a href="{% url 'get_selected_homes' 'Rent' %}">
+                  <div class="logo options-list">
+                    <p>All Rental</p>
+                  </div>
+                </a>
+
+                <a href="{% url 'getPropertyByType' 'House' %}">
+                  <div class="logo options-list">
+                    <p>house for rent </p>
+                  </div>
+                </a>
+
+                <a href="{% url 'getPropertyByType' 'Apartment' %}">
+                  <div class="logo options-list">
+                    <p>Apartments for rent</p>
+                  </div>
+                </a>
+
+                <a href="{% url 'post_property' %}">
+                  <div class="logo options-list">
+                    <p>Post for rent </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="nav-item-second">
+          <a class="nav-link" href="{% url 'property-list' %}">Your Properties</a>
+          
+      </div>
+
+      <div class="nav-item-second">
+          <a class="nav-link" href="{% url 'savedHomesSection'  %}">Favourites</a>
+          
+      </div>
+
+
+      
+        <div class="nav-item-second post-property">
+            <a class="nav-link" href="{% url 'post_property' %}">Post Property</a>
+        </div>
+      
+
+
+      {% if request.user.is_authenticated %}
+
+      <div class="profile-link">
+          <div class="profile-section">
+              <div class="authenticated-profile">
+                <div class="image">
+                  <img src="{{request.user.profile.url}}" alt="">
+                </div>
+              </div>
+          </div>
+
+          <div class="navbar-profile-section-dropbox">
+            <div class="profile-section-body">
+
+              {% if request.user.is_authenticated %}
+              <h5>{{request.user.username}}</h5>
+              <hr>
+
+              <div class="profile-section-list">
+               
+                <a href="{% url 'property-list' %}">
+                  <div class="logo options-list">
+                    <p>Manage Properties</p>
+                  </div>
+                </a>
+
+                <a href="{% url 'profilePage'  request.user.id %}">
+                  <div class="logo options-list">
+                    <p>Manage Profile</p>
+                  </div>
+                </a>
+
+                {% if accounts %}
+
+              
+                {% else %}
+                <a href="{% url 'changePassword' %}">
+                  <div class="logo options-list">
+                    <p>Change Password</p>
+                  </div>
+                </a>
+
+                {% endif %}
+
+
+                <a href="{% url 'logout' %}">
+                  <div class="logo options-list">
+                    <p>Logout</p>
+                  </div>
+                </a>
+
+                <hr>
+              </div>
+             
+              {% endif %}
+            </div>
+
+        </div>
+      </div>
+
+      {% else %}
+
+        <a href="{% url 'login' %}">
+          <div class="login-register-section">
+            <p href="#">Sign up or Log in</p>
+          </div>
+        </a>
+      
+
+      {% endif %}
+        
+    
+      <div class="menu-item">
+        
+          <i class="menu fa-solid fa-bars sidebar-toggle-menu"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="side-navbar">
+      <div class="side-nav-header">
+        <i class="fa-solid fa-xmark side-navbar-close"></i>
+      </div>
+
+      <div class="side-nav-profileSection">
+        {% if request.user.is_authenticated %}
+
+        <div class="profile-header">
+          <div class="profile-name">
+            <i class="fa-solid fa-user"></i>
+            <p>Pramit Bhattarai</p>
+          </div>
+          <i class="fa-solid fa-angle-down profile-down"></i>
+        </div>
+
+        <div class="profile-body">
+          <a href="{% url 'profilePage' request.user.id %}">
+            <div class="profile-body-item">
+              <p>Manage Profile</p>
+            </div>
+          </a>
+
+          <a href="{% url 'property-list' %}">
+            <div class="profile-body-item">
+              <p>Manage Properties</p>
+            </div>
+          </a>
+
+          <a href="{% url 'savedHomesSection' %}">
+            <div class="profile-body-item">
+              <p>Saved Homes</p>
+            </div>
+          </a>
+
+          <a href="{% url 'changePassword' %}">
+            <div class="profile-body-item">
+              <p>Change Password </p>
+            </div>
+          </a>
+
+          <a href="{% url 'logout' %}">
+            <div class="profile-body-item">
+              <p>Logout</p>
+            </div>
+          </a>
+        </div>
+
+        {% else %}
+        <a href="{% url 'login' %}">
+          <div class="login-register-section">
+            <p href="#">Sign up or Log in</p>
+          </div>
+        </a>
+        {% endif %}
+      </div>
+
+
+      <div class="Buy-Section">
+        <div class="Buy-header">
+          <p>Buy</p>
+          <i class="fa-solid fa-angle-down buy-down"></i>
+        </div>
+
+        <div class="Buy-body">
+          
+          <a href="{% url 'get_selected_homes' 'Sell' %}">
+            <div class="buy-body-item">
+              <p>Home for sale</p>
+            </div>
+          </a>
+
+          <a href="{% url 'getNewHomes' %}">
+            <div class="buy-body-item">
+              <p>New home</p>
+            </div>
+          </a>
+
+          <a href="{% url 'getSoldHomes' %}">
+            <div class="buy-body-item">
+              <p>Recently sold</p>
+            </div>
+          </a>
+        </div>
+
+
+      </div>
+
+      <div class="Rent-Section">
+        <div class="Rent-header">
+          <p>Rent</p>
+          <i class="fa-solid fa-angle-down rent-down"></i>
+        </div>
+
+        <div class="Rent-body">
+          
+          <a href="{% url 'get_selected_homes' 'Rent' %}">
+            <div class="rent-body-item">
+              <p>Home for Rent</p>
+            </div>
+          </a>
+
+          <a href="{% url 'getNewHomes' %}">
+            <div class="rent-body-item">
+              <p>New home</p>
+            </div>
+          </a>
+
+          <a href="{% url 'getSoldHomes' %}">
+            <div class="rent-body-item">
+              <p>Recently sold</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <a href="{% url 'property-list' %}">
+        <div class="Listing-Section">
+          <p>Listing</p>
+        </div>
+      </a>
+      <a href="{% url 'savedHomesSection' %}">
+        <div class="Saved-Section">
+          <p>Saved Homes</p>
+        </div>
+      </a>
+
+      <a class="post-property" href="{% url 'post_property' %}">
+        <div class="PostProperty-Section">
+          <p>Post Property</p>
+        </div>
+      </a>
+     
+  </div>
+  
+</nav>
+
+
+
+<script>
+  
+  console.log("hello")
+  const navbar = document.querySelector('.navbar')
+
+  let navRent = document.querySelector('.rent-link')
+
+
+  let navSale = document.querySelector('.buy-link')
+  let navbarRentDropbox = document.querySelector('.rent-link-dropbox')
+  let navbarSaleDropbox = document.querySelector('.buy-link-dropbox')
+
+
+  let profileLink = document.querySelector('.profile-link')
+  let profileDropBox = document.querySelector('.navbar-profile-section-dropbox')
+
+  let sideNavbar = document.querySelector('.side-navbar')
+
+
+  let profileBody = document.querySelector('.profile-body')
+  let buyBody = document.querySelector('.Buy-body')
+  let rentBody = document.querySelector('.Rent-body')
+
+  let buyDown = document.querySelector('.buy-down')
+  let rentDown = document.querySelector('.rent-down')
+  let profileDown = document.querySelector('.profile-down')
+
+
+  let sideNavbarClose = document.querySelector('.side-navbar-close')
+  let menuItem = document.querySelector('.menu-item')
+
+
+
+  menuItem.addEventListener('click', ()=>{
+    sideNavbar.classList.add('show-side-navbar')
+  })
+
+  sideNavbarClose.addEventListener('click', ()=>{
+    sideNavbar.classList.remove('show-side-navbar')
+
+  })
+
+
+
+  sideNavbar.addEventListener('click', (e)=>{
+
+    console.log(e.target)
+
+    const profileHeader = e.target.closest('.profile-header')
+    const buyHeader = e.target.closest('.Buy-header')
+    const rentHeader = e.target.closest('.Rent-header')
+    // const profileArrowDown = e.target.closest('.profile-down')
+  
+
+   
+
+
+
+    if(profileHeader){
+      profileBody.classList.toggle('show-profile-body')
+
+      if(profileDown.classList.contains('fa-angle-down')){
+        profileDown.classList.remove('fa-angle-down')
+        profileDown.classList.add('fa-angle-up')
+      }else{
+        profileDown.classList.remove('fa-angle-up')
+        profileDown.classList.add('fa-angle-down')
+      }
+
+
+
+    }
+
+
+    if(buyHeader){
+      buyBody.classList.toggle('show-buy-body')
+
+      if(buyDown.classList.contains('fa-angle-down')){
+        buyDown.classList.remove('fa-angle-down')
+        buyDown.classList.add('fa-angle-up')
+      }else{
+        buyDown.classList.remove('fa-angle-up')
+        buyDown.classList.add('fa-angle-down')
+      }
+    }
+
+
+    if(rentHeader){
+      rentBody.classList.toggle('show-rent-body')
+
+      if(rentDown.classList.contains('fa-angle-down')){
+        rentDown.classList.remove('fa-angle-down')
+        rentDown.classList.add('fa-angle-up')
+      }else{
+        rentDown.classList.remove('fa-angle-up')
+        rentDown.classList.add('fa-angle-down')
+      }
+      
+    }
+
+  })
+
+
+
+
+
+
+  
+  navbar.addEventListener('click', (e) =>{
+    const navBuy = e.target.closest('buy-link')
+    const navRent = e.target.closest('rent-link')
+
+    
+    
+
+  })
+  
+    navRent.addEventListener('mouseover', () =>{
+
+      navbarRentDropbox.style.display = "block"
+      
+    })
+
+
+
+    navRent.addEventListener('mouseout', () =>{
+
+      navbarRentDropbox.style.display = "none"
+    })
+
+
+    navSale.addEventListener('mouseover', () =>{
+
+      navbarSaleDropbox.style.display = "block"
+  
+    })
+
+
+
+    navSale.addEventListener('mouseout', () =>{
+
+      navbarSaleDropbox.style.display = "none"
+    
+    })
+
+    if(profileLink){
+      console.log("hello")
+    }
+
+
+    if(profileLink){
+          profileLink.addEventListener('mouseover', () =>{
+
+              profileDropBox.style.display = "block"
+
+
+          })
+
+
+          profileLink.addEventListener('mouseout', () =>{
+
+              profileDropBox.style.display = "none"
+
+
+          })
+
+      }
+</script>
+   

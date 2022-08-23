@@ -1,0 +1,1239 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* background-color: red;   */
+}
+
+body{
+    min-height: 100vh;
+    /* background-color: red; */
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.nav-item{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.navbar{
+    padding: 10px;
+}
+
+.headphone{
+    background-color: rgb(192, 190, 190);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profile-section{
+    display: flex;
+    align-items: center;
+}
+
+.profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(119, 205, 255);
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    margin-right:5px;
+}
+
+.profile p{
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+
+.profile-section i{
+    font-size: 15px;
+}
+
+
+.menu{
+    color: black;
+    font-size: 21.5px;
+}
+/* ======================= Post_property_section ========================================= */
+
+.primary-columns{
+    display: flex;
+
+}
+
+
+.primary-columns .first-column{
+    width: 70%;
+    /* background-color: green; */
+    display: flex;
+    padding: 30px;
+}
+
+.primary-columns .first-column .progress-section{
+    width: 40%;
+
+  
+}
+
+
+
+.first-column .progress-container{
+    width: 280px;
+    height: 400px;
+    padding: 33px;
+    border-radius: 5px;
+    background-color: rgb(233 239 239);
+    display: flex;
+}
+
+
+.first-column .progress-container .progressbar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: rgb(233 239 239); */
+    /* background-color: red; */
+    height: 100%;
+    position: relative;
+    /* border-radius: 5px; */
+}
+
+.progressbar .progress-box{
+    display: flex;
+    /* position: relative; */
+    /* background-color: yellow;
+    position: absolute;
+    bottom: 0; */
+    /* background-color: red; */
+}
+
+
+
+
+
+
+
+
+.progressbar::before,
+.progress-line {
+  content: "";
+  position: absolute;
+  left: 12px;
+  width: 2px;
+  height: 310px ;
+  /* height: 100%; */
+  background-color: rgb(160, 158, 158);
+  z-index: 1;
+}
+
+.progress-line{
+    background-color: rgb(11, 78, 179);
+    height: 0%;
+    transition: 0.3s;
+}
+
+
+.progress-label{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+
+
+
+.first-column .progress-container .progressbar .progress-step{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color:  white;
+    /* background-color: red; */
+    z-index: 10;
+    border: 1px solid rgb(109, 105, 105);
+    margin-right: 10px;
+
+}
+
+.progress-step-active{
+    background-color:  rgb(11, 78, 179) !important;
+    z-index: 3;
+    width: 200px;
+}red
+
+
+.primary-columns .first-column .form-section{
+    width: 60%;
+    /* background-color: green; */
+
+}
+
+
+
+
+
+
+
+/* ----------------------------form section ------------------------------- */
+
+.form1 h1{
+    font-size: 26px;
+    margin-bottom: 40px;
+}
+
+.form-category{
+    margin-bottom: 40px;
+}
+
+.form-section .prev-btn{
+    cursor: pointer;
+}
+
+.form-section .prev-btn:hover{
+    color: red;
+
+
+}
+
+.form1 .form-category h4{
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+
+.form1 .form-category .form-body input[type="radio"]{
+    display: none;
+}
+
+
+.form1 .form-category .form-body label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 12px;
+    margin-right: 10px;
+
+}
+
+.form1 .form-category .form-body label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.form1 .form-category .form-body input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+.form1 .form-type h4{
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.form1 .form-type .form-body input[type="radio"]{
+    display: none;
+}
+
+.form1 .form-type .form-body label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 12px;
+    margin-right: 10px;
+
+}
+
+
+
+.form1 .form-type .form-body label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.form1 .form-type .form-body input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+
+.form1 .btn-next{
+    background-color: #2d9dd9;
+    color: white;
+    padding: 8px 21px;
+    border-radius: 5px;
+    margin-top: 35px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    
+}
+
+
+.form-step{
+    display: none;
+}
+
+.form-step-active{
+    display: block;
+}
+
+
+/* =================== second-column========================= */
+.primary-columns .second-column{
+    width: 30%;
+    /* height: 100%; */
+}
+
+.second-column .detail-section{
+    width: 329px;
+    /* height: 566px; */
+    height: 90vh;
+    background-color:rgb(244 246 247);
+    display: flex;
+    align-items: flex-end;
+    /* justify-content: center; */
+    /* text-align: center; */
+    justify-content:space-evenly;
+}
+
+.second-column .detail-section .detail-body{
+    color: rgb(149 148 148);
+    font-size: 13px;
+    margin-left: 47px;
+    margin-bottom: 31px;
+}
+.second-column .detail-section .detail-body span{
+    color: rgb(63, 51, 235);
+}
+
+.second-column .detail-section .detail-body .help{
+    display: flex;
+    align-items: center;
+
+}
+
+
+.second-column .detail-section .detail-body .help i{
+    margin-right: 10px;
+}
+
+
+/* =========================== form2=================================== */
+.form2{
+    color: #ada9a9;
+}
+
+
+.form2 .form2-body .back-options{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #ada9a9;
+    margin-bottom: 20px;
+}
+
+.form2 .form2-body .back-options p{
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.form2 .form2-body h1{
+    font-size: 26px;
+    color: black;
+}
+
+.form2 .form2-body input{
+    padding: 12px;
+    width: 250px;
+    display: block;
+    font-size: 20px;
+    border: 1px solid #bbbbbb;
+    outline: none;
+    margin-top: 20px;
+}
+
+.form2 .btn-next{
+    background-color: #2d9dd9;
+    color: white;
+    padding: 8px 21px;
+    border-radius: 5px;
+    margin-top: 35px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* ====================== form3================================= */
+
+.form3  .back-options{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #ada9a9;
+    margin-bottom: 20px;
+}
+
+.form3 .back-options p{
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+
+
+.form3  h1{
+    font-size: 26px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.form3 .room-details .room_detail_body{
+    margin-bottom: 15px;
+}
+.form3 .room-details .header_icons{
+    display: flex;
+    align-items: center;
+}
+
+.form3 .room-details .header_icons h4{
+    font-size: 19px;
+    margin-right: 15px;
+}
+
+.form3 .room-details .header_icons .room-detail-explainations{
+    font-size: 15px;
+    color: red;   
+    display: none; 
+}
+
+.form3 .room-details .room-detail-error-message{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+/* ------------- bedroooms---------------------- */
+.form3 .room-details .bedrooms{
+    margin-bottom: 20px;
+}
+
+.form3 .room-details .bedrooms p{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 7px;
+
+}
+
+
+
+.form3 .room-details .bedrooms input[type="radio"]{
+    display: none;
+}
+
+.form3 .room-details .bedrooms label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 10px;
+    margin-right: 10px;
+
+}
+
+.form3 .room-details .bedrooms label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.form3 .room-details .bedrooms input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+/* -------------------bathroooms--------------------- */
+
+.form3 .room-details .bathrooms{
+    margin-bottom: 20px;
+}
+
+.form3 .room-details .bathrooms p{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+
+
+.form3 .room-details .bathrooms input[type="radio"]{
+    display: none;
+}
+
+.form3 .room-details .bathrooms label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 10px;
+    margin-right: 10px;
+
+}
+
+.form3 .room-details .bathrooms label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.form3 .room-details .bathrooms input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+/* ------------------Balconies--------------------------------- */
+
+.form3 .room-details .balconies{
+    margin-bottom: 20px;
+}
+
+.form3 .room-details .balconies p{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+
+
+
+.form3 .room-details .balconies input[type="radio"]{
+    display: none;
+}
+
+.form3 .room-details .balconies label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 10px;
+    margin-right: 10px;
+
+}
+
+.form3 .room-details .balconies label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.form3 .room-details .balconies input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+
+/* ---------------Furnishing------------------------------------ */
+.form3 .furshing{
+    margin-bottom: 30px;
+}
+
+
+.form3 .furshing .furnishing_detail_body{
+    margin-bottom: 15px;
+}
+.form3 .furnishing_detail_body .header_icons{
+    display: flex;
+    align-items: center;
+}
+
+.form3 .furnishing_detail_body .header_icons h4{
+    font-size: 19px;
+    margin-right: 15px;
+}
+
+.form3 .furnishing_detail_body .header_icons i{
+    font-size: 15px;
+    color: red;    
+    display: none;
+
+}
+
+.form3 .furnishing_detail_body .error-message{
+    color: red;
+    font-size: 12px;
+    display: none;
+
+}
+
+
+.form3 .furnishing-btns input[type="radio"]{
+    display: none;
+}
+
+.form3 .furnishing-btns label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 10px;
+    margin-right: 10px;
+
+}
+
+.form3 .furnishing-btns label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.form3 .furnishing-btns input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+
+/* -----------------Property_age-------------------------------------------------- */
+.form3 .property_age{
+    margin-bottom: 30px;
+}
+
+
+.form3 .property_age .property_age_detail_body{
+    margin-bottom: 15px;
+}
+.form3 .property_age .property_age_detail_body .header_icons{
+    display: flex;
+    align-items: center;
+}
+
+.form3 .property_age .property_age_detail_body .header_icons h4{
+    font-size: 19px;
+    margin-right: 15px;
+}
+
+.form3 .property_age .property_age_detail_body .header_icons i{
+    font-size: 15px;
+    color: red;    
+    display: none;
+
+}
+
+.form3 .property_age .property_age_detail_body .error-message{
+    color: red;
+    font-size: 12px;
+    display: none;
+
+}
+
+
+.form3 .property_age-btns input[type="radio"]{
+    display: none;
+}
+
+.form3 .property_age-btns label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 10px;
+    margin-right: 10px;
+
+}
+
+.form3 .property_age-btns label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.form3 .property_age-btns input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+/* ------------------------Rent Out To--------------------------- */
+
+.form3 .rent_out_to{
+    margin-bottom: 30px;
+}
+
+
+.form3 .rent_out_to .rent_out_to_detail_body{
+    margin-bottom: 15px;
+}
+.form3 .rent_out_to .rent_out_to_detail_body .header_icons{
+    display: flex;
+    align-items: center;
+}
+
+.form3 .rent_out_to .rent_out_to_detail_body .header_icons h4{
+    font-size: 19px;
+    margin-right: 15px;
+}
+
+.form3 .rent_out_to .rent_out_to_detail_body .header_icons i{
+    font-size: 15px;
+    color: red;   
+    display: none;
+
+}
+
+.form3 .rent_out_to .rent_out_to_detail_body .error-message{
+    color: red;
+    font-size: 12px;
+    display: none;
+
+}
+
+
+.form3 .rent_out_to-btns input[type="radio"]{
+    display: none;
+}
+
+.form3 .rent_out_to-btns label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 10px;
+    margin-right: 10px;
+
+}
+
+.form3 .rent_out_to-btns label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.form3 .rent_out_to-btns input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+.form3 .btn-next{
+    background-color: #2d9dd9;
+    color: white;
+    padding: 8px 21px;
+    border-radius: 5px;
+    margin-top: 35px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+
+/* ===================Form4 ============================================= */
+
+
+.form4  .back-options{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #ada9a9;
+    margin-bottom: 20px;
+}
+
+.form4 .back-options p{
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+
+
+.form4  h1{
+    font-size: 26px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+
+.form4 .photos-section h4{
+    font-size: 15px;
+    margin-right: 15px;
+    font-weight: 600;
+}
+
+
+.form4 .picture-section{
+    display: flex;
+    flex-wrap: wrap;
+    /* background-color: red; */
+    width: 32rem
+}
+
+
+.form4 .image-container{
+    /* background-color: red; */
+    display: flex;
+    flex-wrap: wrap;
+ }
+
+.form4 .image{
+    width: 233px;
+    height: 159px;
+    margin-right: 15px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.form4 .image-container img{
+    object-fit: fill;
+    width: 233px;
+    height: 159px;
+
+}
+
+.form4 .image-container .fa-trash{
+    position: absolute;
+    top: 11px;
+    right: 19px;
+    color: white;
+    cursor: pointer;
+}
+
+
+.form4 .image-container .cover-zoom{
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+
+.form4 .image-container .cover-zoom .make-cover-photo{
+    background-color: #fbfbfb;
+    position: relative;
+    padding: 4px;
+    margin-left: 10px;
+    padding-left: 30.4px;
+    color: #5a5959;
+    font-weight: 400;
+    padding-right: 9px;
+    font-size: 12px;
+}
+
+.form4 .image-container .cover-zoom .make-cover-photo::before{
+    content: '';
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: 1px solid black;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    margin-left: 5px;
+}
+
+.form4 .image-container .cover-zoom .cover-photo-btn{
+    background: black;
+    font-size: 13px;
+    padding: 2px 5px;
+    cursor: pointer;
+    color: white;
+    /* padding: 0; */
+    margin: 0;
+
+}
+
+
+.form4 .image-container .cover-zoom i{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+
+.form4 .card{
+    border: 1px dashed #94cbd1;
+    background: #eef8f9;
+    display: flex;
+    align-items: center;
+    margin-top: 3rem;
+    width: 30rem;
+    height: 13rem;
+    justify-content: center;
+    /* display: none; */
+    
+}
+
+
+/* .form4 .card-minimize{
+
+} */
+
+
+.form4 .card i{
+    font-size: 2.5rem;
+    color: #2c75c5;
+    margin-bottom: 15px;
+}
+
+.form4 .card p{
+    font-size: 15px;
+    color: #b0b0b1;
+    /* margin-bottom: 15px; */
+}
+
+.form4 .card small{
+    font-size: 12px;
+    color: #b0b0b1;
+    /* margin-bottom: 15px; */
+}
+
+
+.form4 .card #or{
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form4 .card #card-upload-btn{
+    margin-top: 10px;
+    /* background: blue; */
+    border: 1px solid blue;
+    /* border: none; */
+    outline: none;
+    color: blue;
+    padding: 7px 12px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2), 1px 1px 1px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+}
+
+.form4 .card input{
+    display: none;
+}
+
+
+
+
+
+
+/* -------------------------------------- */
+
+.form4 .small-card-container{
+    display: none;
+}
+
+.form4 .small-card{
+    border: 1px dashed #94cbd1;
+    background: #eef8f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-top: 3rem; */
+    width: 14rem;
+    height: 13rem;
+    justify-content: center;
+    text-align: center;
+    margin-right: 20px;
+
+}
+
+
+.form4 .small-card i{
+    font-size: 1.5rem;
+    color: #2c75c5;
+    margin-bottom: 15px;
+}
+
+.form4 .small-card p{
+    font-size: 15px;
+    color: #b0b0b1;
+    /* margin-bottom: 15px; */
+}
+
+.form4 .small-card small{
+    font-size: 10px;
+    color: #b0b0b1;
+    /* margin-bottom: 15px; */
+}
+
+
+.form4 .small-card #or{
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form4 .small-card #small-upload-btn{
+    margin-top: 10px;
+    border: 1px solid blue;
+    outline: none;
+    color: blue;
+    padding: 9px 10px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 20%), 1px 1px 1px 0 rgb(0 0 0 / 19%);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.form4 .small-card input{
+    display: none;
+}
+
+
+
+
+.form4 .btn-next{
+    background-color: #2d9dd9;
+    color: white;
+    padding: 8px 21px;
+    border-radius: 5px;
+    margin-top: 35px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* =====================Form5 ========================================== */
+
+.form5  .back-options{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #ada9a9;
+    margin-bottom: 20px;
+}
+
+.form5 .back-options p{
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+
+
+.form5  h1{
+    font-size: 26px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.form5 .rent-details h4{
+    font-size: 15px;
+    margin-right: 15px;
+    font-weight: 600;   
+}
+
+.form5 .rent-details .price-inbox{
+    border: 1px solid black;
+    width: 250px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    
+}
+
+.form5 .rent-details .price-inbox #price-error-mssg{
+    color: red;
+    font-size: 11px;
+    position: absolute;
+    top: 0.5px;
+    left: 7px;
+    display: none;
+
+}
+
+.form5 .rent-details .price-inbox input{
+    border: 1px solid black;
+    width: 150px;
+    height: 100%;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+}
+
+.form5 .rent-details .price-inbox input::-webkit-outer-spin-button,
+.form5 .rent-details .price-inbox input::-webkit-inner-spin-button {
+
+  -webkit-appearance: none;
+
+}
+
+
+.form5 .rent-details .price-inbox .price-error-explainations{
+    color: red;
+    margin-right: 15px;
+    display: none;
+}   
+
+
+/* --------------------------Security-------------------------------------- */
+
+.form5 .security-deposite{
+    margin-bottom: 30px;
+}
+
+
+.form5 .security-deposite .security_detail_body{
+    margin-bottom: 15px;
+}
+
+.form5 .security-deposite .security_detail_body .header_icons{
+    display: flex;
+    align-items: center;
+}
+
+.form5 .security-deposite .security_detail_body .header_icons h4{
+    font-size: 19px;
+    margin-right: 15px;
+}
+
+.form5 .security-deposite .security_detail_body .header_icons i{
+    font-size: 15px;
+    color: red;    
+    display: none;
+
+}
+
+.form5 .security-deposite .security_detail_body .security-error-message{
+    color: red;
+    font-size: 12px;
+    display: none;
+
+}
+
+.form5 .security-deposite  input[type="radio"]{
+    display: none;
+}
+
+.form5 .security-deposite label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 10px;
+    margin-right: 10px;
+
+}
+
+.form5 .security-deposite label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.form5 .security-deposite input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+
+/* --------------- Negotiable---------------------------------------------- */
+
+
+
+.form5 .negotiable{
+    margin-bottom: 30px;
+}
+
+
+.form5 .negotiable .negotiable_detail_body{
+    margin-bottom: 15px;
+}
+
+.form5 .negotiable .negotiable_detail_body .header_icons{
+    display: flex;
+    align-items: center;
+}
+
+.form5 .negotiable .negotiable_detail_body .header_icons h4{
+    font-size: 19px;
+    margin-right: 15px;
+}
+
+.form5 .negotiable .negotiable_detail_body .header_icons i{
+    font-size: 15px;
+    color: red;    
+    display: none;
+
+}
+
+.form5 .negotiable .negotiable_detail_body .negotiable-error-message{
+    color: red;
+    font-size: 12px;
+    display: none;
+
+}
+
+.form5 .negotiable input[type="radio"]{
+    display: none;
+}
+
+.form5 .negotiable label{
+    position: relative;
+    border: 1px solid rgb(160, 158, 158);
+    border-radius: 47px;
+    padding: 2px 10px;
+    margin-right: 10px;
+
+}
+
+.form5 .negotiable label:hover{
+    background: rgb(237 233 233 / 70%);
+}
+
+.form5 .negotiable input[type="radio"]:checked + label{
+    background-color: rgb(231 242 255);
+    border: 1px solid rgb(164 216 219);
+}
+
+
+/* --------------------------descriptions-------------------------------------- */
+
+.form5 .descriptions .descriptions_body{
+    margin-bottom: 15px;
+}
+
+.form5 .descriptions .descriptions_body .header_icons{
+    display: flex;
+    align-items: center;
+}
+
+.form5 .descriptions .descriptions_body .header_icons h4{
+    font-size: 19px;
+    margin-right: 15px;
+}
+
+.form5 .descriptions .descriptions_body .header_icons i{
+    font-size: 15px;
+    color: red;    
+    display: none;
+}
+
+.form5 .descriptions .descriptions_body .error-message{
+    color: black;
+    font-size: 12px;
+}
+
+
+.form5 .descriptions textarea{
+    width: 434px;
+    height: 120px;
+    border: 1px solid #dfdfdf;
+    resize: none;
+    padding: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+.form5 .descriptions textarea:focus{
+    outline: none;
+}
+
+
+
+.form5 .submit-btn{
+    background-color: #2d9dd9;
+    color: white;
+    padding: 8px 21px;
+    border-radius: 5px;
+    margin-top: 35px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+
+

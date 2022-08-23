@@ -1,0 +1,322 @@
+
+{% extends 'app/Main.html' %}
+
+{% block content %}
+{% include 'app/navbar.html' %}
+
+{% load static %}
+<body>
+    <link rel="stylesheet" href="{% static 'CSS/app/room.css' %}">
+
+    <!-- <header>
+      
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/">Mero Ghar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <form action="{% url 'room' %}">
+                <input class="search-input" name="loc" type="text" placeholder="Enter Location">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </form>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto me-3 mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Post Property</a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="">
+                    <div class="profile-section">
+                      <div class="profile"><p>PB</p></div>
+                      <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                  </a>
+                </li>
+
+                <div class="nav-item">
+                  <a href="">
+                    <i class=" menu fa-solid fa-bars"></i>
+                  </a>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      
+    </header> -->
+
+
+    <section class="room-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 column1">
+                    <div class="applied-filters">
+                        <div class="applied-title">
+                            <h2>Applied Filters</h2>
+                            <p id="clear-all">Clear All</p>
+                        </div>
+                        <div class="applied-body">
+                            <!-- <div class="filter-body" onclick="removefilterDiv()">
+                                <p>2 BHK</p>
+                                <i class="fa-solid fa-xmark"></i>
+                            </div> -->
+                            
+                        </div>
+                    </div>
+                    <div class="budget">
+                        <div class="budget-title">
+                            <h2>Budget</h2>
+                            <i id="budget_arrow" class="fa-solid fa-angle-up"></i>
+                        </div>
+                        <div class="budget-body">
+                            <div class="min-price-body">
+
+                                <p id="min-label" >Min Budget</p>
+                                <i id="min_arrow" class="fa-solid fa-angle-up"></i>
+
+                                <div class="min-price-dropdown ">
+                                    <div class="min-Price-dropdown-list" data-value>Min Budget</div>
+                                    <div class="min-Price-dropdown-list" data-min-number >5000</div>
+                                    <div class="min-Price-dropdown-list" data-min-number>10000</div>
+                                    <div class="min-Price-dropdown-list" data-min-number>15000</div>
+                                    <div class="min-Price-dropdown-list" data-min-number>20000</div>
+                                    <div class="min-Price-dropdown-list" data-min-number>25000</div>
+                                    <div class="min-Price-dropdown-list" data-min-number>30000</div>
+                                    <div class="min-Price-dropdown-list" data-min-number>40000</div>
+                                    <div class="min-Price-dropdown-list" data-min-number>50000</div>
+                                </div>
+                            </div>
+
+                            <p id="to">To</p>
+
+                            <div class="max-price-body">
+                                <p id="max-label" >Max Budget</p>
+                                <i id="max_arrow" class="fa-solid fa-angle-up"></i>
+
+                                
+                                <div class="max-price-dropdown ">
+                                    <div class="max-Price-dropdown-list" data-value>Max Budget</div>
+                                    <div class="max-Price-dropdown-list" data-max-number>5000</div>
+                                    <div class="max-Price-dropdown-list" data-max-number>10000</div>
+                                    <div class="max-Price-dropdown-list" data-max-number>20000</div>
+                                    <div class="max-Price-dropdown-list" data-min-number>25000</div>
+                                    <div class="max-Price-dropdown-list" data-min-number>30000</div>
+                                    <div class="max-Price-dropdown-list" data-min-number>40000</div>
+                                    <div class="max-Price-dropdown-list" data-min-number>50000</div>
+                                </div>
+                            </div>
+                            <!-- <input class="min" name="min_price"  id="min-price" type="number" placeholder="min budget">
+                            <p>To</p>
+                            <input class="max" name="max_price" id="max-price" type="number" placeholder="max budget"> -->
+                        </div>
+                    </div>
+                    <div class="bedroom">
+                        <div class="bedroom-title">
+                            <h2>No of bedroom</h2>
+                            <i id="bedroom_arrow" class="fa-solid fa-angle-up"></i>
+                        </div>
+                        <div class="bedroom-body">
+                            
+                                <!-- <div class="bed">
+                                    <p>+ <span>{{field.choice_label}}</span>BHK</p>
+                                </div> -->
+                            
+                            {% for field in forms.bedroom %}
+                        <input class="bedroom_radio" type="radio" value="{{field.choice_label}}" name="bed"  id="bed_{{field.choice_label}}" checked>
+                            <label id="bed_label" for="bed_{{field.choice_label}}">{{field.choice_label}} BHK</label>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="property-type">
+                        <div class="property-type-title">
+                            <h2>Types of Property</h2>
+                            <i id="property_arrow" class="fa-solid fa-angle-up"></i>
+
+                        </div>
+                        <div class="property-type-body ">
+                            <!-- <div class="type">
+                                <p>+ <span>Independent/Buider Floor</span></p>
+                            </div>
+                            <div class="type">
+                                <p>+ <span>Resident Apartment</span></p>
+                            </div> -->
+                            {% for field in forms.property_type %}       
+                                <input class="property_class" value = "{{field.choice_label}}" type="radio" name="type" value="{{field.choice_label}}" id="{{field.choice_label}}" >
+                                <label id="property_type_label" for="{{field.choice_label}}">{{field.choice_label}}</label>
+                            {% endfor %}
+                           
+                        </div>
+                    </div>
+                    <div class="furnishing-status">
+                        <div class="furnishing-title">
+                            <h2>Furnishing status</h2>
+                            <i id="furnishing_arrow" class="fa-solid fa-angle-up"></i>
+                        </div>
+
+                        <div class="furnishing-body">
+                            {% for field in forms.furnishing %}
+                            <input class="furnishing_radio" type="radio" value = "{{field.choice_label}}" name="furnishing" value="{{field.choice_label}}" id="{{field.choice_label}}">
+                            <label id="furnishing_label" for="{{field.choice_label}}">{{field.choice_label}}</label>
+                            {% endfor %}
+                            <!-- <div class="furnishing">
+                                <p>Furnished</p>
+                            </div>
+                            <div class="furnishing">
+                                <p>semiFurnised</p>
+                            </div>
+                            <div class="furnishing">
+                                <p>Unfurnished</p>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <div class="rented_out_to_status">
+                        <div class="rented_out_title">
+                            <h2>Available for</h2>
+                            <i id="rent_out_to_arrow" class="fa-solid fa-angle-up"></i>
+                        </div>
+
+                        <div class="rented_out_to_body">
+                            {% for field in forms.rent_out_to %}
+                            <input class="rent_out_to_radio" type="radio" value = "{{field.choice_label}}" name="rented_out_to" value="{{field.choice_label}}" id="{{field.choice_label}}">
+                            <label id="rented_out_to_label" for="{{field.choice_label}}">{{field.choice_label}}</label>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="age_status">
+                        <div class="age_title">
+                            <h2>Age of Property</h2>
+                            <i id="age_arrow" class="fa-solid fa-angle-up"></i>
+                        </div>
+
+                        <div class="age_body">
+                            {% for field in forms.age_of_property %}
+                            <input class="age_radio" type="radio" value = "{{field.choice_label}}" name="age" value="{{field.choice_label}}" id="{{field.choice_label}}">
+                            <label id="age_label" for="{{field.choice_label}}">{{field.choice_label}} old</label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 column2 ">
+                    <div class="column2">
+                        <div class="title">
+                            <h1>14921 results Property for Rent in kathmandu</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="filter-option">
+                                    <div class="room-detail-info">
+                                        <p>Owner</p>
+                                        <p>Verified</p>
+                                        <p>Furnished</p>
+                                        <p>With Photos</p>
+                                    </div>
+
+                                    <div class="sort">
+                                        <div class="sort-header">
+                                            <i class="fa-solid fa-bars menu"></i>
+                                            <p id="sort_title">Sort By</p>
+                                            <i class="fa-solid fa-angle-down down"></i>   
+                                            <!-- <i class="fa-solid fa-angle-up"></i>    -->
+                                        </div>
+                                    
+                                        <div class="sort-dropdown hide-dropdown">
+                                           <!-- <div class="dropdown-list" data-value = "relevence">Relevence</div> -->
+                                           <div class="dropdown-list" data-value = "newest">Newest first</div>
+                                           <div class="dropdown-list" data-value = "low_to_high" >Price Low to High</div>
+                                           <div class="dropdown-list" data-value = "high_to_low" >Price High to low</div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="room-container">                       
+                            {% for room in rooms %}
+                            <div class="room-sec">
+                                <div class="row">
+                                        <div class="col-md-3 bg-secondary">
+                                            <a href="">
+                                                <div class="image">
+                                                    <img src="{{room.imageURL}}" alt="">
+                                                </div>
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="col-md-8 ">
+                                            <a href="{% url 'room_detail' room.id %}" style="color: black;">
+                                                <div class="room-detail">
+                                                    <p class="header">{{room.description}}</p>
+                                                    <h2>{{room.property_type}}</h2>
+                                                    <hr>
+                                                    
+                                                    <div class="price-area-room">
+                                                        <div class="price">
+                                                            <span><h2><i class="fa-solid fa-indian-rupee-sign"></i></h2><h2>{{room.price}}</h2>/month</span>
+                                                            <p>{{room.security_deposite}}</p>
+                                                        </div>
+
+                                                        <div class="area">
+                                                            <h2>1,561 <span>sqft</span></h2>
+                                                            <p>(145 sq m) carpet area</p>
+                                                        </div>
+                                                        <div class="room">
+                                                            <h2>{{room.bedroom}} BHK</h2>
+                                                            <p>{{room.bathroom}} Baths</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="description-section">
+                                                        <p>{{room.description}}</p>
+                                                    </div>
+
+                                                    <div class="rented-out-to">
+                                                        <p>{{room.rent_out_to}}</p>
+                                                        <!-- <p>FOR FAMILY</p> -->
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <hr class="hr">
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="profile-contact">
+                                                    <div class="date-profile">
+                                                        <p>{{room.updated_date}}</p>
+                                                        <h2>{{room.user.name}}</h2>
+                                                    </div>
+
+                                                    <a href="">
+                                                        <div class="contact-number">
+                                                            <p>View Phone Number</p>
+                                                        </div>
+                                                    </a>
+                
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>
+                                
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="{% static 'JS/room.js' %}"></script>
+    
+        </body>
+{% endblock %}
